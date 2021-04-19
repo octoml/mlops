@@ -1,0 +1,77 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "git_src_dir": "tvm",
+    "install_env": {
+      "PACKAGE_GIT_TVM": "https://github.com/apache/tvm"
+    },
+    "no_ver_in_suggested_path": "yes"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake",
+      "version_from": [
+        3,
+        13,
+        3
+      ]
+    },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 10,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-llvm": {
+      "add_to_path": "yes",
+      "local": "no",
+      "name": "LLVM libraries from source",
+      "sort": 90,
+      "tags": "llvm,src"
+    }
+  },
+  "end_full_path_universal": "tvm/build/libtvm.so",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "757f02edb31a4008",
+  "suggested_path": "compiler-tvm",
+  "tags": [
+    "compiler",
+    "tvm",
+    "source",
+    "src"
+  ],
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "process-compiler-for-cmake",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "dev": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main"
+      },
+      "extra_customize": {
+        "version": "dev"
+      },
+      "on_by_default": "yes"
+    },
+    "v0.7.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v0.7.0"
+      },
+      "extra_customize": {
+        "version": "v0.7.0"
+      },
+      "on_by_default": "no"
+    }
+  }
+}

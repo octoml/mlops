@@ -1,0 +1,16 @@
+{
+  "data_uoa": "ck-mlops",
+  "data_uid": "4346be4e9214fc4d",
+  "data_alias": "ck-mlops",
+  "data_name": "ck-mlops",
+  "dict": {
+    "shared": "git",
+    "url": "git@github.com:octoml/ck-mlops.git",
+    "repo_deps": [
+      {
+        "repo_uoa": "ck-env",
+        "repo_url": "https://github.com/ctuning/ck-env"
+      }
+    ]
+  }
+}
