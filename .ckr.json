@@ -8,8 +8,8 @@
     "url": "git@github.com:octoml/ck-mlops.git",
     "repo_deps": [
       {
-        "repo_uoa": "ck-env",
-        "repo_url": "https://github.com/ctuning/ck-env"
+        "repo_uoa": "ck-ml",
+        "repo_url": "https://github.com/ctuning/ck-ml"
       }
     ]
   }
