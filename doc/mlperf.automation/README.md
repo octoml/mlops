@@ -6,7 +6,7 @@
 
 Prepare your platform for MLPerf automation using the following guidelines:
 
-* [AMD Mlain (Ubuntu)](platform-amd-milan.md)
+* [AMD Milan (Ubuntu)](platform-amd-milan.md)
 * [x8664 (Ubuntu)](platform-x8664-ubuntu.md)
 * [Raspberry Pi4 (Ubuntu)](platform-rpi4-ubuntu.md)
 * [Raspberry Pi4 with Coral EdgeTPU (Ubuntu)](platform-rpi4-coral-ubuntu.md)
