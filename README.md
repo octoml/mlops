@@ -6,7 +6,7 @@
 
 ## Documentation
 
-* [MLPerf automation](blob/main/doc/mlperf.automation/README.md)
+* [MLPerf automation](doc/mlperf.automation/README.md)
 
 ## Problems
 
