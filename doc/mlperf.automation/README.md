@@ -14,9 +14,7 @@ Prepare your platform for MLPerf automation using the following guidelines:
 * [Nvidia generic](platform-nvidia-generic.md)
 * [Nvidia Jetson Nano](platform-nvidia-jetson-nano.md)
 
-### CK framework
-
-* Install the CK framework and CK virtual environment components as described [here](https://github.com/octoml/ck-venv).
+Install the CK framework and CK virtual environment components as described [here](https://github.com/octoml/ck-venv).
 
 ### Use CK adaptive containers
 

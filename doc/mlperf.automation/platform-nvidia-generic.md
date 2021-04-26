@@ -24,6 +24,8 @@ sudo apt install \
            gcc g++ autoconf autogen libtool make libc6-dev \
            libssl-dev libbz2-dev libffi-dev \
            python3 python3-pip python3-dev
+
+pip3 install virtualenv
 ```
 
 ### CUDA driver
