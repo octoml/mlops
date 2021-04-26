@@ -1,9 +1,5 @@
 # CK MLOps
 
-## Prerequisites
-
-* Install CK and CK virtual environment components as described [here](https://github.com/octoml/ck-venv).
-
 ## Documentation
 
 * [MLPerf automation](doc/mlperf.automation/README.md)
