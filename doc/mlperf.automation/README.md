@@ -97,6 +97,7 @@ ck run docker:ck-template-ml-x8664-ubuntu-20.04
 
 ## Submitting to MLPerf
 
-# Improving CK
+# Further improvements
 
-* [ideas](ck2.md)
+* [Automation](tbd-automation.md)
+* [CK2 ideas](tbd-ck2.md)
