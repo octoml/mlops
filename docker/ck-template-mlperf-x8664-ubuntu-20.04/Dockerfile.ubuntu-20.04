@@ -39,7 +39,7 @@ ENV PATH="/home/octoml/.local/bin:${PATH}"
 RUN mkdir .ssh
 
 # Install CK
-RUN export DUMMY_CK=A
+RUN export DUMMY_CK=B
 RUN ${DUMMY_CK} pip3 install virtualenv
 RUN ${DUMMY_CK} pip3 install ck
 
