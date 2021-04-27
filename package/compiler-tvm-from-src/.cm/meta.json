@@ -27,14 +27,7 @@
       "local": "yes",
       "name": "C++ compiler",
       "sort": 10,
-      "tags": "compiler,lang-cpp"
-    },
-    "lib-llvm": {
-      "add_to_path": "yes",
-      "local": "no",
-      "name": "LLVM libraries from source",
-      "sort": 90,
-      "tags": "llvm,src"
+      "tags": "compiler,lang-cpp,llvm"
     }
   },
   "end_full_path_universal": "tvm/build/libtvm.so",
@@ -63,6 +56,16 @@
         "version": "dev"
       },
       "on_by_default": "yes"
+    },
+    "r-a1b4f0e8f2bfcc583f98f0f9272adcc0c12f70a5": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main",
+        "PACKAGE_GIT_SHA": "a1b4f0e"
+      },
+      "extra_customize": {
+        "version": "r-a1b4f0e8f2bfcc583f98f0f9272adcc0c12f70a5"
+      },
+      "on_by_default": "no"
     },
     "v0.7.0": {
       "extra_env": {

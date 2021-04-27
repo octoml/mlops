@@ -13,9 +13,13 @@ git clone -b "${PACKAGE_GIT_CHECKOUT}" ${PACKAGE_GIT_TVM} tvm --recursive
 
 cd tvm
 
+if [ "${PACKAGE_GIT_SHA}" != "" ]; then 
+ git checkout ${PACKAGE_GIT_SHA}
+fi
+
 mkdir -p build
 
-cp cmale/config.cmake build/.
+cp cmake/config.cmake build/.
 
 echo 'set(USE_LLVM llvm-config)' >> build/config.cmake
 echo 'set(USE_RELAY_DEBUG ON)' >> build/config.cmake
