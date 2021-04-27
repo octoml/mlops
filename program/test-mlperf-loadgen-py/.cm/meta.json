@@ -11,6 +11,9 @@
       "run_time": {
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_MLPERF_INFERENCE>>$/loadgen/demos/py_demo_single_stream.py",
         "fine_grain_timer_file": "tmp-ck-timer.json",
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "module_uoa": "script",
           "data_uoa": "image-classification",
