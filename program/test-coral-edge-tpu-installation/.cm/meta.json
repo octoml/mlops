@@ -18,7 +18,15 @@
       "local": "yes",
       "name": "Python Coral library",
       "sort": 5,
+      "skip_default": "yes",
       "tags": "lib,python-package,pycoral"
+    },
+    "lib-python-pillow": {
+      "local": "yes",
+      "name": "Python Pillow library",
+      "sort": 10,
+      "skip_default": "yes",
+      "tags": "lib,python-package,pillow"
     }
   },
   "run_vars": {},
