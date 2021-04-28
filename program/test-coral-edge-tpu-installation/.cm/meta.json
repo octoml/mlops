@@ -1,0 +1,31 @@
+{
+  "backup_data_uid": "aacb0f389013f264",
+  "data_name": "test-coral-edge-tpu-installation",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "../_run$#script_ext#$"
+      }
+    }
+  },
+  "run_deps": {
+    "lib-python-pycoral": {
+      "local": "yes",
+      "name": "Python Coral library",
+      "sort": 5,
+      "tags": "lib,python-package,pycoral"
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "lang-python",
+    "test",
+    "coral",
+    "edge-tpu"
+  ]
+}
