@@ -3,13 +3,13 @@
 ## Preparing a platform
 Prepare your platform for MLPerf automation using the following guidelines:
 
-* [AMD Milan (Ubuntu)](platform-amd-milan.md)
-* [x8664 (Ubuntu)](platform-x8664-ubuntu.md)
-* [Raspberry Pi4 (Ubuntu)](platform-rpi4-ubuntu.md)
-* [Raspberry Pi4 with Coral EdgeTPU (Ubuntu)](platform-rpi4-coral-ubuntu.md)
-* [Raspberry Pi4 (Debian)](platform-rpi4-debian.md)
-* [Nvidia generic](platform-nvidia-generic.md)
-* [Nvidia Jetson Nano](platform-nvidia-jetson-nano.md)
+* [AMD Milan (Ubuntu)](platform/amd-milan.md)
+* [x8664 (Ubuntu)](platform/x8664-ubuntu.md)
+* [Raspberry Pi4 (Ubuntu)](platform/rpi4-ubuntu.md)
+* [Raspberry Pi4 with Coral EdgeTPU (Ubuntu)](platform/rpi4-coral-ubuntu.md)
+* [Raspberry Pi4 (Debian)](platform/rpi4-debian.md)
+* [Nvidia generic](platform/nvidia-generic.md)
+* [Nvidia Jetson Nano](platform/nvidia-jetson-nano.md)
 
 ### CK framework
 
@@ -77,7 +77,12 @@ ck run docker:ck-template-ml-x8664-ubuntu-20.04
 
 ## Using native MLCommons inference benchmarking
 
-## Using CK workflows for MLCommons inference benchmarking
+## Reproducing MLPerf results using CK workflows
+
+### Object detection
+
+* [Coral EdgeTPU on RPi4 with TFlite](reproduce-ck/object-detection-rpi4-coral-tflite.md)
+* [RPi4 with TFlite](reproduce-ck/object-detection-rpi4-tflite.md)
 
 ## Using adaptive CK containers for MLCommons inference benchmarking
 
