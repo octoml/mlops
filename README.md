@@ -2,7 +2,7 @@
 
 ## Documentation
 
-* [MLPerf automation](doc/mlperf.automation/README.md)
+* [MLPerf automation](docs/mlperf.automation/README.md)
 
 ## Problems
 
