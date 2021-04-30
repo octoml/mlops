@@ -100,6 +100,8 @@ ck run docker:ck-template-ml-x8664-ubuntu-20.04
 
 ## Submitting to MLPerf
 
+* [Misc inference notes](inference/notes.md)
+
 ## Further improvements
 
 * [Automation](tbd-automation.md)
