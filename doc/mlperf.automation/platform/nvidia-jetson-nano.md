@@ -4,9 +4,9 @@
 * Ubuntu 18.04
 * Card: 128GB
 * CPU: Quad-core ARM® A57 CPU
-** ARMv8 Processor rev 1 (v8l) x 4
+  * ARMv8 Processor rev 1 (v8l) x 4
 * GPU: NVIDIA Tegra X1 (nvgpu)/integrated
-** 128-core NVIDIA Maxwell™ GPU
+  * 128-core NVIDIA Maxwell™ GPU
 * Memory: 4 GB 64-bit LPDDR4
 
 ## Notes

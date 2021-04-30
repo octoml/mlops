@@ -84,7 +84,7 @@ ck run docker:ck-template-ml-x8664-ubuntu-20.04
 
 * [notes](models/notes.md)
 
-## Reproducing MLPerf inference results
+## Navigating through MLPerf inference results
 
 Master GitHub for inference: https://github.com/mlcommons/inference
 
@@ -121,6 +121,8 @@ GitHub with results, code and data:
 * https://github.com/mlcommons/inference_results_v0.7 (2.5GB)
 * https://github.com/mlcommons/inference_results_v0.5 (13GB)
 
+## Reproducing MLPerf inference results
+
 ### Using ad-hoc MLCommons scripts
 
 * [Dell EMC System intefernce v0.7](https://infohub.delltechnologies.com/p/running-the-mlperf-inference-v0-7-benchmark-on-dell-emc-systems)
@@ -148,18 +150,14 @@ GitHub with results, code and data:
 
 ## Visualizing results
 
-### CK dashboard
-
-### Jupyter notebook
-
 ## Exploring ML Systems design space and autotuning models
 
 Examples:
 * [CK based object detection DSE notebook](https://nbviewer.jupyter.org/urls/dl.dropbox.com/s/f28u9epifr0nn09/ck-dse-demo-object-detection.ipynb)
-** [CK dashboard](https://cknowledge.io/result/crowd-benchmarking-mlperf-inference-classification-mobilenets-all)
+  * [CK dashboard](https://cknowledge.io/result/crowd-benchmarking-mlperf-inference-classification-mobilenets-all)
 
 * [ACM ASPLOS REQUEST DSE tournament](https://cknowledge.io/c/event/repro-request-asplos2018)
-** [CK dashboard](https://cknowledge.io/c/result/pareto-efficient-ai-co-design-tournament-request-acm-asplos-2018)
+  * [CK dashboard](https://cknowledge.io/c/result/pareto-efficient-ai-co-design-tournament-request-acm-asplos-2018)
 
 ## Packing and sharing results
 
@@ -172,14 +170,14 @@ Examples:
 
 
 * [Misc inference notes](inference/notes.md)
-** [Generate target latency via CK repos](https://cknowledge.io/c/program/generate-target-latency)
-** [Image classification with TFlite across 4 machines with CK notebook](https://nbviewer.jupyter.org/github/ctuning/ck-ml/blob/main/jnotebook/image-classification-tflite-loadgen/image-classification-tflite-loadgen.ipynb)
+  * [Generate target latency via CK repos](https://cknowledge.io/c/program/generate-target-latency)
+  * [Image classification with TFlite across 4 machines with CK notebook](https://nbviewer.jupyter.org/github/ctuning/ck-ml/blob/main/jnotebook/image-classification-tflite-loadgen/image-classification-tflite-loadgen.ipynb)
 
 ## MLPerf tools
 
 * [LoadGen (how to build without CK)](https://github.com/mlcommons/inference/blob/master/loadgen/README_BUILD.md)
 * [MLCube](tools/mlcube.md) (complementary to CK - plans to connect it with the CK framework)
-** [Example of Single Stage Detection with MLCube™](https://github.com/mlcommons/training/pull/465)
+  * [Example of Single Stage Detection with MLCube™](https://github.com/mlcommons/training/pull/465)
 * [Logging](tools/logging.md)
 
 ## Further improvements
