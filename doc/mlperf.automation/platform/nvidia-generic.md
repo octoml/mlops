@@ -49,3 +49,7 @@ ck pull repo:ck-ml
 
 ck detect platform.gpgpu --cuda
 ```
+
+
+
+## Misc links

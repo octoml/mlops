@@ -71,20 +71,78 @@ ck build docker:ck-template-ml-x8664-ubuntu-20.04
 ck run docker:ck-template-ml-x8664-ubuntu-20.04
 ```
 
+## Preparing tasks
+
+* [DLRM](tasks/dlrm.md)
+
+* [Search for CK program workflows with "mlperf"](https://cknowledge.io/?q=module_uoa%3A%22program%22+AND+mlperf)
+* [Search for CK program workflows with "loadgen"](https://cknowledge.io/?q=module_uoa%3A%22program%22+AND+loadgen)
+
 ## Preparing datasets
 
 ## Preparing models
 
-## Using native MLCommons inference benchmarking
+* [notes](models/notes.md)
 
-## Reproducing MLPerf results using CK workflows
+## Reproducing MLPerf inference results
 
-### Object detection
+Master GitHub for inference: https://github.com/mlcommons/inference
+
+### v1.0
+
+Announcements: 
+* https://mlcommons.org/en/news/mlperf-inference-v10/
+
+* [IEEE Spectrum](https://spectrum.ieee.org/tech-talk/artificial-intelligence/machine-learning/these-might-be-the-fastest-and-most-efficient-ai-systems-around)
+* [ZDNet](https://www.zdnet.com/article/ai-industrys-performance-benchmark-mlperf-for-the-first-time-also-measures-the-energy-that-machine-learning-consumes/)
+* [AnandTech](https://www.anandtech.com/show/16632/mlperf-inference-v10-2000-suite-results-new-power-measurements)
+
+* [MLCommons community meeting notes](https://docs.google.com/presentation/d/1w0BfO-S7sEA3kTmxUPaJvpHjHQgP10zf2FcRyR2Vmmc/edit#slide=id.gd34e303737_3_6)
+
+
+Results:
+* https://mlcommons.org/en/inference-datacenter-10/
+* https://mlcommons.org/en/inference-edge-10/
+
+GitHub with results, code and data:
+* https://github.com/mlcommons/inference_results_v1.0 (2.8GB)
+  
+### v0.7
+
+Announcement:
+* https://mlcommons.org/en/news/mlperf-inference-v07/
+
+Results:
+* https://mlcommons.org/en/inference-datacenter-07/
+* https://mlcommons.org/en/inference-edge-07/
+* https://mlcommons.org/en/inference-mobile-07/
+
+GitHub with results, code and data:
+* https://github.com/mlcommons/inference_results_v0.7 (2.5GB)
+* https://github.com/mlcommons/inference_results_v0.5 (13GB)
+
+### Using ad-hoc MLCommons scripts
+
+* [Dell EMC System intefernce v0.7](https://infohub.delltechnologies.com/p/running-the-mlperf-inference-v0-7-benchmark-on-dell-emc-systems)
+* [NVidia Jetson Xavier](reproduce/image-classification-nvidia-jetson-xavier-mlperf.md)
+
+### Using CK workflows
+
+* [Official MLCommons notes for image classification (a bit outdated - more automation exists)](https://github.com/mlcommons/inference/tree/master/vision/classification_and_detection/optional_harness_ck/classification)
+* [Official MLCommons notes for object detection (a bit outdated - more automations exists)](https://github.com/mlcommons/inference/tree/master/vision/classification_and_detection/optional_harness_ck/detection)
+
+
+### Image Classification
+
+* [x86, Arm, Nvdia, EdgeTPU](reproduce-ck/image-classification-tflite.md)
+
+#### Object detection
 
 * [Coral EdgeTPU on RPi4 with TFlite](reproduce-ck/object-detection-rpi4-coral-tflite.md)
 * [RPi4 with TFlite](reproduce-ck/object-detection-rpi4-tflite.md)
 
-## Using adaptive CK containers for MLCommons inference benchmarking
+### Using adaptive CK containers
+
 
 ## Recording experiments
 
@@ -96,11 +154,33 @@ ck run docker:ck-template-ml-x8664-ubuntu-20.04
 
 ## Exploring ML Systems design space and autotuning models
 
+Examples:
+* [CK based object detection DSE notebook](https://nbviewer.jupyter.org/urls/dl.dropbox.com/s/f28u9epifr0nn09/ck-dse-demo-object-detection.ipynb)
+** [CK dashboard](https://cknowledge.io/result/crowd-benchmarking-mlperf-inference-classification-mobilenets-all)
+
+* [ACM ASPLOS REQUEST DSE tournament](https://cknowledge.io/c/event/repro-request-asplos2018)
+** [CK dashboard](https://cknowledge.io/c/result/pareto-efficient-ai-co-design-tournament-request-acm-asplos-2018)
+
 ## Packing and sharing results
 
 ## Submitting to MLPerf
 
+* https://mlcommons.org/en/get-involved
+
+* https://github.com/mlcommons/policies/blob/master/submission_rules.adoc
+* https://github.com/mlcommons/inference/blob/master/SubmissionExample.ipynb
+
+
 * [Misc inference notes](inference/notes.md)
+** [Generate target latency via CK repos](https://cknowledge.io/c/program/generate-target-latency)
+** [Image classification with TFlite across 4 machines with CK notebook](https://nbviewer.jupyter.org/github/ctuning/ck-ml/blob/main/jnotebook/image-classification-tflite-loadgen/image-classification-tflite-loadgen.ipynb)
+
+## MLPerf tools
+
+* [LoadGen (how to build without CK)](https://github.com/mlcommons/inference/blob/master/loadgen/README_BUILD.md)
+* [MLCube](tools/mlcube.md) (complementary to CK - plans to connect it with the CK framework)
+** [Example of Single Stage Detection with MLCube™](https://github.com/mlcommons/training/pull/465)
+* [Logging](tools/logging.md)
 
 ## Further improvements
 
