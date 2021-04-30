@@ -172,12 +172,12 @@ Examples:
 * [Misc inference notes](inference/notes.md)
   * [Generate target latency via CK repos](https://cknowledge.io/c/program/generate-target-latency)
   * [Image classification with TFlite across 4 machines with CK notebook](https://nbviewer.jupyter.org/github/ctuning/ck-ml/blob/main/jnotebook/image-classification-tflite-loadgen/image-classification-tflite-loadgen.ipynb)
+  * [Dump CK repo to submission](https://cknowledge.io/c/program/dump-repo-to-submission)
 
 ## MLPerf tools
 
 * [LoadGen (how to build without CK)](https://github.com/mlcommons/inference/blob/master/loadgen/README_BUILD.md)
 * [MLCube](tools/mlcube.md) (complementary to CK - plans to connect it with the CK framework)
-  * [Example of Single Stage Detection with MLCube™](https://github.com/mlcommons/training/pull/465)
 * [Logging](tools/logging.md)
 
 ## Further improvements
