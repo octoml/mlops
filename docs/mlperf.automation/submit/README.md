@@ -4,7 +4,9 @@
 * https://github.com/mlcommons/inference/blob/master/SubmissionExample.ipynb
 
 
-* [Misc inference notes](inference/notes.md)
+* [Notes about power](power.md)
+
+* [Misc inference notes](../inference/notes.md)
   * [Generate target latency via CK repos](https://cknowledge.io/c/program/generate-target-latency)
   * [Image classification with TFlite across 4 machines with CK notebook](https://nbviewer.jupyter.org/github/ctuning/ck-ml/blob/main/jnotebook/image-classification-tflite-loadgen/image-classification-tflite-loadgen.ipynb)
   * [Dump CK repo to submission](https://cknowledge.io/c/program/dump-repo-to-submission)
