@@ -7,6 +7,7 @@
 * [Prepare and run MLPerf tasks](tasks/README.md)
 * [Analyze MLPerf inference results](results/README.md)
 * [Reproduce MLPerf results](reproduce/README.md)
+* [Test models with a webcam](reproduce/demo-webcam-object-detection-x86-64.md)
 * [Explore ML Systems designs](dse/README.md)
 * [Submit to MLPerf](submit/README.md)
 * [MLPerf tools](tools/README.md)
