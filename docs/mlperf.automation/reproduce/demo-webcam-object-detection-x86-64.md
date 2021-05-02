@@ -20,7 +20,7 @@ ck activate venv:mlperf-webcam-demo
 ## Install cBench client
 
 ```bash
-python3 -m pip install cbench
+python -m pip install cbench
 ```
 
 ## Initialize demo solution
