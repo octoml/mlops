@@ -166,4 +166,14 @@ or
 ck ls ck-experiments:expeirment:*
 ```
 
+You can pack this repository.
+```
+ck zip repo:ck-experiments
+```
 
+CK will create "ckr-ck-experiments.zip" file that can be shared with other colleagues or workgroups.
+
+Anyone else can now add these experiments in their own CK repositories for further analysis as follows:
+```
+ck unzip repo --zip=ckr-ck-experiments.zip
+```
