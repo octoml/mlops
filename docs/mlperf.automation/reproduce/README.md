@@ -20,12 +20,13 @@
 
 # Case studies
 
-### Image Classification
+## Image Classification
 
 * [x86, Arm, Nvdia, EdgeTPU](ck-image-classification-tflite.md)
 
-#### Object detection
+## Object detection
 
+* [**Example of adaptive CK container:** AMD (x8664) with TFlite](ck-object-detection-x86-64-docker.md)
 * [AMD (x8664) with TFlite](ck-object-detection-x86-64.md)
 * [Coral EdgeTPU on RPi4 with TFlite](ck-object-detection-rpi4-coral-tflite.md)
 * [RPi4 with TFlite](ck-object-detection-rpi4-tflite.md)
