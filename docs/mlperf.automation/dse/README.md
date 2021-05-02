@@ -1,7 +1,22 @@
 Examples:
 
-* [CK based object detection DSE notebook](https://nbviewer.jupyter.org/urls/dl.dropbox.com/s/f28u9epifr0nn09/ck-dse-demo-object-detection.ipynb)
-  * [CK dashboard](https://cknowledge.io/result/crowd-benchmarking-mlperf-inference-classification-mobilenets-all)
+# CK based object detection DSE 
 
-* [ACM ASPLOS REQUEST DSE tournament](https://cknowledge.io/c/event/repro-request-asplos2018)
-  * [CK dashboard](https://cknowledge.io/c/result/pareto-efficient-ai-co-design-tournament-request-acm-asplos-2018)
+* [Jupyter notebook](https://nbviewer.jupyter.org/urls/dl.dropbox.com/s/f28u9epifr0nn09/ck-dse-demo-object-detection.ipynb)
+* [CK dashboard](https://cknowledge.io/result/crowd-benchmarking-mlperf-inference-classification-mobilenets-all)
+
+# ACM ASPLOS REQUEST DSE tournament
+
+* [event and report](https://cknowledge.io/c/event/repro-request-asplos2018)
+* [CK dashboard](https://cknowledge.io/c/result/pareto-efficient-ai-co-design-tournament-request-acm-asplos-2018)
+
+To run locally:
+```
+ck pull repo:ck-request-asplos18-results
+```
+
+Start CK dashboard with local CK web server
+```
+ck dashboard request.asplos18
+
+```
