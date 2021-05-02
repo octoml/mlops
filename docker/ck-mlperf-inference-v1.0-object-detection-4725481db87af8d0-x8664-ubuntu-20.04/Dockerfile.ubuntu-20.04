@@ -20,7 +20,7 @@ RUN apt update && \
            apt-utils \
            git wget zip bzip2 libz-dev libbz2-dev cmake curl unzip \
            openssh-client vim mc tree \
-           gcc g++ autoconf autogen libtool make libc6-dev \
+           gcc g++ autoconf autogen libtool make libc6-dev build-essential \
            libssl-dev libbz2-dev libffi-dev \
            python3 python3-pip python3-dev \
            sudo
@@ -52,15 +52,24 @@ RUN ck setup kernel --var.install_to_env=yes
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
 RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
 
-RUN ck install package --quiet --tags=mlperf,inference,src,main
-
 RUN ck detect soft:compiler.gcc --full_path=`which gcc`
 
 RUN ck install package --tags=tool,cmake,prebuilt --quiet
 
 RUN ck install package --tags=lib,python-package,absl
 RUN ck install package --tags=lib,python-package,numpy
+RUN ck install package --tags=lib,python-package,matplotlib
+RUN ck install package --tags=lib,python-package,cython
+RUN ck install package --tags=lib,python-package,pillow
 
+RUN ck install package --tags=mlperf,inference,src,r1.0
+RUN ck install package --tags=lib,mlperf,loadgen,static
 
-RUN ck install package --tags=lib,python-package,mlperf,loadgen
-#RUN ck install package --tags=lib,mlperf,loadgen,static
+RUN ck install package --tags=lib,tflite,via-cmake,v2.4.1,with.ruy
+RUN ck install package --tags=api,model,tensorflow,r2.3.0
+
+RUN ck install package --tags=tool,coco,api
+
+RUN ck install package --tags=dataset,coco,val,2017,full
+RUN ck install package --tags=dataset,object-detection,preprocessed,full,side.300,using-pillow
+RUN ck install package --tags=model,tflite,object-detection,ssd-mobilenet,non-quantized,from-zenodo
