@@ -33,8 +33,20 @@ ck detect soft:compiler.gcc --full_path=`which gcc`
 
 ### Install common CK packages
 ```
+ck install package --tags=tool,cmake
+ck install package --tags=lib,python-package,absl
+ck install package --tags=lib,python-package,numpy
+
 ck install package --tags=mlperf,inference,src,r1.0
 ck install package --tags=lib,mlperf,loadgen,static
+```
+
+### Install COCO 2017 val dataset (5000 images) and 
+
+```
+ck install package --tags=tool,coco,api
+ck install package --tags=lib,python-package,cv2,opencv-python-headless
+ck install package --ask --tags=dataset,coco,val,2017
 ```
 
 ## Setup for RPi4 CPU
@@ -44,16 +56,17 @@ ck install package --tags=lib,mlperf,loadgen,static
 ~30 min to build
 
 ```
+ck install package --tags=dataset,object-detection,preprocessed,full,side.300
 ck install package --tags=model,tflite,object-detection,ssd-mobilenet,non-quantized
 
 ck install package --tags=api,model,tensorflow,r2.3.0
 
-ck install package --tags=lib,tflite,via-cmake,v2.4.1,with.ruy --env.PACKAGE_LIB_RUY=ON --env.CK_HOST_CPU_NUMBER_OF_PROCESSORS=2
+ck install package --tags=lib,tflite,via-cmake,v2.4.1,with.ruy --env.CK_HOST_CPU_NUMBER_OF_PROCESSORS=2
 ```
 
 ### Run experiments
 
-Performance:
+#### Performance
 
 ```
 ck run cmdgen:benchmark.object-detection.tflite-loadgen --verbose \
@@ -66,7 +79,7 @@ ck run cmdgen:benchmark.object-detection.tflite-loadgen --verbose \
 
 ```
 
-Accuracy:
+#### Accuracy
 ```
 ck run cmdgen:benchmark.object-detection.tflite-loadgen --verbose \
    --library=tflite-v2.4.1-ruy \
@@ -78,7 +91,53 @@ ck run cmdgen:benchmark.object-detection.tflite-loadgen --verbose \
 
 ```
 
-Compliance:
+Sample result:
+```
+***************************************************************************************
+Some statistics:
+
+* Failed: no
+
+* Binary size: 0
+* Object size: 0
+
+* Kernel repeat: 0
+
+* Normalized time in sec. (min .. max): 0 .. 0
+
+* Total time in us (min .. max): 0 .. 0
+
+loading annotations into memory...
+Done (t=2.39s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=0.68s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=52.64s).
+Accumulating evaluation results...
+DONE (t=8.79s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.224
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.341
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.247
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.015
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.160
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.515
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.203
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.255
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.255
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.019
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.182
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.593
+mAP=22.350%
+==========================================================================================
+
+```
+
+#### Compliance
 
 ```
 ck run cmdgen:benchmark.object-detection.tflite-loadgen --verbose \

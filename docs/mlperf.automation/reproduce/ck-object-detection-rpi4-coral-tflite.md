@@ -1,4 +1,4 @@
-***Reproduced by [Grigori Fursin](https://cKnowledge.io/@gfursin) on 20210428***
+***Reproduced by [Grigori Fursin](https://cKnowledge.io/@gfursin) on 20210501***
 
 # MLPerf Inference v1.0 - Object Detection - TFLite (with Coral EdgeTPU support)
 
@@ -33,8 +33,21 @@ ck detect soft:compiler.gcc --full_path=`which gcc`
 
 ### Install common CK packages
 ```
+ck install package --tags=tool,cmake
+
+ck install package --tags=lib,python-package,absl
+ck install package --tags=lib,python-package,numpy
+
 ck install package --tags=mlperf,inference,src,r1.0
 ck install package --tags=lib,mlperf,loadgen,static
+```
+
+### Install COCO 2017 val dataset (5000 images) and 
+
+```
+ck install package --tags=tool,coco,api
+ck install package --tags=lib,python-package,cv2,opencv-python-headless
+ck install package --ask --tags=dataset,coco,val,2017
 ```
 
 ## Setup for EdgeTPU
@@ -44,6 +57,7 @@ ck install package --tags=lib,mlperf,loadgen,static
 Note that this will install TFLite 1.15.4 and compatible models:
 
 ```
+ck install package --tags=dataset,object-detection,preprocessed,full,side.300
 ck install package --tags=model,ssd-mobilenet,nhwc,quantized,v1 
 ck install package --tags=model,ssd-mobilenet,nhwc,quantized,v2
 

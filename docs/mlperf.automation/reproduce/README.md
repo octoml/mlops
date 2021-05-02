@@ -26,5 +26,6 @@
 
 #### Object detection
 
+* [AMD (x8664) with TFlite](ck-object-detection-x86-64.md)
 * [Coral EdgeTPU on RPi4 with TFlite](ck-object-detection-rpi4-coral-tflite.md)
 * [RPi4 with TFlite](ck-object-detection-rpi4-tflite.md)
