@@ -1,9 +1,8 @@
 ﻿echo "======================================================================="
-echo "Fixing access to datasets ..."
-echo ""
-echo "$ sudo chmod -R 777 datasets"
+echo "Fixing access to datasets and ck-experiments ..."
 echo ""
 time sudo chmod -R 777 datasets
+time sudo chmod -R 777 ck-experiments
 
 echo "====================================================================="
 echo "Adding external ck-experiments repository ..."
