@@ -39,7 +39,7 @@ ck pull repo --url=https://github.com/octoml/ck-mlops
 ck detect platform.os --platform_init_uoa=generic-linux-dummy
 ck detect soft:compiler.python --full_path=${CK_VENV_PYTHON_BIN}
 ck detect soft:compiler.gcc --full_path=`which gcc`
-```
+``
 
 ## Install common CK packages
 
@@ -89,6 +89,7 @@ and register it to work with CK workflows using this command:
 ```
 ck detect soft:dataset.imagenet.val --force_version=2012 \
             --extra_tags=full --search_dir={directory where the dataset is installed}
+ck install package --tags=imagenet,2012,aux,from.berkeley
 ```
 
 You can also download it via [Academic Torrents](https://academictorrents.com/details/5d6d0df7ed81efd49ca99ea4737e0ae5e3a5f2e5)
@@ -115,6 +116,10 @@ time ck install package --dep_add_tags.dataset-source=full \
 
 Processing time: ~26 min.
 
+
+
+
+
 ## Install reduced ImageNet 2012 val dataset with the first 500 images
 
 If you do not have the full ImagNet val dataset, you can install its reduced version via CK
@@ -124,24 +129,20 @@ ck install package --tags=imagenet,2012,val,min,non-resized
 ck install package --tags=imagenet,2012,aux,from.berkeley
 ```
 
-
-
-
-
 ### Preprocess using OpenCV (better accuracy but may fail on some machines)
 
 ```
 time ck install package --dep_add_tags.dataset-source=min \
-          --tags=dataset,imagenet,val,full,preprocessed,using-opencv,side.224 \
-          --version=2012
+         --tags=dataset,imagenet,val,preprocessed,using-opencv,side.224,first.500 \
+         --version=2012
 ```
 
 ### Preprocess using pillow (slightly worse accuracy but works most of the time)
 
 ```
 time ck install package --dep_add_tags.dataset-source=min \
-          --tags=dataset,imagenet,val,full,preprocessed,using-pillow,side.224 \
-          --version=2012
+         --tags=dataset,imagenet,val,preprocessed,using-pillow,side.224,first.500 \
+         --version=2012
 ```
 
 ## Install framework TFLite 2.4.1 with RUY
@@ -168,7 +169,7 @@ ck install package --tags=model,tflite,resnet50,no-argmax
 Test that it works with the installed TFLite version:
 
 ```
-ck benchmark program:image-classification-tflite \
+time ck benchmark program:image-classification-tflite \
       --speed --repetitions=1 --skip_print_timers \
       --dep_add_tags.images=preprocessed,using-opencv \
       --dep_add_tags.weights=resnet \
@@ -182,7 +183,7 @@ ck benchmark program:image-classification-tflite \
 ### Accuracy: Single Stream (50 samples)
 
 ```
-ck benchmark program:image-classification-tflite-loadgen \
+time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=AccuracyOnly \
      --env.CK_LOADGEN_SCENARIO=SingleStream \
      --env.CK_LOADGEN_DATASET_SIZE=50 \
@@ -191,13 +192,14 @@ ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_BUFFER_SIZE=1024 \
      --repetitions=1 \
      --skip_print_timers \
-     --skip_print_stats
+     --skip_print_stats \
+     --print_files=accuracy.txt
 ```
 
 ### Accuracy: Single Stream (50000 samples)
 
 ```
-ck benchmark program:image-classification-tflite-loadgen \
+time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=AccuracyOnly \
      --env.CK_LOADGEN_SCENARIO=SingleStream \
      --env.CK_LOADGEN_DATASET_SIZE=50000 \
@@ -206,13 +208,14 @@ ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_BUFFER_SIZE=1024 \
      --repetitions=1 \
      --skip_print_timers \
-     --skip_print_stats
+     --skip_print_stats \
+     --print_files=accuracy.txt
 ```
 
 ### Accuracy: Offline (500 samples)
 
 ```
-ck benchmark program:image-classification-tflite-loadgen \
+time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=AccuracyOnly \
      --env.CK_LOADGEN_SCENARIO=Offline \
      --env.CK_LOADGEN_DATASET_SIZE=500 \
@@ -237,7 +240,7 @@ to account for variability) to 1,024. Note that it does not matter whether
 the expected latency is, say, 100 ms or 1000 ms, as long as it is above ~60 ms.
 
 ```
-ck benchmark program:image-classification-tflite-loadgen \
+time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=PerformanceOnly \
      --env.CK_LOADGEN_SCENARIO=SingleStream \
      --env.CK_LOADGEN_DATASET_SIZE=500 \
@@ -258,7 +261,7 @@ A valid Offline performance run [must reach](https://github.com/mlcommons/infere
 the minimum duration of 60 seconds (NB: increased to 600 seconds for v1.0), and b) the minimum of 24,576 samples.
 
 ```
-ck benchmark program:image-classification-tflite-loadgen \
+time ck benchmark program:image-classification-tflite-loadgen \
      --dep_add_tags.weights=resnet50 \
      --dep_add_tags.images=preprocessed,using-opencv \
      --env.CK_LOADGEN_MODE=PerformanceOnly \
