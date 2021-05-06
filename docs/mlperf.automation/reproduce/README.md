@@ -22,9 +22,10 @@
 
 ## Image Classification
 
+* [**Example of adaptive CK container:** AMD (x8664) with TFlite](ck-image-classification-x86-64-docker.md)
+* [x86 TFLite ImageNet](ck-image-classification-x86-64-tflite.md)
 * [RPi4 TFLite ImageNet](ck-image-classification-rpi4-tflite.md)
 * [Nvidia Jetson Nano (CPU) TFLite ImageNet](ck-image-classification-jetson-nano-tflite.md)
-* [x86 TFLite ImageNet](ck-image-classification-x86-tflite.md)
 
 ## Object detection
 

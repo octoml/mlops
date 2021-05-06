@@ -1,4 +1,4 @@
-﻿echo "======================================================================="
+echo "======================================================================="
 echo "Fixing access to datasets and ck-experiments ..."
 echo ""
 time sudo chmod -R 777 datasets

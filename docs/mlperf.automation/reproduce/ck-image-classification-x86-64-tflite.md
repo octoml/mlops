@@ -39,7 +39,7 @@ ck pull repo --url=https://github.com/octoml/ck-mlops
 ck detect platform.os --platform_init_uoa=generic-linux-dummy
 ck detect soft:compiler.python --full_path=${CK_VENV_PYTHON_BIN}
 ck detect soft:compiler.gcc --full_path=`which gcc`
-``
+```
 
 ## Install common CK packages
 
@@ -210,6 +210,12 @@ time ck benchmark program:image-classification-tflite-loadgen \
      --skip_print_timers \
      --skip_print_stats \
      --print_files=accuracy.txt
+```
+
+It took around 95 minutes to complete this test on AMD Milan.
+
+```
+accuracy=76.442%, good=38221, total=50000
 ```
 
 ### Accuracy: Offline (500 samples)

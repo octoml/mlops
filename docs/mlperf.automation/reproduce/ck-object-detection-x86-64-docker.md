@@ -86,7 +86,7 @@ ck add repo:ck-experiment --quiet
 
 You can then run the script "ck-object-detection-x86-64-docker-start.sh" from this directory
 to pass the path to this repo to the container, run it, benchmark MLPerf model, and record 
-expeirments to the above ck-experiment repository:
+experiments to the above ck-experiment repository:
 
 ```
 ./ck-object-detection-x86-64-docker-start.sh
@@ -163,7 +163,7 @@ ck ls experiment
 ```
 or
 ```
-ck ls ck-experiments:expeirment:*
+ck ls ck-experiments:experiment:*
 ```
 
 You can pack this repository.
