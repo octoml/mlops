@@ -69,3 +69,10 @@ RUN ck install package --tags=lib,mlperf,loadgen,static
 RUN ck install package --tags=lib,tflite,via-cmake,v2.4.1,with.ruy
 
 RUN ck install package --tags=imagenet,2012,aux,from.berkeley
+
+# Small imagenet just for testing
+RUN ck install package --tags=imagenet,2012,val,min,non-resized
+
+RUN time ck install package --dep_add_tags.dataset-source=min \
+         --tags=dataset,imagenet,val,preprocessed,using-opencv,side.224,first.500 \
+         --version=2012

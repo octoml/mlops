@@ -157,9 +157,7 @@ Building time: ~15 min.
 
 
 
-## Install model(s)
-
-### ResNet-50 (no-argmax)
+## Install model: ResNet-50 (no-argmax)
 
 Install ResNet model via CK:
 ```
@@ -187,7 +185,6 @@ time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=AccuracyOnly \
      --env.CK_LOADGEN_SCENARIO=SingleStream \
      --env.CK_LOADGEN_DATASET_SIZE=50 \
-     --dep_add_tags.weights=resnet50 \
      --dep_add_tags.images=preprocessed,using-opencv \
      --env.CK_LOADGEN_BUFFER_SIZE=1024 \
      --repetitions=1 \
@@ -203,7 +200,6 @@ time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=AccuracyOnly \
      --env.CK_LOADGEN_SCENARIO=SingleStream \
      --env.CK_LOADGEN_DATASET_SIZE=50000 \
-     --dep_add_tags.weights=resnet50 \
      --dep_add_tags.images=preprocessed,using-opencv \
      --env.CK_LOADGEN_BUFFER_SIZE=1024 \
      --repetitions=1 \
@@ -225,7 +221,6 @@ time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=AccuracyOnly \
      --env.CK_LOADGEN_SCENARIO=Offline \
      --env.CK_LOADGEN_DATASET_SIZE=500 \
-     --dep_add_tags.weights=resnet50 \
      --dep_add_tags.images=preprocessed,using-opencv \
      --env.CK_LOADGEN_BUFFER_SIZE=1024 \
      --repetitions=1 \
@@ -250,7 +245,6 @@ time ck benchmark program:image-classification-tflite-loadgen \
      --env.CK_LOADGEN_MODE=PerformanceOnly \
      --env.CK_LOADGEN_SCENARIO=SingleStream \
      --env.CK_LOADGEN_DATASET_SIZE=100 \
-     --dep_add_tags.weights=resnet50 \
      --dep_add_tags.images=preprocessed,using-opencv \
      --env.CK_LOADGEN_TARGET_LATENCY=45 \
      --env.CK_LOADGEN_BUFFER_SIZE=1024 \
@@ -268,10 +262,9 @@ the minimum duration of 60 seconds (NB: increased to 600 seconds for v1.0), and 
 
 ```
 time ck benchmark program:image-classification-tflite-loadgen \
-     --dep_add_tags.weights=resnet50 \
-     --dep_add_tags.images=preprocessed,using-opencv \
      --env.CK_LOADGEN_MODE=PerformanceOnly \
      --env.CK_LOADGEN_SCENARIO=Offline \
+     --dep_add_tags.images=preprocessed,using-opencv \
      --env.CK_LOADGEN_TARGET_QPS=8 \
      --env.CK_LOADGEN_DATASET_SIZE=500 \
      --env.CK_LOADGEN_BUFFER_SIZE=1024 \
@@ -280,3 +273,20 @@ time ck benchmark program:image-classification-tflite-loadgen \
      --skip_print_stats \
      --print_files=mlperf_log_summary.txt,mlperf_log_detail.txt
 ```
+
+## Check other models
+
+See [CK-ML repo docs](https://github.com/ctuning/ck-ml/blob/main/program/image-classification-tflite-loadgen/README.md)
+
+You can list available CK MLPerf model packages as follows:
+```
+ck ls ck-ml:package:model-*mlperf* | sort
+```
+
+For example, install MobileNet v3 Large 224 1.0 Float:
+
+```
+ck install package --tags=model,image-classification,tflite,nhwc,mobilenet-v3,v3-large_224_1.0_uint8
+```
+
+You can then run above commands without changes!

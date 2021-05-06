@@ -120,3 +120,7 @@ time ck install package --dep_add_tags.dataset-source=full \
 
 Processing time: ~26 min.
 
+
+## Preprocess ImageNet for other models with different resolutions
+
+* [CK-ML repo docs](https://github.com/ctuning/ck-ml/blob/main/program/image-classification-tflite-loadgen/README.md)
