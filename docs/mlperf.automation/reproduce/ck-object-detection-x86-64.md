@@ -2,6 +2,10 @@
 
 # MLPerf Inference v1.0 - Object Detection - TFLite 2.4.1 with RUY
 
+### System packages
+
+Install system packages for [x86 Ubuntu](../platform/amd-milan.md).
+
 ## Install Collective Knowledge (CK) and Virtual Environment
 
 ```

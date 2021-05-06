@@ -1,8 +1,15 @@
 ***Reproduced by [Grigori Fursin](https://cKnowledge.io/@gfursin) on 20210428***
 
-# MLPerf Inference v1.0 - Object Detection - TFLite (with Coral EdgeTPU support)
+# MLPerf Inference v1.0 - Object Detection - TFLite
+
+* Platform: RPi4
+* OS: Ubuntu 20.04 64-but
 
 ## Prerequisites
+
+### System packages
+
+Install system packages for [RPi4 Ubuntu](../platform/rpi4-ubuntu.md).
 
 ### Install Collective Knowledge (CK)
 

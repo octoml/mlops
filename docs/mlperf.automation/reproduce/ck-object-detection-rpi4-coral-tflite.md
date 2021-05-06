@@ -2,7 +2,14 @@
 
 # MLPerf Inference v1.0 - Object Detection - TFLite (with Coral EdgeTPU support)
 
+* Platform: RPi4 with Coral EdgeTPU
+* OS: Ubuntu 20.04 64-but
+
 ## Prerequisites
+
+### System packages
+
+Install system packages for [RPi4 Coral Ubuntu](../platform/rpi4-coral-ubuntu.md).
 
 ### Install Collective Knowledge (CK)
 
@@ -50,7 +57,7 @@ ck install package --tags=lib,python-package,cv2,opencv-python-headless
 ck install package --ask --tags=dataset,coco,val,2017
 ```
 
-## Setup for EdgeTPU
+## Setup for EdgeTPU (Host: RPi 4)
 
 ### Install CK packages explicitly
 
