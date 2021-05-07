@@ -1,0 +1,18 @@
+{
+  "cmd": {
+    "default": {
+      "build": "-f $#CK_PATH#$/Dockerfile.centos-7 -t octoml/$#CK_DOCKER_NAME#$ $#CK_PATH#$",
+      "run": "-it octoml/$#CK_DOCKER_NAME#$  bash"
+    }
+  },
+  "tags": [
+    "adaptive-container",
+    "template",
+    "octoml",
+    "ml",
+    "x8664",
+    "centos",
+    "centos-7",
+    "v7"
+  ]
+}

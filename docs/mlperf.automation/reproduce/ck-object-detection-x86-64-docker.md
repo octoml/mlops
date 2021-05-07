@@ -103,8 +103,8 @@ export CK_HOST_RUN_SCRIPT=$PWD/${CK_LOCAL_DOCKER_SCRIPT}
 export CK_HOST_DATASETS=~/datasets
 
 docker run \
-       --volume ${CK_HOST_REPO_EXPERIMENTS}:/home/octoml/ck-experiments \
-       --volume ${CK_HOST_RUN_SCRIPT}:/home/octoml/${CK_LOCAL_DOCKER_SCRIPT} \
+       --volume ${CK_HOST_REPO_EXPERIMENTS}:/home/ckuser/ck-experiments \
+       --volume ${CK_HOST_RUN_SCRIPT}:/home/ckuser/${CK_LOCAL_DOCKER_SCRIPT} \
        -it octoml/ck-mlperf-inference-v1.0-object-detection-4725481db87af8d0-x8664-ubuntu-20.04 \
        "./${CK_LOCAL_DOCKER_SCRIPT}"
 ```
@@ -121,7 +121,7 @@ echo "====================================================================="
 echo "Adding external ck-experiments repository ..."
 echo ""
 
-ck add repo:ck-experiments --path=/home/octoml/ck-experiments --quiet
+ck add repo:ck-experiments --path=/home/ckuser/ck-experiments --quiet
 
 ck ls repo
 

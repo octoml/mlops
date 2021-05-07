@@ -8,7 +8,7 @@ echo "====================================================================="
 echo "Adding external ck-experiments repository ..."
 echo ""
 
-ck add repo:ck-experiments --path=/home/octoml/ck-experiments --quiet
+ck add repo:ck-experiments --path=/home/ckuser/ck-experiments --quiet
 
 ck ls repo
 
