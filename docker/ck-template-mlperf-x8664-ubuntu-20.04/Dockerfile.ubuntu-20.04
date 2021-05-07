@@ -26,16 +26,16 @@ RUN apt update && \
            sudo
 
 # Prepare a user with a user group with a random id
-RUN groupadd -g 1111 octoml
-RUN useradd -u 2222 -g octoml --create-home --shell /bin/bash octoml
-RUN echo "octoml:octoml" | chpasswd
-RUN adduser octoml sudo
-RUN echo "octoml   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
+RUN groupadd -g 1111 ckuser
+RUN useradd -u 2222 -g ckuser --create-home --shell /bin/bash ckuser
+RUN echo "ckuser:ckuser" | chpasswd
+RUN adduser ckuser sudo
+RUN echo "ckuser   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
 
 # Set user
-USER octoml:octoml
-WORKDIR /home/octoml
-ENV PATH="/home/octoml/.local/bin:${PATH}"
+USER ckuser:ckuser
+WORKDIR /home/ckuser
+ENV PATH="/home/ckuser/.local/bin:${PATH}"
 RUN mkdir .ssh
 
 # Install CK
