@@ -29,6 +29,7 @@ def ck_preprocess(i):
     else:
        es=hosd['env_set'] # set or export
 
+
     ck.out('MLPerf loadgen post-processing: TBD')
 
     return {'return':0, 'bat':bat, 'new_env':new_env}
