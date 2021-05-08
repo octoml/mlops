@@ -1,0 +1,82 @@
+{
+  "backup_data_uid": "42c99a88247575ea",
+  "data_name": "mlperf-image-classification-onnxruntime",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "cpu": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "post_process_via_ck": {
+          "script_name": "ck_postprocess"
+        },
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
+        "run_cmd_main": "../run_local$#script_ext#$",
+        "run_output_files": [
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "dataset": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (val)",
+      "sort": 30,
+      "tags": "dataset,imagenet,val"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for image classification",
+      "sort": 40,
+      "tags": "model,image-classification"
+    },
+    "lib-python-loadgen": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python MLPerf loadgen library",
+      "sort": 20,
+      "tags": "lib,python-package,mlperf,loadgen"
+    },
+    "src-mlperf-inference": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 10,
+      "tags": "mlperf,inference,source"
+    },
+    "tool-coco": {
+      "note": "required for all vision apps",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python API for COCO",
+      "sort": 25,
+      "tags": "tool,coco"
+    }
+  },
+  "run_vars": {
+    "CK_MLPERF_BACKEND":"onnxruntime",
+    "CK_MLPERF_DEVICE":"cpu"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "image-classification",
+    "onnx",
+    "onnxruntime"
+  ]
+}
