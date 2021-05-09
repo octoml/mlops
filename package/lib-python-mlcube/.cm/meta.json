@@ -2,8 +2,8 @@
   "check_exit_status": "yes",
   "customize": {
     "install_env": {
-      "PIP_INSTALL_OPTIONS": "--ignore-installed --extra-index-url https://google-coral.github.io/py-repo/",
-      "PYTHON_PACKAGE_NAME": "pycoral"
+      "PIP_INSTALL_OPTIONS": "--ignore-installed",
+      "PYTHON_PACKAGE_NAME": "mlcube"
     }
   },
   "deps": {
@@ -15,21 +15,20 @@
       "tags": "compiler,python"
     }
   },
-  "end_full_path_universal": "build$#sep#$pycoral$#sep#$__init__.py",
+  "end_full_path_universal": "build$#sep#$mlcube$#sep#$__init__.py",
   "only_for_host_os_tags": [],
   "only_for_target_os_tags": [
     "windows",
     "linux"
   ],
   "process_script": "install",
-  "soft_uoa": "lib.python.pycoral",
-  "suggested_path": "lib-python-pycoral",
+  "soft_uoa": "lib.python.mlcube",
+  "suggested_path": "lib-python-mlcube",
   "tags": [
     "lib",
     "python-package",
-    "pycoral",
-    "pycoral-py",
-    "vmaster"
+    "mlcube",
+    "vmain"
   ],
   "use_scripts_from_another_entry": {
     "data_uoa": "e4d8d3d2c4c67902",
