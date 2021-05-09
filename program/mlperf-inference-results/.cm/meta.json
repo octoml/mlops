@@ -1,0 +1,39 @@
+{
+  "backup_data_uid": "bfacfe0cb44c44ba",
+  "data_name": "mlperf-inference-results",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "process": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "TBD",
+        "run_output_files": []
+      }
+    }
+  },
+  "run_deps": {
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 0,
+      "tags": "compiler,python"
+    },
+    "mlperf-inference-results": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf inference results",
+      "sort": 10,
+      "tags": "mlperf,inference,results"
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "lang-python",
+    "mlperf",
+    "inference",
+    "results"
+  ]
+}
