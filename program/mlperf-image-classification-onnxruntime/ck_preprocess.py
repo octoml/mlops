@@ -8,7 +8,6 @@
 import json
 import os
 import re
-from pprint import pprint
 
 def ck_preprocess(i):
 
@@ -32,6 +31,17 @@ def ck_preprocess(i):
     # Get model name from a CK package in MLPerf loadgen format
     ml_model_name=deps['model']['dict']['customize']['install_env']['ML_MODEL_MODEL_NAME']
     new_env['CK_MLPERF_MODEL']=ml_model_name
+
+    path_to_val=deps['dataset-aux']['dict']['env']['CK_CAFFE_IMAGENET_VAL_TXT']
+    if not os.path.isfile(path_to_val):
+        return {'return':1, 'error':'val.txt was not found in ImageNet aux'}
+
+    path_to_imagenet=deps['dataset']['dict']['env']['CK_ENV_DATASET_IMAGENET_VAL']
+    path_to_imagenet_val=os.path.join(path_to_imagenet, 'val_map.txt')
+
+    if not os.path.isfile(path_to_imagenet_val):
+        import shutil
+        shutil.copyfile(path_to_val, path_to_imagenet_val)
 
     return {'return':0, 'bat':bat, 'new_env':new_env}
 

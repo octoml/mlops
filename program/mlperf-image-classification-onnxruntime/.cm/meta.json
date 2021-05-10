@@ -32,6 +32,13 @@
       "sort": 30,
       "tags": "dataset,imagenet,val"
     },
+    "dataset-aux": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (aux)",
+      "sort": 35,
+      "tags": "dataset,imagenet,aux"
+    },
     "model": {
       "force_target_as_host": "yes",
       "local": "yes",
@@ -64,7 +71,8 @@
   },
   "run_vars": {
     "CK_MLPERF_BACKEND":"onnxruntime",
-    "CK_MLPERF_DEVICE":"cpu"
+    "CK_MLPERF_DEVICE":"cpu",
+    "EXTRA_OPS":""
   },
   "tags": [
     "mlperf",
