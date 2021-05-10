@@ -11,5 +11,5 @@
       "3"
     ]
   },
-  "data_name": "mlperf-image-classification-onnxruntime"
+  "data_name": "mlperf-inference-image-classification-onnx"
 }
