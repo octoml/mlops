@@ -40,7 +40,7 @@ sudo usermod -aG plugdev $USER
 * [20210428] Grigori tested basic Edge TPU setup with Python 3.7.10:
 
 ```
-ck pull repo --url=https://github.com/octoml/ck-venv
+ck pull repo:octoml@venv
 ck create venv:test
 ck activate venv:test
 

@@ -10,7 +10,7 @@ Install system packages for [x86 Ubuntu](../platform/amd-milan.md).
 
 ```
 python3 -m pip install ck
-ck pull repo --url=git@github.com:octoml/ck-venv
+ck pull repo:octoml@venv
 ck create venv:reproduce-mlperf
 ```
 CK will attempt to detect existing python versions and will ask you which one to use for your virtual environment.

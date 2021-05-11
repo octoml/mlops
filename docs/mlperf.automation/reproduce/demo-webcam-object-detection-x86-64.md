@@ -4,7 +4,7 @@ MLPerf webcam demo: live object detection with a webcam using MLPerf models
 
 ```
 python3 -m pip install ck
-ck pull repo --url=git@github.com:octoml/ck-venv
+ck pull repo:octoml@venv
 ck create venv:mlperf-webcam-demo
 ```
 

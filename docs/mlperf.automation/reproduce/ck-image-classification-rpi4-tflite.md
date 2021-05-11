@@ -16,7 +16,7 @@ CK can rebuilt a required version when creating a virtual environment.
 
 ```
 python3 -m pip install ck
-ck pull repo --url=git@github.com:octoml/ck-venv
+ck pull repo:octoml@venv
 ck create venv:reproduce-mlperf
 ```
 CK will attempt to detect existing python versions and will ask you which one to use for your virtual environment.

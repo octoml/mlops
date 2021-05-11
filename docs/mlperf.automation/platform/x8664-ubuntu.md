@@ -6,7 +6,7 @@
 
 ## Notes
 
-* [20210421] Grigori tested ck-venv to prepare CK virtual environment 
+* [20210421] Grigori tested ck venv to prepare CK virtual environment 
   and build several python versions - it worked fine.
 
 * [20210421] Grigori managed to build the latest loadgen 
