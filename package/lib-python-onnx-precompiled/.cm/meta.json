@@ -27,7 +27,8 @@
   "tags": [
     "lib",
     "python-package",
-    "onnx"
+    "onnx",
+    "precompiled"
   ],
   "use_scripts_from_another_entry": {
     "data_uoa": "install-python-package",
