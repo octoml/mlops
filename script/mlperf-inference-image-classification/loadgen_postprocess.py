@@ -165,6 +165,7 @@ def ck_postprocess(i):
 
         if len(jcmd)>0:
             save_dict['parsed_cmd']=jcmd
+        print ('========')
 
   # Record to tmp-ck-timer.json file that will be saved in CK experiments
   with open('tmp-ck-timer.json', 'w') as save_file:
