@@ -1,5 +1,8 @@
 #
-# MLPerf loadgen preprocessing
+# MLPerf inference; image classification; preprocessing
+#
+# Copyright (c) 2019 cTuning foundation.
+# Copyright (c) 2021 OctoML, Inc.
 #
 # Developers:
 # - Grigori Fursin, OctoML, 2021
@@ -53,13 +56,10 @@ def ck_preprocess(i):
 
     # Check output directory
     output=os.getcwd()
-    if accuracy:
-        output_dir=os.path.join(output, 'accuracy')
-    else:
-        output_dir=os.path.join(output, 'performance')
-
-    if os.path.isdir(output_dir):
-        os.makedirs(output_dir)
+    output_dir=output
+#    output_dir=os.path.join(output, 'mlperf-output')
+#    if not os.path.isdir(output_dir):
+#        os.makedirs(output_dir)
 
     opts+=' --output '+output_dir
 

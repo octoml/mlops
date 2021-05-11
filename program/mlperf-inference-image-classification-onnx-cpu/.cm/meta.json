@@ -1,154 +1,98 @@
 {
+  "fine_grain_timer_file": "tmp-ck-timer.json",
+  "ignore_return_code": "no",
   "no_compile": "yes",
   "no_target_file": "yes",
   "only_for_target_os_tags": [
     "linux"
   ],
+  "post_process_via_ck": {
+    "data_uoa": "mlperf-inference-image-classification",
+    "module_uoa": "script",
+    "script_name": "loadgen_postprocess"
+  },
+  "pre_process_via_ck": {
+    "data_uoa": "mlperf-inference-image-classification",
+    "module_uoa": "script",
+    "script_name": "loadgen_preprocess"
+  },
+  "print_files_after_run": [
+    "mlperf_log_summary.txt",
+    "results.json"
+  ],
   "process_in_tmp": "yes",
   "program": "yes",
   "run_cmds": {
-    "Performance-SingleStream": {
-      "ignore_return_code": "no",
+    "Accuracy-MultiStream": {
       "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=SingleStream",
-        "run_output_files": [
-        ]
+        "run_cmd_main": "../run_local$#script_ext#$"
       },
       "run_vars": {
-        "CK_LOADGEN_SCENARIO": "SingleStream",
-        "CK_LOADGEN_ACCURACY": ""
-      }
-    },
-    "Performance-Server": {
-      "ignore_return_code": "no",
-      "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=Server",
-        "run_output_files": [
-        ]
-      },
-      "run_vars": {
-        "CK_LOADGEN_SCENARIO": "Server",
-        "CK_LOADGEN_ACCURACY": ""
-      }
-    },
-    "Performance-Offline": {
-      "ignore_return_code": "no",
-      "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=Offline",
-        "run_output_files": [
-        ]
-      },
-      "run_vars": {
-        "CK_LOADGEN_SCENARIO": "Offline",
-        "CK_LOADGEN_ACCURACY": ""
-      }
-    },
-    "Performance-MultiStream": {
-      "ignore_return_code": "no",
-      "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=MultiStream",
-        "run_output_files": [
-        ]
-      },
-      "run_vars": {
-        "CK_LOADGEN_SCENARIO": "MultiStream",
-        "CK_LOADGEN_ACCURACY": ""
-      }
-    },
-    "Accuracy-SingleStream": {
-      "ignore_return_code": "no",
-      "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=SingleStream --accuracy",
-        "run_output_files": [
-        ]
-      },
-      "run_vars": {
-        "CK_LOADGEN_SCENARIO": "SingleStream",
-        "CK_LOADGEN_ACCURACY": "on"
-      }
-    },
-    "Accuracy-Server": {
-      "ignore_return_code": "no",
-      "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=Server --accuracy",
-        "run_output_files": [
-        ]
-      },
-      "run_vars": {
-        "CK_LOADGEN_SCENARIO": "Server",
-        "CK_LOADGEN_ACCURACY": "on"
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
       }
     },
     "Accuracy-Offline": {
-      "ignore_return_code": "no",
       "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=Offline --accuracy",
-        "run_output_files": [
-        ]
+        "run_cmd_main": "../run_local$#script_ext#$"
       },
       "run_vars": {
-        "CK_LOADGEN_SCENARIO": "Offline",
-        "CK_LOADGEN_ACCURACY": "on"
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Offline"
       }
     },
-    "Accuracy-MultiStream": {
-      "ignore_return_code": "no",
+    "Accuracy-Server": {
       "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$ --scenario=MultiStream --accuracy",
-        "run_output_files": [
-        ]
+        "run_cmd_main": "../run_local$#script_ext#$"
       },
       "run_vars": {
-        "CK_LOADGEN_SCENARIO": "MultiStream",
-        "CK_LOADGEN_ACCURACY": "on"
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "Accuracy-SingleStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
+      }
+    },
+    "Performance-MultiStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
+      }
+    },
+    "Performance-Offline": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Offline"
+      }
+    },
+    "Performance-Server": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "Performance-SingleStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
       }
     }
   },
@@ -167,25 +111,6 @@
       "sort": 35,
       "tags": "dataset,imagenet,aux"
     },
-    "model": {
-      "force_target_as_host": "yes",
-      "local": "yes",
-      "name": "Model for image classification",
-      "sort": 40,
-      "tags": "model,image-classification"
-    },
-    "lib-python-opencv": {
-      "local": "yes",
-      "name": "Python OpenCV library",
-      "sort": 50,
-      "tags": "lib,python-package,cv2"
-    },
-    "lib-python-onnxruntime": {
-      "local": "yes",
-      "name": "Python ONNX runtime",
-      "sort": 80,
-      "tags": "lib,python-package,onnxruntime"
-    },
     "lib-python-loadgen": {
       "force_target_as_host": "yes",
       "local": "yes",
@@ -193,27 +118,62 @@
       "sort": 20,
       "tags": "lib,python-package,mlperf,loadgen"
     },
-    "src-mlperf-inference": {
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python Numpy library",
+      "sort": 50,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-onnxruntime": {
+      "local": "yes",
+      "name": "Python ONNX runtime",
+      "sort": 80,
+      "tags": "lib,python-package,onnxruntime"
+    },
+    "lib-python-opencv": {
+      "local": "yes",
+      "name": "Python OpenCV library",
+      "sort": 50,
+      "tags": "lib,python-package,cv2"
+    },
+    "mlperf-inference-src": {
       "force_target_as_host": "yes",
       "local": "yes",
       "name": "MLPerf Inference source",
       "sort": 10,
       "tags": "mlperf,inference,source"
     },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for image classification",
+      "sort": 40,
+      "tags": "model,image-classification"
+    },
     "tool-coco": {
-      "note": "required for all vision apps",
       "force_target_as_host": "yes",
       "local": "yes",
       "name": "Python API for COCO",
+      "note": "required for all vision apps",
       "sort": 25,
       "tags": "tool,coco"
     }
   },
+  "run_output_files": [
+    "accuracy.txt",
+    "tmp-ck-timer.json",
+    "mlperf_log_accuracy.json",
+    "mlperf_log_detail.txt",
+    "mlperf_log_summary.txt",
+    "mlperf_log_trace.json",
+    "results.json"
+  ],
   "run_vars": {
-    "CK_MLPERF_BACKEND":"onnxruntime",
-    "CK_MLPERF_DEVICE":"cpu",
-    "CK_LOADGEN_OPTS":""
+    "CK_LOADGEN_OPTS": "",
+    "CK_MLPERF_BACKEND": "onnxruntime",
+    "CK_MLPERF_DEVICE": "cpu"
   },
+  "skip_print_timers": "yes",
   "tags": [
     "mlperf",
     "loadgen",
