@@ -11,5 +11,5 @@
       "16"
     ]
   },
-  "data_name": "mlperf-inference-object-detection-onnx"
+  "data_name": "mlperf-inference-object-detection-onnx-cpu"
 }

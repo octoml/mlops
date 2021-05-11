@@ -11,5 +11,5 @@
       "3"
     ]
   },
-  "data_name": "mlperf-inference-image-classification-onnx"
+  "data_name": "mlperf-inference-image-classification-onnx-cpu"
 }

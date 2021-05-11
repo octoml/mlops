@@ -43,6 +43,30 @@ def ck_preprocess(i):
         import shutil
         shutil.copyfile(path_to_val, path_to_imagenet_val)
 
+    # Check extra opts
+    opts=env.get('CK_LOADGEN_OPTS','')
+
+    # Check accuracy
+    accuracy=env.get('CK_LOADGEN_ACCURACY','').lower()=='on'
+    if accuracy:
+        opts='--accuracy '+opts
+
+    # Check output directory
+    output=os.getcwd()
+    if accuracy:
+        output_dir=os.path.join(output, 'accuracy')
+    else:
+        output_dir=os.path.join(output, 'performance')
+
+    if os.path.isdir(output_dir):
+        os.makedirs(output_dir)
+
+    opts+=' --output '+output_dir
+
+    # Set extra options for LOADGEN
+    opts=opts.strip()
+    new_env['CK_LOADGEN_ASSEMBLED_OPTS']=opts
+
     return {'return':0, 'bat':bat, 'new_env':new_env}
 
 # Do not add anything here!

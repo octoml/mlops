@@ -11,5 +11,5 @@
       "12"
     ]
   },
-  "data_name": "test-mlperf-loadgen-py"
+  "data_name": "mlperf-inference-test-loadgen-py"
 }
