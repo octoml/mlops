@@ -1,4 +1,4 @@
-﻿```
+```
 import tensorflow as tf
 
 graph_def_file = "resnet50_v1.pb"

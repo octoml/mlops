@@ -1,4 +1,4 @@
-﻿# AMD Milan with Ubuntu 20.04
+# AMD Milan with Ubuntu 20.04
 
 * Ubuntu 20.04
 

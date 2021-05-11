@@ -1,4 +1,4 @@
-﻿# Misc MLPerf inference notes
+# Misc MLPerf inference notes
 
 ## [20210430] 
 

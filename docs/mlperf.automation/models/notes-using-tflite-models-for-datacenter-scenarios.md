@@ -1,4 +1,4 @@
-﻿Crefeda Rodrigues <crefeda.rodrigues@arm.com>
+Crefeda Rodrigues <crefeda.rodrigues@arm.com>
 
 Hi,
 

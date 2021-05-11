@@ -1,4 +1,4 @@
-﻿# Rapsberry Pi 4 with Ubuntu Server 20.04.2 LTS 64-bit with Coral Edge TPU
+# Rapsberry Pi 4 with Ubuntu Server 20.04.2 LTS 64-bit with Coral Edge TPU
 
 First install the board and the dependencies as described [here](rpi4-ubuntu.md).
 
@@ -44,7 +44,7 @@ ck pull repo:octoml@venv
 ck create venv:test
 ck activate venv:test
 
-ck pull repo --url=https://github.com/octoml/ck-mlops
+ck pull repo:octoml@mlops
 
 ck detect platform.os --platform_init_uoa=generic-linux-dummy
 ck detect soft:compiler.python --full_path=$CK_VENV_PYTHON_BIN

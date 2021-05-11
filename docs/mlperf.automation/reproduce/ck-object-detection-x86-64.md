@@ -24,7 +24,7 @@ ck activate venv:reproduce-mlperf
 ## Pull [CK-ML repository](https://github.com/ctuning/ck-ml)
 
 ```bash
-ck pull repo --url=git@github.com:octoml/ck-mlops
+ck pull repo:octoml@mlops
 ```
 
 ## Set up CK environment

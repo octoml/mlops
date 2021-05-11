@@ -4,7 +4,7 @@
 
 ```
 python3 -m pip install ck
-ck pull repo --url=git@github.com:octoml/ck-mlops
+ck pull repo:octoml@mlops
 ```
 
 ## Build Docker container with CK components and workflows for MLPerf

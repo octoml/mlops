@@ -1,4 +1,4 @@
-﻿# Preparing models
+# Preparing models
 
 ## Misc
 

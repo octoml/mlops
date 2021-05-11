@@ -1,4 +1,4 @@
-﻿* https://mlcommons.org/en/get-involved
+* https://mlcommons.org/en/get-involved
 
 * https://github.com/mlcommons/policies/blob/master/submission_rules.adoc
 * https://github.com/mlcommons/inference/blob/master/SubmissionExample.ipynb

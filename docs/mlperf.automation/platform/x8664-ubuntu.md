@@ -1,4 +1,4 @@
-﻿# x8664-based generic platforms with Ubuntu
+# x8664-based generic platforms with Ubuntu
 
 * Ubuntu 18.04 or 20.04
 * Sample platform: Lenovo T470p with Intel Core i5-7300HQ

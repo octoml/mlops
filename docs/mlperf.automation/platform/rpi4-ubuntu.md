@@ -1,4 +1,4 @@
-﻿# Rapsberry Pi 4 with Ubuntu Server 20.04.2 LTS 64-bit
+# Rapsberry Pi 4 with Ubuntu Server 20.04.2 LTS 64-bit
 
 * OS release: 2021-02-04 (64-bit)
 * Card: 128GB

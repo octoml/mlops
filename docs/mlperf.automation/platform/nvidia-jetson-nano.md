@@ -1,4 +1,4 @@
-﻿# Nvidia Jetson Nano board
+# Nvidia Jetson Nano board
 
 * SDK downloaded on 2021-04-20
 * Ubuntu 18.04

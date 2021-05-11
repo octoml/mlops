@@ -1,4 +1,4 @@
-﻿# Nvidia-based generic platforms with Ubuntu
+# Nvidia-based generic platforms with Ubuntu
 
 * Ubuntu 18.04 or 20.04
 * Sample platform: Lenovo T470p with Nvidia GeForce 940MX 2GB

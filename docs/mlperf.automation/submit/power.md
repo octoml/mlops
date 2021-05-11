@@ -1,4 +1,4 @@
-﻿Seems that the allowed devices to measure power are (https://www.spec.org/ptdaemon)
+Seems that the allowed devices to measure power are (https://www.spec.org/ptdaemon)
 * Yokogawa (Hioki) WT333E
 * Yokogawa (Hioki) WT310
 

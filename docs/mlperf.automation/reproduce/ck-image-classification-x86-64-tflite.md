@@ -1,4 +1,4 @@
-﻿***Reproduced by [Grigori Fursin](https://cKnowledge.io/@gfursin) on 20210506***
+***Reproduced by [Grigori Fursin](https://cKnowledge.io/@gfursin) on 20210506***
 
 * Platform: x86 64
 * OS: Ubuntu 18.04 64-bit
@@ -30,7 +30,7 @@ ck activate venv:reproduce-mlperf
 ## Pull [CK-ML repository](https://github.com/ctuning/ck-ml)
 
 ```bash
-ck pull repo --url=https://github.com/octoml/ck-mlops
+ck pull repo:octoml@mlops
 ```
 
 ## Set up CK environment
