@@ -7,11 +7,17 @@ and register it to work with CK workflows as described further.
 However, we prepared a CK package with a reduced Imagenet dataset (500 images)
 to let you test CK-MLPerf workflows.
 
+
+Select ImageNet 2012 variation:
+* [Reduced dataset with the first 500 images (for tests)](#install-reduced-imagenet-2012-val-dataset-with-the-first-500-images)
+* [Full dataset with 50,000 images](#install-detect-full-imagenet-2012-val-dataset-with-50000-images)
+
+
 # Install CK with ML repository
 
 ```bash
 python3 -m pip install ck
-ck pull repo --url=https://github.com/octoml/ck-ml
+ck pull repo:ck-ml
 ```
 
 # Install reduced ImageNet 2012 val dataset with the first 500 images
@@ -88,6 +94,7 @@ time ck install package --dep_add_tags.dataset-source=min \
 
 # Install (detect) full ImageNet 2012 val dataset with 50000 images
 
+ImageNet 2012 validation set is no longer publicly available.
 If you already have it installed on your machine, you can detect
 and register it to work with CK workflows using this command:
 

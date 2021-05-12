@@ -43,7 +43,7 @@ Go to http://localhost:3355/?template=dashboard&scenario=mlperf.mobilenets
 Container: [docker:ck-mlperf-dashboard-demo](https://github.com/ctuning/ck-ml/tree/main/docker/ck-mlperf-dashboard-demo)
 
 This container demonstrates how to run CK experiments and record results 
-from the Docker in the local "ck-experiments" repository on the host machine
+from the Docker in the local "mlperf-mobilenets" repository on the host machine
 to be processed in Jupyter notebooks or visualized using CK dashboards.
 
 ### Install CK
@@ -56,9 +56,9 @@ python3 -m pip install ck
 ck pull repo:ck-ml
 ```
 
-### Create local ck-experiments repo
+### Create local mlperf-mobilenets repo
 ```
-ck add repo:ck-experiments --quiet
+ck add repo:mlperf-mobilenets --quiet
 ```
 
 ### Build this container
@@ -76,7 +76,7 @@ cd `ck find docker:ck-mlperf-local-dashboard-demo
 * Linux: [docker-start.sh](https://github.com/ctuning/ck-ml/tree/main/docker/ck-mlperf-local-dashboard-demo/docker-start.sh)
 * Windows: [docker-start.bat](https://github.com/ctuning/ck-ml/tree/main/docker/ck-mlperf-local-dashboard-demo/docker-start.bat)
 
-This script will mount local CK ck-experiments repo inside Docker
+This script will mount local CK mlperf-mobilenets repo inside Docker
 to be able to record experiments there from the Docker container.
 
 This script will call a helper script [https://github.com/ctuning/ck-ml/tree/main/docker/ck-mlperf-local-dashboard-demo/docker-helper.sh] with benchmarks
