@@ -1,0 +1,72 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "ML_MODEL_DATA_LAYOUT": "NCHW",
+      "ML_MODEL_GIVEN_CHANNEL_MEANS": "?",
+      "ML_MODEL_MODEL_NAME": "resnet50",
+      "MODEL_ACCURACY": "75.790",
+      "MODEL_DATASET": "imagenet2012-val",
+      "MODEL_FRAMEWORK": "pytorch",
+      "MODEL_IMAGE_HEIGHT": "224",
+      "MODEL_IMAGE_WIDTH": "224",
+      "MODEL_INPUT_LAYER_NAME": "?",
+      "MODEL_NORMALIZE_DATA": "0",
+      "MODEL_NOTES_HTML": "Edgecortix <a href=\"file:///D:/Work1/CK/ck-repos/octoml@mlops/docs/mlperf.automation/tasks/tools/calibrate_torchvision_model.py\">quantization script</a>",
+      "MODEL_ONNX_OPSET": "",
+      "MODEL_OUTPUT_LAYER_NAME": "?",
+      "MODEL_PRECISION": "int8",
+      "MODEL_SUBTRACT_MEAN": "?",
+      "MODEL_VERSION": "1.5",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNGZIP": "NO",
+      "PACKAGE_VERSION": "1.5",
+      "PACKAGE_WGET": "YES"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes"
+  },
+  "end_full_path_universal": "resnet50_INT8bit_quantized.pt",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "34c70aa3ff65a22c",
+  "soft_uoa#": "model.pytorch",
+  "suggested_path": "model-onnx-resnet-mlperf-from-pb-downloaded",
+  "tags": [
+    "model",
+    "image-classification",
+    "pytorch",
+    "nchw",
+    "resnet",
+    "resnet50",
+    "side.224",
+    "mlperf",
+    "downloaded",
+    "imagenet-val"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "v1.5-int8-quantized": {
+      "extra_customize": {
+        "package_extra_name": " (mlperf, pytorch, int8, quantized)"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "resnet50_INT8bit_quantized.pt",
+        "PACKAGE_URL": "https://zenodo.org/record/4589637/files"
+      },
+      "extra_tags": [
+        "resnet50-v1.5",
+        "v1.5",
+        "int8",
+        "quantized"
+      ],
+      "on_by_default": "yes"
+    }
+  }
+}

@@ -60,7 +60,7 @@
         "PACKAGE_NAME": "resnet50_v1.onnx"
       },
       "extra_customize": {
-        "package_extra_name": " (mlperf, fp32, opset-8)"
+        "package_extra_name": " (mlperf, onnx, fp32, opset-8)"
       },
       "extra_tags": [
         "resnet50-v1.5",
@@ -75,7 +75,7 @@
         "PACKAGE_NAME": "resnet50_v1.onnx"
       },
       "extra_customize": {
-        "package_extra_name": " (mlperf, fp32, opset-11)"
+        "package_extra_name": " (mlperf, onnx, fp32, opset-11)"
       },
       "extra_tags": [
         "resnet50-v1.5",
