@@ -129,7 +129,7 @@ You will be asked to select a specfic version or the latest one. You can install
 ck install package --tags=lib,python-package,onnxruntime-cpu,1.6.0
 ```
 
-### Install ResNet50 v1.5 fp32 for ONNX opset-8
+#### Install ResNet50 v1.5 fp32 for ONNX opset-8
 
 ```
 ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-8
@@ -137,7 +137,7 @@ ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-o
 
 Feel free to check [CK JSON meta](https://github.com/octoml/mlops/blob/main/package/ml-model-mlperf-resnet50-v1.5-onnx/.cm/meta.json) of this package.
 
-### Install ResNet50 v1.5 fp32 for ONNX opset-11
+#### Install ResNet50 v1.5 fp32 for ONNX opset-11
 
 ```
 ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-11
@@ -146,3 +146,106 @@ ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-o
 Feel free to check [CK JSON meta](https://github.com/octoml/mlops/blob/main/package/ml-model-mlperf-resnet50-v1.5-onnx/.cm/meta.json) of this package.
 
 
+
+
+### Benchmark
+
+First, check LOADGEN parameters for image classification [here](https://github.com/mlcommons/inference/tree/master/vision/classification_and_detection#usage).
+
+```
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu --env.EXTRA_OPS="OPTIONS FOR LOADGEN"
+```
+
+CK will ask you to select a command line from:
+```
+More than one commmand line is found to run this program:
+
+0) Accuracy-MultiStream (../run_local$#script_ext#$)
+1) Accuracy-Offline (../run_local$#script_ext#$)
+2) Accuracy-Server (../run_local$#script_ext#$)
+3) Accuracy-SingleStream (../run_local$#script_ext#$)
+4) Performance-MultiStream (../run_local$#script_ext#$)
+5) Performance-Offline (../run_local$#script_ext#$)
+6) Performance-Server (../run_local$#script_ext#$)
+7) Performance-SingleStream (../run_local$#script_ext#$)
+
+```
+
+You can test accuracy in Offline mode for 500 images as follows:
+```
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu --cmd_key=Accuracy-Offline --env.EXTRA_OPS="--count 500"
+```
+
+You can test performance in SingleStream mode for 500 images as follows:
+```
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu --cmd_key=Performance-SingleStream --env.EXTRA_OPS="--count 500 --time 60 --qps 200 --max-latency 0.1"
+```
+
+Feel free to check the [CK JSON meta](https://github.com/octoml/mlops/blob/main/program/mlperf-inference-bench-image-classification-onnx-cpu/.cm/meta.json) 
+and [CK dependencies](https://github.com/octoml/mlops/blob/main/program/mlperf-inference-bench-image-classification-onnx-cpu/.cm/meta.json#L99) for this benchmark!
+
+
+### Record results to the CK repository
+
+You can record results to the CK repository for further analysis (for example, using [CK dashboards](../results/ck-dashboard.md)) as follows:
+
+```
+ck benchmark program:mlperf-inference-bench-image-classification-onnx-cpu \
+     --cmd_key=Performance-SingleStream \
+     --env.EXTRA_OPS="--count 500 --time 60 --qps 200 --max-latency 0.1" \
+     --repetitions=1 --skip_print_timers --skip_print_stats \
+     --record \
+     --record_repo=local \
+     --record_uoa=mlperf-inference-bench-image-classification-onnx-cpu-resnet50-v1.5-result1 \
+     --tags=mlperf-v1.0,inference,image-classification,onnx,resnet50-v1.5,cpu \
+     --print_files=mlperf_log_summary.txt,results.json
+
+```
+
+
+
+
+## Analyze experimental results
+
+You can find and check the CK entry with the results (based on [FAIR principles](https://www.go-fair.org/fair-principles/) 
+to make sure that results are reproducible) as follows:
+```
+cd `ck find experiment --tags=mlperf-v1.0,inference,image-classification,onnx,resnet50-v1.5,cpu`
+```
+or 
+
+```
+cd `ck find experiment:mlperf-inference-bench-image-classification-onnx-cpu-resnet50-v1.5-result1
+```
+
+You can see different experiments inside as follows:
+```
+ls -l
+```
+
+Note that you can process, analyze and visualize such CK results from multiple experiments using Python scripts, CK modules and Jupyter notebooks
+as shown in this [Jupyter notebook example](https://nbviewer.jupyter.org/urls/dl.dropbox.com/s/f28u9epifr0nn09/ck-dse-demo-object-detection.ipynb) 
+and [CK dashboard](https://cknowledge.io/result/crowd-benchmarking-mlperf-inference-classification-mobilenets-all/).
+
+
+
+## Share experimental results
+
+You can share experimental results publicly with the community or privately between different workgroups 
+in the CK repositories or pack them to ZIP files:
+
+```
+ck zip experiment:*
+```
+
+This command will create ckr.zip with all CK experiment entries that you can share with your colleagues.
+They can unzip this file into CK local repository as follows:
+```
+ck unzip repo
+```
+
+
+
+# Questions and feedback
+
+* Contact [Grigori Fursin](mailto:grigori@octoml.ai) for more details.
