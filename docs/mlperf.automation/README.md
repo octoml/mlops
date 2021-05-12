@@ -6,6 +6,7 @@
   * [Use adaptive CK container](tools/ck-docker.md)
 * [Prepare and run MLPerf tasks](tasks/README.md)
 * [Analyze MLPerf inference results](results/README.md)
+  * [Example of CK dashboards for ML Systems DSE](results/ck-dashboard.md)
 * [Reproduce MLPerf results](reproduce/README.md)
 * [Test models with a webcam](reproduce/demo-webcam-object-detection-x86-64.md)
 * [Explore ML Systems designs](dse/README.md)
@@ -14,3 +15,4 @@
 * Further improvements:
   * [Automation](tbd-automation.md)
   * [CK2 ideas](tbd-ck2.md)
+* Feedback: contact [Grigori Fursin](https://cKnowledge.io/@gfursin)

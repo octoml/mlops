@@ -140,7 +140,7 @@ Anyone else can now add these experiments in their own CK repositories for furth
 ck unzip repo --zip=ckr-ck-experiments.zip
 ```
 
-You can also visualize this data using [CK dashboards]( https://cKnowledge.io/results ).
+You can also visualize this data using [CK dashboards](../results/ck-dashboard.md).
 
 ## Run a container with external ImageNet
 
