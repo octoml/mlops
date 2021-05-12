@@ -34,7 +34,7 @@
   "process_script": "install",
   "soft_uoa": "34c70aa3ff65a22c",
   "soft_uoa#": "model.pytorch",
-  "suggested_path": "model-onnx-resnet-mlperf-from-pb-downloaded",
+  "suggested_path": "ml-model-mlperf-resnet50-v1.5-pytorch",
   "tags": [
     "model",
     "image-classification",

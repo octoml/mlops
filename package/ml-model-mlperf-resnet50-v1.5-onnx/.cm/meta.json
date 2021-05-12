@@ -33,7 +33,7 @@
   "only_for_target_os_tags": [],
   "process_script": "install",
   "soft_uoa": "bcaac306e9041879",
-  "suggested_path": "model-onnx-resnet-mlperf-from-pb-downloaded",
+  "suggested_path": "ml-model-mlperf-resnet50-v1.5-onnx",
   "tags": [
     "model",
     "image-classification",
