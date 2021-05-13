@@ -10,7 +10,7 @@ You can create a virtual environment using a template such as MLPerf inference.
 CK will attempt to automatically install extra CK packages required for MLPerf inference:
 ```
 ck ls venv.template
-ck create venv:mlperf --template=mlperf-inference-main
+ck create venv:mlperf --template=mlperf-inference-dev
 ck activate venv:mlperf
 ```
 

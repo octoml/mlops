@@ -62,7 +62,7 @@ RUN ck setup kernel --var.install_to_env=yes
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
 RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
 
-RUN ck install package --quiet --tags=mlperf,inference,src,main
+RUN ck install package --quiet --tags=mlperf,inference,src,dev
 
 RUN ck detect soft:compiler.gcc --full_path=`which gcc`
 

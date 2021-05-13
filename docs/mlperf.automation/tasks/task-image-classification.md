@@ -23,7 +23,7 @@
 python3 -m pip install ck
 ```
 
-We suggest you to create a virtual CK environment as follows:
+We suggest you to create a virtual CK environment using MLPerf inference v1.0 template as follows:
 
 ```
 ck pull repo:octoml@venv
@@ -77,7 +77,7 @@ Note that you can pull any Git repository in the CK format as follows:
 ck pull repo --url={URL}
 ```
 
-## CK setup for the dataset: ImageNet 2012
+## CK setup for the ImageNet 2012 dataset
 
 You can install a reduced ImageNet 2012 data set with the first 500 images to test MLPerf workflows as follows :
 
@@ -104,7 +104,7 @@ You can also download it via [Academic Torrents](https://academictorrents.com/de
 and then register in the CK using the above command.
 
 Please check [this doc](../datasets/imagenet2012.md) to see how you can preprocess the ImageNet 
-in multiples ways with the help of CK.
+in multiple ways with the help of CK.
 
 Feel free to check the [CK JSON meta](https://github.com/ctuning/ck-ml/blob/main/soft/dataset.imagenet.val/.cm/meta.json)
 and [CK Python customization script](https://github.com/ctuning/ck-ml/blob/main/soft/dataset.imagenet.val/customize.py)
@@ -184,6 +184,14 @@ ck run program:mlperf-inference-bench-image-classification-onnx-cpu --cmd_key=Pe
 Feel free to check the [CK JSON meta](https://github.com/octoml/mlops/blob/main/program/mlperf-inference-bench-image-classification-onnx-cpu/.cm/meta.json) 
 and [CK dependencies](https://github.com/octoml/mlops/blob/main/program/mlperf-inference-bench-image-classification-onnx-cpu/.cm/meta.json#L99) for this benchmark!
 
+Note that you can obtain help about any CK module such as "program" and action such as "run" as follows:
+```
+ck run program --help
+```
+
+You can then customize your CMD using JSON keys as follows:
+```
+ck run program:my-program --key1=value1 --key2=value2
 
 ### Record results to the CK repository
 
@@ -202,8 +210,11 @@ ck benchmark program:mlperf-inference-bench-image-classification-onnx-cpu \
 
 ```
 
-
-
+Note that you can create a new CK repository to group your experimental results as follows:
+```
+ck add repo:my-cool-experiments --quiet
+```
+and then substitute 'local' with 'my-cool-experiments' in the above CMD to run MLPerf benchmark.
 
 ## Analyze experimental results
 
@@ -215,7 +226,7 @@ cd `ck find experiment --tags=mlperf-v1.0,inference,image-classification,onnx,re
 or 
 
 ```
-cd `ck find experiment:mlperf-inference-bench-image-classification-onnx-cpu-resnet50-v1.5-result1
+cd `ck find experiment:mlperf-inference-bench-image-classification-onnx-cpu-resnet50-v1.5-result1`
 ```
 
 You can see different experiments inside as follows:
@@ -244,6 +255,23 @@ They can unzip this file into CK local repository as follows:
 ck unzip repo
 ```
 
+You can also pack and share the whole CK repository as follows:
+```
+ck zip repo:my-cool-experiments
+```
+
+
+## Delete unused virtual environments
+
+You can delete an unused virtual CK environment as follows:
+```
+ck rm venv:mlperf-inference
+```
+
+You can delete all virtual CK environments as follows:
+```
+ck rm venv:*
+```
 
 
 # Questions and feedback
