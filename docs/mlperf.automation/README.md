@@ -13,8 +13,9 @@
 * [Submit to MLPerf](submit/README.md)
 * [MLPerf tools](tools/README.md)
 * Further improvements:
-  * [Automation](tbd-automation.md)
-  * [CK2 ideas](tbd-ck2.md)
+  * [Standardization](tbd/standardization.md)
+  * [Automation](tbd/automation.md)
+  * [CK2 ideas](tbd/ck2.md)
 * Feedback: 
   * Сontact [Grigori Fursin](https://cKnowledge.io/@gfursin) ([OctoML.ai](https://octoml.ai), [MLCommons member](https://mlcommons.org))
 

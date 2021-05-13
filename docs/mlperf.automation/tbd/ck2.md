@@ -1,6 +1,6 @@
 # Ideas to improve CK
 
-Developing CK2 = Collective Knowledge + Collective Experience
+Developing backwards compatible CK2 based on our collective experience:
 
 * simple and pythonic access to CK repos as a database (separate from actions)
 * simplify CK repo structure to avoid numerous .cm directories. Use cm.json file with UID and then reindex components when pulling repo or adding/deleting entries
