@@ -1,4 +1,4 @@
-# MLPerf CK automation
+# MLPerf inference benchmark automation guide
 
 * [Prepare platform](platform/README.md)
 * [Install CK framework](tools/ck.md)
@@ -15,4 +15,6 @@
 * Further improvements:
   * [Automation](tbd-automation.md)
   * [CK2 ideas](tbd-ck2.md)
-* Feedback: contact [Grigori Fursin](https://cKnowledge.io/@gfursin)
+* Feedback: 
+  * Сontact [Grigori Fursin](https://cKnowledge.io/@gfursin) ([OctoML.ai](https://octoml.ai), [MLCommons member](https://mlcommons.org))
+

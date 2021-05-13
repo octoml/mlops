@@ -1,5 +1,7 @@
-Here we describe CK automation to run MLPerf inference benchmarking using native MLPerf scripts
-with CK packages for frameworks, data sets and models.
+# MLPerf benchmark tasks
+
+Here we describe how to automate MLPerf inference benchmark with the help 
+of the [CK workflow framework](https://github.com/ctuning/ck) and native MLPerf scripts.
 
 * [Image classification](task-image-classification.md)
 * [Object detection](task-object-detection.md)
@@ -11,14 +13,10 @@ with CK packages for frameworks, data sets and models.
 
 
 
-* [CK datasets](../datasets/README.md)
 
+# Unsorted notes
 
-
-
-
-# Unsorted related to CK automation
-
+* [Notes about datasets](../datasets/README.md)
 * [Notes about models (issues, quantization, etc)](../models/notes.md)
 
 * DLRM: [notes](dlrm.md), [CK packages](https://cknowledge.io/?q=module_uoa%3A%22program%22+AND+dlrm), [CK workflows](https://cknowledge.io/?q=module_uoa%3A%22program%22+AND+dlrm)
@@ -26,4 +24,4 @@ with CK packages for frameworks, data sets and models.
 * [Search for CK program workflows with "loadgen"](https://cknowledge.io/?q=module_uoa%3A%22program%22+AND+loadgen)
 
 # Feedback
-Сontact [Grigori Fursin](https://cKnowledge.io/@gfursin)
+Сontact [Grigori Fursin](https://cKnowledge.io/@gfursin) ([OctoML.ai](https://octoml.ai), [MLCommons member](https://mlcommons.org))
