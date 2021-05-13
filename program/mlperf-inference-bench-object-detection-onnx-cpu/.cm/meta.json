@@ -144,7 +144,7 @@
       "sort": 100,
       "tags": "model,onnx,object-detection"
     },
-    "src-mlperf-inference": {
+    "mlperf-inference-src": {
       "force_target_as_host": "yes",
       "local": "yes",
       "name": "MLPerf Inference source",
