@@ -42,7 +42,7 @@
   "package_extra_name": " (MLPerf SSD-MobileNet 300 non-quantized)",
   "process_script": "install",
   "soft_uoa": "bcaac306e9041879",
-  "suggested_path": "model-onnx-mlperf-ssd-mobilenet-downloaded",
+  "suggested_path": "ml-model-mlperf-ssd-mobilenet-300-onnx",
   "tags": [
     "model",
     "mlperf",
