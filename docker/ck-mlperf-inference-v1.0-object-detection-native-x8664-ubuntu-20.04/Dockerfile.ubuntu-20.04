@@ -23,6 +23,7 @@ RUN apt update && \
            gcc g++ autoconf autogen libtool make libc6-dev build-essential \
            libssl-dev libbz2-dev libffi-dev \
            python3 python3-pip python3-dev \
+           python-is-python3 \
            sudo
 
 # Prepare a user with a user group with a random id
@@ -39,7 +40,7 @@ ENV PATH="/home/ckuser/.local/bin:${PATH}"
 RUN mkdir .ssh
 
 # Install CK
-RUN export DUMMY_CK=C
+RUN export DUMMY_CK=A
 RUN ${DUMMY_CK} pip3 install virtualenv
 RUN ${DUMMY_CK} pip3 install ck
 
