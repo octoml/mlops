@@ -1,3 +1,5 @@
+#! /bin/bash
+
 echo "*********************************************************"
 
 cd ${CK_ENV_MLPERF_INFERENCE_VISION}/classification_and_detection

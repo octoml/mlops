@@ -7,12 +7,14 @@
     "linux"
   ],
   "post_process_via_ck": {
-    "data_uoa": "mlperf-inference-image-classification",
+    "data_uoa": "eb891c4dc4b46932",
+    "data_uoa#": "mlperf-inference-image-classification",
     "module_uoa": "script",
     "script_name": "loadgen_postprocess"
   },
   "pre_process_via_ck": {
-    "data_uoa": "mlperf-inference-image-classification",
+    "data_uoa": "eb891c4dc4b46932",
+    "data_uoa#": "mlperf-inference-image-classification",
     "module_uoa": "script",
     "script_name": "loadgen_preprocess"
   },

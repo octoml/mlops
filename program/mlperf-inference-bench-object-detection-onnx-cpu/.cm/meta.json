@@ -1,25 +1,100 @@
 {
-  "backup_data_uid": "9bf64926ca4ccf8a",
-  "data_name": "mlperf-inference-object-detection-onnxruntime",
+  "fine_grain_timer_file": "tmp-ck-timer.json",
+  "ignore_return_code": "no",
   "no_compile": "yes",
   "no_target_file": "yes",
   "only_for_target_os_tags": [
     "linux"
   ],
+  "post_process_via_ck": {
+    "data_uoa": "53bb701c440aaa69",
+    "data_uoa#": "mlperf-inference-object-detection",
+    "module_uoa": "script",
+    "script_name": "loadgen_postprocess"
+  },
+  "pre_process_via_ck": {
+    "data_uoa": "53bb701c440aaa69",
+    "data_uoa#": "mlperf-inference-object-detection",
+    "module_uoa": "script",
+    "script_name": "loadgen_preprocess"
+  },
+  "print_files_after_run": [
+    "mlperf_log_summary.txt",
+    "results.json"
+  ],
   "process_in_tmp": "yes",
   "program": "yes",
   "run_cmds": {
-    "cpu": {
-      "ignore_return_code": "no",
+    "Accuracy-MultiStream": {
       "run_time": {
-        "post_process_via_ck": {
-          "script_name": "ck_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
-        "run_cmd_main": "../run_local$#script_ext#$",
-        "run_output_files": []
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
+      }
+    },
+    "Accuracy-Offline": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Offline"
+      }
+    },
+    "Accuracy-Server": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "Accuracy-SingleStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
+      }
+    },
+    "Performance-MultiStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
+      }
+    },
+    "Performance-Offline": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Offline"
+      }
+    },
+    "Performance-Server": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "Performance-SingleStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
       }
     }
   },
@@ -43,6 +118,18 @@
       "name": "Python ONNX runtime",
       "sort": 80,
       "tags": "lib,python-package,onnxruntime"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python Numpy library",
+      "sort": 52,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-matplotlib": {
+      "local": "yes",
+      "name": "Python MatPlotLib library",
+      "sort": 52,
+      "tags": "lib,python-package,matplotlib"
     },
     "lib-python-opencv": {
       "local": "yes",
@@ -76,7 +163,7 @@
   "run_vars": {
     "CK_MLPERF_BACKEND": "onnxruntime",
     "CK_MLPERF_DEVICE": "cpu",
-    "EXTRA_OPS": ""
+    "CK_LOADGEN_OPTS": ""
   },
   "tags": [
     "mlperf",
@@ -87,7 +174,7 @@
     "lang-python",
     "classification",
     "classification_and_detection",
-    "image-classification",
+    "object-detection",
     "onnx",
     "onnxruntime"
   ]

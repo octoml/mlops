@@ -32,7 +32,7 @@ def ck_preprocess(i):
        es=hosd['env_set'] # set or export
 
     # Get model name from a CK package in MLPerf loadgen format
-    ml_model_name=deps['model']['dict']['customize']['install_env']['ML_MODEL_MODEL_NAME']
+    ml_model_name=deps['model']['dict']['customize']['install_env']['MLPERF_MODEL_NAME']
     new_env['CK_MLPERF_MODEL']=ml_model_name
 
     path_to_val=deps['dataset-aux']['dict']['env']['CK_CAFFE_IMAGENET_VAL_TXT']
@@ -68,7 +68,12 @@ def ck_preprocess(i):
     new_env['CK_LOADGEN_ASSEMBLED_OPTS']=opts
 
     # Find path for shared script with run_local.sh
-    r=ck.access({'action':'find', 'module_uoa':'script', 'data_uoa':'mlperf-inference-image-classification'})
+    r=ck.access({'action': 'find', 
+                 'module_uoa': 'script', 
+                 'data_uoa': 'eb891c4dc4b46932',
+                 'data_uoa#': 'mlperf-inference-image-classification'})
+    if r['return']>0: return r
+    p=r['path']
     if r['return']>0: return r
     p=r['path']
 
