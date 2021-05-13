@@ -1,0 +1,22 @@
+{
+    "TestScenario.SingleStream": {
+        "count": 5221,
+        "good_items": 0,
+        "mean": 0.011487082386324458,
+        "percentiles": {
+            "50.0": 0.010930524,
+            "80.0": 0.012011122,
+            "90.0": 0.012526648,
+            "95.0": 0.012744689,
+            "99.0": 0.017400856800000003,
+            "99.9": 0.025083880160000117
+        },
+        "qps": 86.94775129890209,
+        "took": 60.04755640029907,
+        "total_items": 5221
+    },
+    "cmdline": "Namespace(accuracy=False, backend='onnxruntime', cache=0, count=None, data_format='NHWC', dataset='coco-300', dataset_list=None, dataset_path='/home/azureuser/CK/local/venv/mlperf-inference/CK/local/env/3b655e2e42850e0c', debug=False, find_peak_performance=False, inputs=None, max_batchsize=32, max_latency=0.1, mlperf_conf='../../mlperf.conf', model='/home/azureuser/CK/local/venv/mlperf-inference/CK/local/env/4b17958a46036eae/ssd_mobilenet_v1_coco_2018_01_28.onnx', model_name='ssd-mobilenet', output='/home/azureuser/CK/local/venv/mlperf-inference/CK/octoml@mlops/program/mlperf-inference-bench-object-detection-onnx-cpu/tmp', outputs=['num_detections:0', 'detection_boxes:0', 'detection_scores:0', 'detection_classes:0'], profile='ssd-mobilenet-onnxruntime', qps=200, samples_per_query=None, scenario='SingleStream', threads=120, time=60, user_conf='user.conf')",
+    "runtime": "onnxruntime",
+    "time": 1620898975,
+    "version": "1.7.0"
+}

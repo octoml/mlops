@@ -68,7 +68,12 @@ def ck_preprocess(i):
     new_env['CK_LOADGEN_ASSEMBLED_OPTS']=opts
 
     # Find path for shared script with run_local.sh
-    r=ck.access({'action':'find', 'module_uoa':'script', 'data_uoa':'mlperf-inference-image-classification'})
+    r=ck.access({'action': 'find', 
+                 'module_uoa': 'script', 
+                 'data_uoa': 'eb891c4dc4b46932',
+                 'data_uoa#': 'mlperf-inference-image-classification'})
+    if r['return']>0: return r
+    p=r['path']
     if r['return']>0: return r
     p=r['path']
 
