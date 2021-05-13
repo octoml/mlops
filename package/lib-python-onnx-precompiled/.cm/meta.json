@@ -31,7 +31,8 @@
     "precompiled"
   ],
   "use_scripts_from_another_entry": {
-    "data_uoa": "install-python-package",
+    "data_uoa": "e8363e22e84dedba",
+    "data_uoa#": "install-python-package",
     "module_uoa": "script"
   },
   "variations": {
