@@ -29,7 +29,7 @@ def ck_preprocess(i):
        es=hosd['env_set'] # set or export
 
     # Get model name from a CK package in MLPerf loadgen format
-    ml_model_name=deps['model']['dict']['customize']['install_env']['ML_MODEL_MODEL_NAME']
+    ml_model_name=deps['model']['dict']['customize']['install_env']['MLPERF_MODEL_NAME']
     new_env['CK_MLPERF_MODEL']=ml_model_name
 
     return {'return':0, 'bat':bat, 'new_env':new_env}
