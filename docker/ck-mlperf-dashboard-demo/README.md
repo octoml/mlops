@@ -15,7 +15,7 @@ ck pull repo:octoml@mlops
 ck build docker:ck-mlperf-dashboard-demo
 ```
 
-Note that it will build and run several MLPerf benchmarks while recording results
+Note that it will build and run several MLPerf&trade; benchmarks while recording results
 to the CK 'experiment' entries to be used in the CK dashboard.
 
 ## Run this container

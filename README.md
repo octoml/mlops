@@ -3,11 +3,11 @@
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
 
-This repository contains CK workflows and components for MLOps and MLPerf benchmark.
+This repository contains CK workflows and components for MLOps and MLPerf&trade; benchmark.
 
 ## Documentation
 
-* [CK-powered MLPerf benchmark automation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
+* [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
 
 ## Motivation
 
@@ -29,5 +29,5 @@ Don't hesitate to report issues or submit feature requests [here](https://github
 
 ## Feedback
 
-Сontact [Grigori Fursin](https://cKnowledge.io/@gfursin) ([OctoML.ai](https://octoml.ai), [MLCommons member](https://mlcommons.org))
+Сontact [Grigori Fursin](https://cKnowledge.io/@gfursin) ([OctoML.ai](https://octoml.ai), [MLCommons&trade; member](https://mlcommons.org))
 
