@@ -32,7 +32,8 @@
     "vmaster"
   ],
   "use_scripts_from_another_entry": {
-    "data_uoa": "e4d8d3d2c4c67902",
-    "module_uoa": "package"
+    "data_uoa": "e8363e22e84dedba",
+    "data_uoa#": "install-python-package",
+    "module_uoa": "script"
   }
 }
