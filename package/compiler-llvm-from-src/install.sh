@@ -7,7 +7,11 @@
 
 echo "******************************************************"
 cd ${INSTALL_DIR}
-git clone -b "${PACKAGE_GIT_CHECKOUT}" ${PACKAGE_GIT_LLVM} llvm
+
+if [ ! -d "llvm" ]; then
+  git clone -b "${PACKAGE_GIT_CHECKOUT}" ${PACKAGE_GIT_LLVM} llvm
+  if [ "${?}" != "0" ]; then exit 1; fi
+fi
 
 cd llvm
 
@@ -16,7 +20,7 @@ mkdir -p build
 
 echo "******************************************************"
 cd build
-${CK_ENV_TOOL_CMAKE_BIN}/cmake \
+${CK_ENV_TOOL_CMAKE_BIN}/cmake .. \
     -DLLVM_ENABLE_PROJECTS=clang \
     -DCMAKE_CXX_COMPILER="${CK_CXX_PATH_FOR_CMAKE}" \
     -DCMAKE_CXX_FLAGS="${CK_CXX_FLAGS_FOR_CMAKE} ${EXTRA_FLAGS}" \
@@ -30,9 +34,11 @@ ${CK_ENV_TOOL_CMAKE_BIN}/cmake \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_INSTALL_UTILS=ON \
     ../llvm/
+if [ "${?}" != "0" ]; then exit 1; fi
 
 echo "******************************************************"
 cmake --build . --target install -j${CK_HOST_CPU_NUMBER_OF_PROCESSORS}
+if [ "${?}" != "0" ]; then exit 1; fi
 
 # Clean build directory (too large)
 cd ${INSTALL_DIR}
