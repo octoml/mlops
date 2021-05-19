@@ -1,6 +1,6 @@
 {
   "_base_entry": "program.template:e774074b553f1ed6",
-  "_base_entry#": "mlperf-inference-bench",
+  "_base_entry#": "program.template:mlperf-inference-bench",
 
   "post_process_via_ck": {
     "data_uoa": "eb891c4dc4b46932",
