@@ -1,0 +1,121 @@
+{
+  "fine_grain_timer_file": "tmp-ck-timer.json",
+  "ignore_return_code": "no",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "print_files_after_run": [
+    "mlperf_log_summary.txt",
+    "results.json"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "Accuracy-MultiStream": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
+      }
+    },
+    "Accuracy-Offline": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Offline"
+      }
+    },
+    "Accuracy-Server": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "Accuracy-SingleStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
+      }
+    },
+    "Performance-MultiStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
+      }
+    },
+    "Performance-Offline": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Offline"
+      }
+    },
+    "Performance-Server": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "Performance-SingleStream": {
+      "run_time": {
+        "run_cmd_main": "../run_local$#script_ext#$"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
+      }
+    }
+  },
+  "run_deps": {
+    "lib-python-loadgen": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python MLPerf loadgen library",
+      "sort": 20,
+      "tags": "lib,python-package,mlperf,loadgen"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python Numpy library",
+      "sort": 50,
+      "tags": "lib,python-package,numpy"
+    },
+    "mlperf-inference-src": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 10,
+      "tags": "mlperf,inference,source"
+    }
+  },
+  "run_output_files": [
+    "accuracy.txt",
+    "tmp-ck-timer.json",
+    "mlperf_log_accuracy.json",
+    "mlperf_log_detail.txt",
+    "mlperf_log_summary.txt",
+    "mlperf_log_trace.json",
+    "results.json"
+  ],
+  "skip_print_timers": "yes"
+}

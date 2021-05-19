@@ -1,11 +1,7 @@
 {
-  "fine_grain_timer_file": "tmp-ck-timer.json",
-  "ignore_return_code": "no",
-  "no_compile": "yes",
-  "no_target_file": "yes",
-  "only_for_target_os_tags": [
-    "linux"
-  ],
+  "_base_entry": "program.template:e774074b553f1ed6",
+  "_base_entry#": "mlperf-inference-bench",
+
   "post_process_via_ck": {
     "data_uoa": "eb891c4dc4b46932",
     "data_uoa#": "mlperf-inference-image-classification",
@@ -17,86 +13,6 @@
     "data_uoa#": "mlperf-inference-image-classification",
     "module_uoa": "script",
     "script_name": "loadgen_preprocess"
-  },
-  "print_files_after_run": [
-    "mlperf_log_summary.txt",
-    "results.json"
-  ],
-  "process_in_tmp": "yes",
-  "program": "yes",
-  "run_cmds": {
-    "Accuracy-MultiStream": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "on",
-        "CK_LOADGEN_SCENARIO": "MultiStream"
-      }
-    },
-    "Accuracy-Offline": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "on",
-        "CK_LOADGEN_SCENARIO": "Offline"
-      }
-    },
-    "Accuracy-Server": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "on",
-        "CK_LOADGEN_SCENARIO": "Server"
-      }
-    },
-    "Accuracy-SingleStream": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "on",
-        "CK_LOADGEN_SCENARIO": "SingleStream"
-      }
-    },
-    "Performance-MultiStream": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "",
-        "CK_LOADGEN_SCENARIO": "MultiStream"
-      }
-    },
-    "Performance-Offline": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "",
-        "CK_LOADGEN_SCENARIO": "Offline"
-      }
-    },
-    "Performance-Server": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "",
-        "CK_LOADGEN_SCENARIO": "Server"
-      }
-    },
-    "Performance-SingleStream": {
-      "run_time": {
-        "run_cmd_main": "../run_local$#script_ext#$"
-      },
-      "run_vars": {
-        "CK_LOADGEN_ACCURACY": "",
-        "CK_LOADGEN_SCENARIO": "SingleStream"
-      }
-    }
   },
   "run_deps": {
     "dataset": {
@@ -113,20 +29,7 @@
       "sort": 35,
       "tags": "dataset,imagenet,aux"
     },
-    "lib-python-loadgen": {
-      "force_target_as_host": "yes",
-      "local": "yes",
-      "name": "Python MLPerf loadgen library",
-      "sort": 20,
-      "tags": "lib,python-package,mlperf,loadgen"
-    },
-    "lib-python-numpy": {
-      "local": "yes",
-      "name": "Python Numpy library",
-      "sort": 50,
-      "tags": "lib,python-package,numpy"
-    },
-    "lib-python-onnxruntime": {
+    "lib-python-onnx-support": {
       "local": "yes",
       "name": "Python ONNX runtime",
       "sort": 80,
@@ -137,13 +40,6 @@
       "name": "Python OpenCV library",
       "sort": 50,
       "tags": "lib,python-package,cv2"
-    },
-    "mlperf-inference-src": {
-      "force_target_as_host": "yes",
-      "local": "yes",
-      "name": "MLPerf Inference source",
-      "sort": 10,
-      "tags": "mlperf,inference,source"
     },
     "model": {
       "force_target_as_host": "yes",
@@ -161,21 +57,11 @@
       "tags": "tool,coco"
     }
   },
-  "run_output_files": [
-    "accuracy.txt",
-    "tmp-ck-timer.json",
-    "mlperf_log_accuracy.json",
-    "mlperf_log_detail.txt",
-    "mlperf_log_summary.txt",
-    "mlperf_log_trace.json",
-    "results.json"
-  ],
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
     "CK_MLPERF_BACKEND": "onnxruntime",
     "CK_MLPERF_DEVICE": "cpu"
   },
-  "skip_print_timers": "yes",
   "tags": [
     "mlperf",
     "loadgen",
