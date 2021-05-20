@@ -27,17 +27,9 @@ if exist "%EXTRA_PYTHON_SITE%" (
 
 rem ######################################################################################
 echo.
-echo Downloading wheel %PYTHON_PACKAGE_URL%/%PYTHON_PACKAGE_NAME% ...
-
-del /Q /S %PYTHON_PACKAGE_NAME%
-
-wget --no-check-certificate %PYTHON_PACKAGE_URL%/%PYTHON_PACKAGE_NAME%
-
-rem ######################################################################################
-echo.
 echo Installing %PYTHON_PACKAGE_NAME% and its dependencies to %PACKAGE_LIB_DIR% ...
 
-%CK_ENV_COMPILER_PYTHON_FILE% -m pip install --ignore-installed %PYTHON_PACKAGE_NAME% -t %EXTRA_PYTHON_SITE% %PIP_INSTALL_OPTIONS%
+%CK_ENV_COMPILER_PYTHON_FILE% -m pip install --ignore-installed %PACKAGE_DIR%\%PYTHON_PACKAGE_NAME% -t %EXTRA_PYTHON_SITE% %PIP_INSTALL_OPTIONS%
 
 if %errorlevel% neq 0 (
  echo.
