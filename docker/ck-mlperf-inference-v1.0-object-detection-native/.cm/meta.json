@@ -13,8 +13,7 @@
     "adaptive-container",
     "template",
     "octoml",
-    "mlperf",
-    "test",
+    "ml",
     "x8664"
   ]
 }

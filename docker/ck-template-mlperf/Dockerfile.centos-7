@@ -3,7 +3,7 @@
 
 FROM centos:7
 
-# Contact
+# Contact 
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
 # Shell info

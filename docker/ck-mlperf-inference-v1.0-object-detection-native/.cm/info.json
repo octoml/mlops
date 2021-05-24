@@ -16,5 +16,5 @@
       "4"
     ]
   },
-  "data_name": "ck-mlperf-inference-v1.0-object-detection-native-x8664-ubuntu-20.04"
+  "data_name": "ck-mlperf-inference-v1.0-object-detection-native"
 }

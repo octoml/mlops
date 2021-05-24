@@ -7,14 +7,16 @@
     }
   },
   "docker_tags": [
-    "ubuntu-20.04"
+    "ubuntu-20.04",
+    "ubuntu-18.04",
+    "centos-7"
   ],
   "tags": [
     "adaptive-container",
     "template",
     "octoml",
+    "ml",
     "mlperf",
-    "test",
     "x8664"
   ]
 }
