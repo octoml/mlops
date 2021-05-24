@@ -50,7 +50,7 @@ RUN g++ --version
 
 # Install CK
 RUN export DUMMY_CK=A
-RUN ${DUMMY_CK} python3 -m pip install wheel --user
+RUN ${DUMMY_CK} python3 -m pip install --ignore-installed pip setuptools wheel pyyaml --user
 
 # Stable CK V2.4.0 from Zenodo
 RUN wget https://zenodo.org/record/4783532/files/ctuning/ck-V2.4.0.zip --no-check-certificate
