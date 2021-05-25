@@ -28,6 +28,12 @@
       "sort": 35,
       "tags": "dataset,imagenet,aux"
     },
+    "lib-python-onnx": {
+      "local": "yes",
+      "name": "Python ONNX (to load model)",
+      "sort": 125,
+      "tags": "lib,python-package,onnx"
+    },
     "lib-python-onnx-support": {
       "local": "yes",
       "name": "Python ONNX runtime",
