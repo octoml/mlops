@@ -1,6 +1,6 @@
 {
-  "_base_entry": "42c99a88247575ea",
-  "_base_entry#": "mlperf-inference-bench-image-classification-onnx-cpu",
+  "_base_entry": "program.template:644dadbc03849925",
+  "_base_entry#": "program.template:mlperf-inference-bench-image-classification",
 
   "run_deps": {
     "lib-python-onnx-support": {
