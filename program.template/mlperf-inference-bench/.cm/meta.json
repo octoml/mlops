@@ -13,6 +13,12 @@
   "process_in_tmp": "yes",
   "program": "yes",
   "run_cmds": {
+    "_requirements": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ -m pip install -r ../requirements.txt"
+      }
+    },
     "Accuracy-MultiStream": {
       "run_time": {
         "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
