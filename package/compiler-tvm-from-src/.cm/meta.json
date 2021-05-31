@@ -64,7 +64,7 @@
         "PACKAGE_GIT_SHA": ""
       },
       "extra_customize": {
-        "version": "r-masahi-onnx-combined-nms-27a222b"
+        "version": "r-masahi-onnx-combined-nms-dev"
       },
       "on_by_default": "no"
     },
