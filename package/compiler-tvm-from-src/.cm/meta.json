@@ -61,7 +61,7 @@
       "extra_env": {
         "PACKAGE_GIT_URL": "https://github.com/masahi/tvm",
         "PACKAGE_GIT_CHECKOUT": "onnx-combined-nms",
-        "PACKAGE_GIT_SHA": "27a222b"
+        "PACKAGE_GIT_SHA": "c999a840cb5579c493f5b5e7f20bc619260dad08"
       },
       "extra_customize": {
         "version": "r-masahi-onnx-combined-nms-27a222b"
