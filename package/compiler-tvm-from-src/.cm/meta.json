@@ -57,6 +57,17 @@
       },
       "on_by_default": "yes"
     },
+    "masahi-onnx-combined-nms": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/masahi/tvm",
+        "PACKAGE_GIT_CHECKOUT": "onnx-combined-nms",
+        "PACKAGE_GIT_SHA": "27a222b"
+      },
+      "extra_customize": {
+        "version": "r-masahi-onnx-combined-nms-27a222b"
+      },
+      "on_by_default": "no"
+    },
     "r-a1b4f0e8f2bfcc583f98f0f9272adcc0c12f70a5": {
       "extra_env": {
         "PACKAGE_GIT_CHECKOUT": "main",
