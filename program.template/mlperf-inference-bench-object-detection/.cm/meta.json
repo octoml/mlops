@@ -27,6 +27,12 @@
       "sort": 50,
       "tags": "lib,python-package,cv2"
     },
+    "lib-python-matplotlib": {
+      "local": "yes",
+      "name": "Python MatPlotLib",
+      "sort": 55,
+      "tags": "lib,python-package,matplotlib"
+    },
     "model": {
       "force_target_as_host": "yes",
       "local": "yes",

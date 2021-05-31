@@ -146,33 +146,33 @@ def ck_postprocess(i):
       with open(MLPERF_LOG_RESULTS_JSON, 'r') as fresults:
         save_dict['results'] = json.load(fresults)
 
-  cmd=save_dict.get('results',{}).get('cmdline','')
-  if cmd!='':
-     if cmd.startswith('Namespace('):
-        cmd='{"'+cmd[10:-1]+'}'
-        cmd=cmd.replace('=','":')
-        cmd=cmd.replace(', ',', "')
-        cmd=cmd.replace("'",'"')
-        cmd=cmd.replace('True','true')
-        cmd=cmd.replace('False','false')
-        cmd=cmd.replace('None','null')
-
-        print ('========')
-        print ('Parsing to Json:')
-        print (cmd)
-        print ('')
-        jcmd={}
-        try:
-           jcmd=json.loads(cmd)
-        except Exception as e:
-           print ('')
-           print ('Problem parsing above line: '+format(e))
-           print ('')
-           pass
-
-        if len(jcmd)>0:
-            save_dict['parsed_cmd']=jcmd
-        print ('========')
+#  cmd=save_dict.get('results',{}).get('cmdline','')
+#  if cmd!='':
+#     if cmd.startswith('Namespace('):
+#        cmd='{"'+cmd[10:-1]+'}'
+#        cmd=cmd.replace('=','":')
+#        cmd=cmd.replace(', \'',', "')
+#        cmd=cmd.replace("'",'"')
+#        cmd=cmd.replace('True','true')
+#        cmd=cmd.replace('False','false')
+#        cmd=cmd.replace('None','null')
+#
+#        print ('========')
+#        print ('Parsing to Json:')
+#        print (cmd)
+#        print ('')
+#        jcmd={}
+#        try:
+#           jcmd=json.loads(cmd)
+#        except Exception as e:
+#           print ('')
+#           print ('Problem parsing above line: '+format(e))
+#           print ('')
+#           pass
+#
+#        if len(jcmd)>0:
+#            save_dict['parsed_cmd']=jcmd
+#        print ('========')
 
   # Record to tmp-ck-timer.json file that will be saved in CK experiments
   with open('tmp-ck-timer.json', 'w') as save_file:
