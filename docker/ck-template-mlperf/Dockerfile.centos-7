@@ -53,8 +53,8 @@ RUN export DUMMY_CK=A
 RUN ${DUMMY_CK} python3 -m pip install ck --user
 RUN ${DUMMY_CK} python3 -m pip install wheel --user
 
-# Clone ck-ml repo
-RUN ck pull repo:ck-ml
+# Clone CK repo
+RUN ck pull repo:ai
 
 # Install packages to CK env entries
 RUN ck setup kernel --var.install_to_env=yes

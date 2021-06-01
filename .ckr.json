@@ -8,8 +8,8 @@
     "url": "https://github.com/octoml/mlops",
     "repo_deps": [
       {
-        "repo_uoa": "ck-ml",
-        "repo_url": "https://github.com/ctuning/ck-ml"
+        "repo_uoa": "ai",
+        "repo_url": "https://github.com/ctuning/ai"
       }
     ]
   }

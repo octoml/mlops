@@ -44,7 +44,7 @@ RUN export DUMMY_CK=A
 RUN ${DUMMY_CK} pip3 install virtualenv
 RUN ${DUMMY_CK} pip3 install ck
 
-# Clone ck-ml repo
+# Clone CK repo
 RUN ck pull repo:octoml@mlops
 
 # Install packages to CK env entries

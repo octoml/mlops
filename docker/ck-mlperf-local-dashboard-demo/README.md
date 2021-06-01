@@ -1,4 +1,4 @@
-﻿# Demo of MLPerf dashboards for ML Systems DSE (Linux and Windows)
+# Demo of MLPerf dashboards for ML Systems DSE (Linux and Windows)
 
 This container demonstrates how to run CK experiments and record results 
 from the Docker in the local "mlperf-mobilenets" repository on the host machine

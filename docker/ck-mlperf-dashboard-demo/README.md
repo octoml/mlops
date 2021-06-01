@@ -1,4 +1,4 @@
-﻿# Demo of MLPerf dashboards for ML Systems DSE (Linux and Windows)
+# Demo of MLPerf dashboards for ML Systems DSE (Linux and Windows)
 
 ## Install CK
 ```

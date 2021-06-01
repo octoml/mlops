@@ -46,8 +46,8 @@ RUN ${DUMMY_CK} pip3 install ck
 # Install pandas for the CK dashboard
 RUN python3 -m pip install pandas --user
 
-# Clone ck-ml repo
-RUN ck pull repo:ck-ml
+# Clone CK repo
+RUN ck pull repo:ai
 
 # Install packages to CK env entries
 RUN ck setup kernel --var.install_to_env=yes

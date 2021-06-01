@@ -3,7 +3,7 @@
 # PACKAGE_DIR
 # INSTALL_DIR
 
-# Based on ck-ml:package:compiler-llvm-from-source
+# Based on package:compiler-llvm-from-source
 
 echo "******************************************************"
 cd ${INSTALL_DIR}
