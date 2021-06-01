@@ -53,15 +53,15 @@ RUN export DUMMY_CK=A
 RUN ${DUMMY_CK} python3 -m pip install --ignore-installed pip setuptools wheel pyyaml --user
 
 # Stable CK V2.4.0 from Zenodo
-RUN wget https://zenodo.org/record/4783532/files/ctuning/ck-V2.4.0.zip --no-check-certificate
-RUN unzip ck-V2.4.0.zip
-RUN cd ctuning-ck-b25d0e8 && python3 setup.py install --user
+RUN wget https://zenodo.org/record/4889404/files/ctuning/ck-V2.5.3.zip --no-check-certificate
+RUN unzip ck-V2.5.3.zip
+RUN cd ctuning-ck-0e43e52 && python3 setup.py install --user
 RUN ck version
 
 # Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
-RUN wget https://zenodo.org/record/4783428/files/ctuning/ck-ml-V20210524.zip --no-check-certificate
-RUN unzip ck-ml-V20210524.zip
-RUN cd ctuning-ck-ml-26f6433 && ck add repo:ck-ml --here --quiet
+RUN wget https://zenodo.org/record/4889369/files/ctuning/ai-V20210601.zip --no-check-certificate
+RUN unzip ai-V20210601.zip
+RUN cd ctuning-ai-3d46688 && ck add repo:ai --here --quiet
 RUN ck ls repo
 
 # Install packages to CK env entries
