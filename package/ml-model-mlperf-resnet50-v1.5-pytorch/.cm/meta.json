@@ -36,6 +36,7 @@
   "soft_uoa#": "model.pytorch",
   "suggested_path": "ml-model-mlperf-resnet50-v1.5-pytorch",
   "tags": [
+    "octoml",
     "model",
     "image-classification",
     "pytorch",

@@ -55,6 +55,7 @@
   "soft_uoa": "bcaac306e9041879",
   "suggested_path": "ml-model-mlperf-ssd-resnet34-1200-onnx",
   "tags": [
+    "octoml",
     "model",
     "mlperf",
     "object-detection",

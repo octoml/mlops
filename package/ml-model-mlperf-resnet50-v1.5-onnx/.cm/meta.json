@@ -34,6 +34,7 @@
   "soft_uoa": "bcaac306e9041879",
   "suggested_path": "ml-model-mlperf-resnet50-v1.5-onnx",
   "tags": [
+    "octoml",
     "model",
     "image-classification",
     "onnx",

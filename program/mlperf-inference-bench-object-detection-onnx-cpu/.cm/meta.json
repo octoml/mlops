@@ -13,7 +13,8 @@
   "run_vars": {
     "CK_MLPERF_BACKEND": "onnxruntime",
     "CK_MLPERF_DEVICE": "cpu",
-    "CK_LOADGEN_OPTS": ""
+    "CK_LOADGEN_OPTS": "",
+    "TVM_EXECUTOR":"graph"
   },
   "tags": [
     "mlperf",
