@@ -28,6 +28,12 @@ cp cmake/config.cmake build/.
 
 echo 'set(USE_LLVM llvm-config)' >> build/config.cmake
 
+
+if [ "x${USE_OPENMP}" != "x" ]; then
+  echo "==> CK: USE_OPENMP=${USE_OPENMP}"
+  echo 'set(USE_OPENMP ${USE_OPENMP})' >> build/config.cmake
+fi
+
 if [ "x${USE_RELAY_DEBUG}" == "xON" ]; then
   echo "==> CK: USE_RELAY_DEBUG=ON"
   echo 'set(USE_RELAY_DEBUG ON)' >> build/config.cmake
