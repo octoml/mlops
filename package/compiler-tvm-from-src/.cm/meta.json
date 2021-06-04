@@ -53,7 +53,9 @@
         "PACKAGE_GIT_CHECKOUT": "main"
       },
       "extra_customize": {
-        "version": "dev"
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
       },
       "on_by_default": "yes"
     },
