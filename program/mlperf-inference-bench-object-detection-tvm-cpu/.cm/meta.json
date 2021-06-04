@@ -30,7 +30,10 @@
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
     "CK_MLPERF_BACKEND": "tvm",
-    "CK_MLPERF_DEVICE": "cpu"
+    "CK_MLPERF_DEVICE": "cpu",
+    "MLPERF_TVM_EXECUTOR":" graph",
+    "MLPERF_TVM_TARGET": "llvm",
+    "MLPERF_TVM_OPT_LEVEL": 3
   },
   "tags": [
     "mlperf",
