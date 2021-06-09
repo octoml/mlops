@@ -35,6 +35,10 @@ def ck_preprocess(i):
     ml_model_name=deps['model']['dict']['customize']['install_env']['MLPERF_MODEL_NAME']
     new_env['CK_MLPERF_MODEL']=ml_model_name
 
+    # Get path to MLCommons inference (can be changed in some dependencies)
+    mlperf_inference=deps['mlperf-inference-src']['dict']['env']['CK_ENV_MLPERF_INFERENCE_VISION']
+    new_env['CK_ENV_MLPERF_INFERENCE_VISION']=mlperf_inference
+
     # Check extra opts
     opts=env.get('CK_LOADGEN_OPTS','')
 
