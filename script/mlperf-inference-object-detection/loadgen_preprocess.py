@@ -51,7 +51,7 @@ def ck_preprocess(i):
 
     data_format=ml_model_deps['env'].get('ML_MODEL_DATA_LAYOUT','')
     if data_format!='':
-        opts='--data-format='+data_format+' '+opts
+        opts='--data-format '+data_format+' '+opts
 
     # Check output directory
     output=os.getcwd()
