@@ -102,7 +102,6 @@ def ck_postprocess(i):
         command.append( '--use-inv-map' )
 
 
-
     print('------')
     print(command)
     print('')
@@ -179,5 +178,7 @@ def ck_postprocess(i):
     json.dump(save_dict, save_file, indent=2, sort_keys=True)
 
   print('--------------------------------\n')
+  print('')
+
   return {'return': 0}
 
