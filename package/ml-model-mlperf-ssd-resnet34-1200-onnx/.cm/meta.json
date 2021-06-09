@@ -40,7 +40,7 @@
     "version": "reference"
   },
   "end_full_path": {
-    "linux": "resnet34-ssd1200.onnx"
+    "linux": "dummy"
   },
   "only_for_host_os_tags": [
     "linux"
