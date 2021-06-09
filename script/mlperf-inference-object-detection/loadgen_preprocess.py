@@ -32,7 +32,9 @@ def ck_preprocess(i):
        es=hosd['env_set'] # set or export
 
     # Get model name from a CK package in MLPerf loadgen format
-    ml_model_name=deps['model']['dict']['customize']['install_env']['MLPERF_MODEL_NAME']
+    ml_model_deps=deps['model']['dict']
+
+    ml_model_name=ml_model_deps['customize']['install_env']['MLPERF_MODEL_NAME']
     new_env['CK_MLPERF_MODEL']=ml_model_name
 
     # Get path to MLCommons inference (can be changed in some dependencies)
@@ -46,6 +48,10 @@ def ck_preprocess(i):
     accuracy=env.get('CK_LOADGEN_ACCURACY','').lower()=='on'
     if accuracy:
         opts='--accuracy '+opts
+
+    data_format=ml_model_deps['env'].get('ML_MODEL_DATA_LAYOUT','')
+    if data_format!='':
+        opts='--data-format='+data_format+' '+opts
 
     # Check output directory
     output=os.getcwd()
