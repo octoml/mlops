@@ -19,6 +19,17 @@
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ -m pip install -r ../requirements.txt",
         "min_run": "yes"
       },
+      "run_deps": {
+         "python": {
+           "add_to_path": "yes",
+           "force_target_as_host": "yes",
+           "local": "yes",
+           "name": "Python interpreter",
+           "sort": 0,
+           "tags": "compiler,python"
+         }
+      },
+      "skip_global_deps":"yes",
       "sort":-1
     },
     "Accuracy-MultiStream": {
