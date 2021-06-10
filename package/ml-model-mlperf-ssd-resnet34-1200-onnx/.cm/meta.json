@@ -77,11 +77,11 @@
         "PACKAGE_NAME": "resnet34-ssd1200.onnx",
         "ML_MODEL_DATA_LAYOUT": "NCHW",
         "MLPERF_MODEL_NAME": "ssd-resnet34",
-        "MODEL_NOTES_HTML":"<a href=\"https://github.com/mlperf/inference/tree/master/others/cloud/single_stage_detector\">from mlperf</a> converted using the these <a href=\"https://github.com/BowenBao/inference/tree/master/cloud/single_stage_detector/pytorch#6-onnx\">instructions</a>",
         "MODEL_ONNX_OPSET": "8"
       },
       "extra_customize": {
         "package_extra_name": " (MLPerf SSD-ResNet34 1200 fp32 non-quantized onnx, opset-8)",
+        "model_notes":"<a href=\"https://github.com/mlperf/inference/tree/master/others/cloud/single_stage_detector\">from mlperf</a> converted using the these <a href=\"https://github.com/BowenBao/inference/tree/master/cloud/single_stage_detector/pytorch#6-onnx\">instructions</a>",
         "soft_file_universal": "resnet34-ssd1200.onnx"
       },
       "extra_tags": [
@@ -98,11 +98,11 @@
         "MLPERF_TVM_OUTPUT_ORDER": "0,2,1",
         "MLPERF_TVM_OUTPUT_ORDER#": "TVM produces output in a strange order when running this model - this is a temporal fix",
         "ML_MODEL_DATA_LAYOUT": "NCHW",
-        "MODEL_NOTES_HTML":"<a href=\"https://zenodo.org/record/3345892/files/tf_ssd_resnet34_22.1.zip\">from zenodo</a> converted using <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
         "MODEL_ONNX_OPSET": "11"
       },
       "extra_customize": {
         "package_extra_name": " (MLPerf SSD-ResNet34 1200 fp32 non-quantized onnx, opset-11)",
+        "model_notes":"<a href=\"https://zenodo.org/record/3345892/files/tf_ssd_resnet34_22.1.zip\">from zenodo</a> converted using <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
         "soft_file_universal": "ssd_resnet34_mAP_20.2.onnx"
       },
       "extra_tags": [

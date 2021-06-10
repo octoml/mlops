@@ -16,13 +16,13 @@
       "MODEL_ACCURACY":"76.456",
       "MODEL_VERSION":"1.5",
       "MODEL_DATASET":"imagenet2012-val",
-      "MODEL_NOTES_HTML":"<a href=\"https://zenodo.org/record/2535873/files/resnet50_v1.pb\">from zenodo</a> converted with <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
       "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
       "PACKAGE_SKIP_LINUX_MAKE": "YES",
       "PACKAGE_UNGZIP": "NO",
       "PACKAGE_VERSION": "1.5",
       "PACKAGE_WGET": "YES"
     },
+    "model_notes":"<a href=\"https://zenodo.org/record/2535873/files/resnet50_v1.pb\">from zenodo</a> converted with <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
     "no_os_in_suggested_path": "yes",
     "no_ver_in_suggested_path": "yes",
     "skip_file_check": "yes"

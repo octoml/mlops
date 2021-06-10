@@ -20,11 +20,11 @@
       "MODEL_MAP":"0.23",
       "MODEL_VERSION":"1.0",
       "MODEL_DATASET":"coco2017-val-300",
-      "MODEL_NOTES_HTML":"<a href=\"http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz\">from tensorflow</a> converted using <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
       "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
       "PACKAGE_SKIP_LINUX_MAKE": "YES",
       "PACKAGE_WGET": "YES"
     },
+    "model_notes":"<a href=\"http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz\">from tensorflow</a> converted using <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
     "no_os_in_suggested_path": "yes",
     "no_ver_in_suggested_path": "yes",
     "skip_file_check": "yes",

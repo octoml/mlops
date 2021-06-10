@@ -12,7 +12,6 @@
       "MODEL_IMAGE_WIDTH": "224",
       "MODEL_INPUT_LAYER_NAME": "?",
       "MODEL_NORMALIZE_DATA": "0",
-      "MODEL_NOTES_HTML": "Edgecortix <a href=\"file:///D:/Work1/CK/ck-repos/octoml@mlops/docs/mlperf.automation/tasks/tools/calibrate_torchvision_model.py\">quantization script</a>",
       "MODEL_ONNX_OPSET": "",
       "MODEL_OUTPUT_LAYER_NAME": "?",
       "MODEL_PRECISION": "int8",
@@ -24,6 +23,7 @@
       "PACKAGE_VERSION": "1.5",
       "PACKAGE_WGET": "YES"
     },
+    "model_notes": "Edgecortix <a href=\"file:///D:/Work1/CK/ck-repos/octoml@mlops/docs/mlperf.automation/tasks/tools/calibrate_torchvision_model.py\">quantization script</a>",
     "no_os_in_suggested_path": "yes",
     "no_ver_in_suggested_path": "yes",
     "skip_file_check": "yes"
