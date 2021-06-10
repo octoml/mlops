@@ -46,9 +46,9 @@
   "only_for_target_os_tags": [
     "linux"
   ],
-  "package_extra_name": " (MLPerf SSD-ResNet34 1200 fp32 non-quantized onnx)",
   "process_script": "install",
   "soft_uoa": "bcaac306e9041879",
+  "soft_uoa#": "model.onnx",
   "suggested_path": "ml-model-mlperf-ssd-resnet34-1200-onnx",
   "tags": [
     "octoml",
@@ -81,7 +81,7 @@
         "MODEL_ONNX_OPSET": "8"
       },
       "extra_customize": {
-        "package_extra_name": " (mlperf, onnx, fp32, opset-8)",
+        "package_extra_name": " (MLPerf SSD-ResNet34 1200 fp32 non-quantized onnx, opset-8)",
         "soft_file_universal": "resnet34-ssd1200.onnx"
       },
       "extra_tags": [
@@ -95,12 +95,14 @@
         "PACKAGE_URL": "https://zenodo.org/record/4735664/files",
         "PACKAGE_NAME": "ssd_resnet34_mAP_20.2.onnx",
         "MLPERF_MODEL_NAME": "ssd-resnet34-tf",
+        "MLPERF_TVM_OUTPUT_ORDER": "0,2,1",
+        "MLPERF_TVM_OUTPUT_ORDER#": "TVM produces output in a strange order when running this model - this is a temporal fix",
         "ML_MODEL_DATA_LAYOUT": "NCHW",
         "MODEL_NOTES_HTML":"<a href=\"https://zenodo.org/record/3345892/files/tf_ssd_resnet34_22.1.zip\">from zenodo</a> converted using <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
         "MODEL_ONNX_OPSET": "11"
       },
       "extra_customize": {
-        "package_extra_name": " (mlperf, onnx, fp32, opset-11)",
+        "package_extra_name": " (MLPerf SSD-ResNet34 1200 fp32 non-quantized onnx, opset-11)",
         "soft_file_universal": "ssd_resnet34_mAP_20.2.onnx"
       },
       "extra_tags": [
