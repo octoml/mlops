@@ -96,7 +96,6 @@
         "PACKAGE_NAME": "ssd_resnet34_mAP_20.2.onnx",
         "MLPERF_MODEL_NAME": "ssd-resnet34-tf",
         "MLPERF_TVM_OUTPUT_ORDER": "0,2,1",
-        "MLPERF_TVM_OUTPUT_ORDER#": "TVM produces output in a strange order when running this model - this is a temporal fix",
         "ML_MODEL_DATA_LAYOUT": "NCHW",
         "MODEL_ONNX_OPSET": "11"
       },
