@@ -61,6 +61,12 @@
     }
   },
   "run_deps": {
+    "lib-python-matplotlib": {
+      "local": "yes",
+      "name": "Python Matplotlib library",
+      "sort": 100,
+      "tags": "lib,python-package,matplotlib"
+    },
     "lib-python-onnx": {
       "local": "yes",
       "name": "Python ONNX (to load model)",

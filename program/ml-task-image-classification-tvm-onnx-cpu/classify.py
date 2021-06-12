@@ -91,6 +91,13 @@ def run_case(dtype, image, target):
     # transpose if needed
     img = img.transpose([2, 0, 1])
 
+    import matplotlib.pyplot as plt
+    img1 = img.transpose([1, 2, 0])
+    arr_ = np.squeeze(img1) # you can give axis attribute if you wanna squeeze in specific dimension
+    plt.imshow(arr_)
+#    plt.show()
+    plt.savefig('pre-processed-image.png')
+
     # Load model
     model_path=os.environ.get('CK_ENV_ONNX_MODEL_ONNX_FILEPATH','')
     if model_path=='':
@@ -107,7 +114,6 @@ def run_case(dtype, image, target):
     print (inputs)
     print (outputs)
 
-    inp={inputs[0]:np.array([img], dtype=np.float32)}
 
 
 
