@@ -34,15 +34,20 @@ if not [%PYTHON_PACKAGE_URL%] == [] (
   del /Q /S %PYTHON_PACKAGE_NAME%
 
   wget --no-check-certificate %PYTHON_PACKAGE_URL%/%PYTHON_PACKAGE_NAME%
+
+  set PYTHON_PACKAGE_NAME2=%PYTHON_PACKAGE_NAME%
 ) else (
-  set PYTHON_PACKAGE_NAME=%ORIGINAL_PACKAGE_DIR%\%PYTHON_PACKAGE_NAME%
+  set PYTHON_PACKAGE_NAME2=%ORIGINAL_PACKAGE_DIR%\%PYTHON_PACKAGE_NAME%
 )
+
+echo %PYTHON_PACKAGE_NAME%
+pause
 
 rem ######################################################################################
 echo.
 echo Installing %PYTHON_PACKAGE_NAME% and its dependencies to %PACKAGE_LIB_DIR% ...
 
-%CK_ENV_COMPILER_PYTHON_FILE% -m pip install --ignore-installed %PYTHON_PACKAGE_NAME% -t %EXTRA_PYTHON_SITE% %PIP_INSTALL_OPTIONS%
+%CK_ENV_COMPILER_PYTHON_FILE% -m pip install --ignore-installed %PYTHON_PACKAGE_NAME2% -t %EXTRA_PYTHON_SITE% %PIP_INSTALL_OPTIONS%
 
 if %errorlevel% neq 0 (
  echo.
