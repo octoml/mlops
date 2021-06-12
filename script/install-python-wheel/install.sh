@@ -29,10 +29,14 @@ export PACKAGE_LIB_DIR="${EXTRA_PYTHON_SITE}/lib/python${SHORT_PYTHON_VERSION}/s
 export PYTHONPATH=$PACKAGE_LIB_DIR:$PYTHONPATH
 
 
-######################################################################################
-echo "Downloading wheel '${PYTHON_PACKAGE_URL}/${PYTHON_PACKAGE_NAME}' ..."
-rm -f ${PYTHON_PACKAGE_NAME}
-wget --no-check-certificate ${PYTHON_PACKAGE_URL}/${PYTHON_PACKAGE_NAME}
+if [ "${PYTHON_PACKAGE_URL}" != "" ] ; then
+  ######################################################################################
+  echo "Downloading wheel '${PYTHON_PACKAGE_URL}/${PYTHON_PACKAGE_NAME}' ..."
+  rm -f ${PYTHON_PACKAGE_NAME}
+  wget --no-check-certificate ${PYTHON_PACKAGE_URL}/${PYTHON_PACKAGE_NAME}
+else
+  PYTHON_PACKAGE_NAME=${ORIGINAL_PACKAGE_DIR}/${PYTHON_PACKAGE_NAME}
+fi
 
 ######################################################################################
 echo "Installing '${PYTHON_PACKAGE_NAME}' and its dependencies to '${PACKAGE_LIB_DIR}' ..."
