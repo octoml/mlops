@@ -40,9 +40,6 @@ if not [%PYTHON_PACKAGE_URL%] == [] (
   set PYTHON_PACKAGE_NAME2=%ORIGINAL_PACKAGE_DIR%\%PYTHON_PACKAGE_NAME%
 )
 
-echo %PYTHON_PACKAGE_NAME%
-pause
-
 rem ######################################################################################
 echo.
 echo Installing %PYTHON_PACKAGE_NAME% and its dependencies to %PACKAGE_LIB_DIR% ...
