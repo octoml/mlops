@@ -35,6 +35,9 @@ def ck_preprocess(i):
     ml_model_name=deps['model']['dict']['customize']['install_env']['MLPERF_MODEL_NAME']
     new_env['CK_MLPERF_MODEL']=ml_model_name
 
+    print (ml_model_name)
+    input('xyz')
+
     path_to_val=deps['dataset-aux']['dict']['env']['CK_CAFFE_IMAGENET_VAL_TXT']
     if not os.path.isfile(path_to_val):
         return {'return':1, 'error':'val.txt was not found in ImageNet aux'}
