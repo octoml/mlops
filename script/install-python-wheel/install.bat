@@ -25,13 +25,18 @@ if exist "%EXTRA_PYTHON_SITE%" (
  rmdir /S /Q "%EXTRA_PYTHON_SITE%"
 )
 
-rem ######################################################################################
-echo.
-echo Downloading wheel %PYTHON_PACKAGE_URL%/%PYTHON_PACKAGE_NAME% ...
+if not [%PYTHON_PACKAGE_URL%] == [] (
 
-del /Q /S %PYTHON_PACKAGE_NAME%
+  rem ######################################################################################
+  echo.
+  echo Downloading wheel %PYTHON_PACKAGE_URL%/%PYTHON_PACKAGE_NAME% ...
 
-wget --no-check-certificate %PYTHON_PACKAGE_URL%/%PYTHON_PACKAGE_NAME%
+  del /Q /S %PYTHON_PACKAGE_NAME%
+
+  wget --no-check-certificate %PYTHON_PACKAGE_URL%/%PYTHON_PACKAGE_NAME%
+) else (
+  set PYTHON_PACKAGE_NAME=%ORIGINAL_PACKAGE_DIR%\%PYTHON_PACKAGE_NAME%
+)
 
 rem ######################################################################################
 echo.
