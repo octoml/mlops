@@ -3,6 +3,10 @@
   "no_target_file": "yes",
   "process_in_tmp": "yes",
   "program": "yes",
+  "print_files_after_run": [
+    "stdout.log",
+    "stderr.log"
+  ],
   "run_cmds": {
     "install-python-requirements": {
       "ignore_return_code": "no",
@@ -33,6 +37,8 @@
       "run_time": {
         "fine_grain_timer_file": "tmp-ck-timer.json",
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py --image=$#dataset_path#$$#dataset_filename#$",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stdout.err",
         "run_output_files": [
           "tmp-ck-timer.json"
         ]

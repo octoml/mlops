@@ -242,10 +242,10 @@ def run_case(dtype, image, target):
     atop5 = get_top5(output[1][0]) #.asnumpy())
 
     print ('')
-    print('TVM prediction Top1:', top1, synset[top1])
+    print('Prediction Top1:', top1, synset[top1])
 
     print ('')
-    print('TVM prediction Top5:')
+    print('Prediction Top5:')
     for p in atop5:
         out=p[1]
         name=synset[out]
