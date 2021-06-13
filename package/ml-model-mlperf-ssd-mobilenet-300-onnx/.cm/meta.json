@@ -41,6 +41,7 @@
   "suggested_path": "ml-model-mlperf-ssd-mobilenet-300-onnx",
   "tags": [
     "octoml",
+    "ml-model",
     "model",
     "mlperf",
     "object-detection",

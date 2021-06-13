@@ -52,6 +52,7 @@
   "suggested_path": "ml-model-mlperf-ssd-resnet34-1200-onnx",
   "tags": [
     "octoml",
+    "ml-model",
     "model",
     "mlperf",
     "object-detection",

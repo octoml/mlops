@@ -37,6 +37,7 @@
   "suggested_path": "ml-model-mlperf-resnet50-v1.5-pytorch",
   "tags": [
     "octoml",
+    "ml-model",
     "model",
     "image-classification",
     "pytorch",

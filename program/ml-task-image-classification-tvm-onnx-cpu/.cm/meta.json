@@ -67,6 +67,12 @@
       "sort": 100,
       "tags": "lib,python-package,matplotlib"
     },
+    "lib-python-scipy": {
+      "local": "yes",
+      "name": "Python SciPy library",
+      "sort": 105,
+      "tags": "lib,python-package,scipy"
+    },
     "lib-python-onnx": {
       "local": "yes",
       "name": "Python ONNX (to load model)",
@@ -93,9 +99,9 @@
     },
     "lib-python-onnxruntime": {
       "local": "yes",
-      "name": "Python ONNX runtime",
+      "name": "Python ONNX runtime (CPU)",
       "sort": 130,
-      "tags": "lib,python-package,onnxruntime"
+      "tags": "lib,python-package,onnxruntime,cpu"
     },
     "lib-python-opencv": {
       "local": "yes",
@@ -108,7 +114,7 @@
       "local": "yes",
       "name": "Model (mlperf, onnx)",
       "sort": 20,
-      "tags": "model,onnx,image-classification"
+      "tags": "ml-model,onnx,image-classification"
     }
   },
   "run_vars": {
