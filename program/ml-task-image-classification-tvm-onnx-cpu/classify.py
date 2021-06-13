@@ -262,9 +262,13 @@ def run_case(dtype, image, target):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--image', type=str, help="Path to JPEG image.", default=None)
+    parser.add_argument('--image', type=str, help="Path to JPEG image.", default=None, required=True)
     parser.add_argument('--target', type=str, help="Target", default=None)
     args = parser.parse_args()
+
+    if args.image.strip().lower()=='':
+        print ('Please specify path to an image using CK_IMAGE environment variable!')
+        exit(1)
 
     # set parameter
     batch_size = 1

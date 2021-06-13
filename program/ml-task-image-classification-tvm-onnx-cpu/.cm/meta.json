@@ -69,6 +69,43 @@
       "run_vars": {
         "USE_TVM": "yes"
       }
+    },
+    "api-onnx": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py --image=$<<CK_IMAGE>>$",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      }
+    },
+    "api-tvm": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py --image=$<<CK_IMAGE>>$",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      },
+      "run_deps": {
+        "compiler-tvm": {
+          "local": "yes",
+          "name": "TVM compiler",
+          "sort": 200,
+          "tags": "compiler,tvm"
+        },
+        "lib-python-onnx": {
+          "local": "yes",
+          "name": "Python ONNX (to load model)",
+          "sort": 125,
+          "tags": "lib,python-package,onnx"
+        }
+      },
+      "run_vars": {
+        "USE_TVM": "yes"
+      }
     }
   },
   "run_deps": {
@@ -123,7 +160,7 @@
     "model": {
       "force_target_as_host": "yes",
       "local": "yes",
-      "name": "Model (mlperf, onnx)",
+      "name": "Model (onnx, image classification)",
       "sort": 20,
       "tags": "ml-model,onnx,image-classification"
     }
