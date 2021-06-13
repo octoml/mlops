@@ -12,7 +12,7 @@
       },
       "sort":-1
     },
-    "onnx_cpu": {
+    "onnx": {
       "dataset_tags": [
         "image",
         "jpeg",
@@ -27,7 +27,7 @@
         ]
       }
     },
-    "tvm_cpu": {
+    "tvm": {
       "dataset_tags": [
         "image",
         "jpeg",
