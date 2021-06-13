@@ -55,7 +55,7 @@ if [ "x${USE_VULKAN}" == "xON" ]; then
 fi
 
 if [ "x${USE_CUDA}" == "xON" ]; then
-  echo "==> CK: USE_CUDAON"
+  echo "==> CK: USE_CUDA=ON"
   echo 'set(USE_CUDA ON)' >> build/config.cmake
 fi
 

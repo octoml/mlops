@@ -28,6 +28,19 @@
       "name": "C++ compiler",
       "sort": 10,
       "tags": "compiler,lang-cpp,llvm"
+    },
+    "cuda": {
+      "enable_if_env": [
+        {
+          "USE_CUDA": [
+            "ON"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "CUDA toolset",
+      "sort": 0,
+      "tags": "compiler,lang-c-cuda"
     }
   },
   "end_full_path_universal": "tvm/build/libtvm.so",
@@ -62,7 +75,7 @@
     "dev-cuda": {
       "extra_env": {
         "PACKAGE_GIT_CHECKOUT": "main",
-        "USE_CUDA":"yes"
+        "USE_CUDA":"ON"
       },
       "extra_customize": {
         "version": "",
