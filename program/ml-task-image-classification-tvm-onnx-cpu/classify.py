@@ -133,13 +133,17 @@ def run_case(dtype, image, target):
 
         # Init TVM
         # TBD: add tvm platform selector
-        ctx = tvm.cpu(0)
+        if os.environ.get('USE_CUDA','')=='yes':
+           # CK TVM package must be built with CUDA enabled
+           ctx = tvm.cuda(0)
+        else:
+           ctx = tvm.cpu(0)
         tvm_ctx = ctx
 
         build_conf = {'relay.backend.use_auto_scheduler': False}
-        opt_lvl = int(os.environ.get('MLPERF_TVM_OPT_LEVEL', 3))
+        opt_lvl = int(os.environ.get('TVM_OPT_LEVEL', 3))
 
-        target = os.environ.get('MLPERF_TVM_TARGET', 'llvm -mcpu=znver2')
+        target = os.environ.get('TVM_TARGET', 'llvm -mcpu=znver2')
 
         target_host=None
         params={}

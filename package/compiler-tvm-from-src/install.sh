@@ -54,6 +54,11 @@ if [ "x${USE_VULKAN}" == "xON" ]; then
   echo 'set(USE_VULKAN ON)' >> build/config.cmake
 fi
 
+if [ "x${USE_CUDA}" == "xON" ]; then
+  echo "==> CK: USE_CUDAON"
+  echo 'set(USE_CUDA ON)' >> build/config.cmake
+fi
+
 echo "******************************************************"
 # Configure the package.
 cd build

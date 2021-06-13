@@ -10,6 +10,17 @@
         "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ -m pip install -r ../requirements.txt",
         "min_run": "yes"
       },
+      "run_deps": {
+         "python": {
+           "add_to_path": "yes",
+           "force_target_as_host": "yes",
+           "local": "yes",
+           "name": "Python interpreter",
+           "sort": 0,
+           "tags": "compiler,python"
+         }
+      },
+      "skip_global_deps":"yes",
       "sort":-1
     },
     "onnx": {
@@ -118,7 +129,8 @@
     }
   },
   "run_vars": {
-    "CK_BATCH_SIZE": 1
+     "TVM_OPT_LEVEL":3,
+     "TVM_TARGET": "llvm -mcpu=znver2"
   },
   "tags": [
     "ml-task",
