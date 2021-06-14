@@ -8,7 +8,7 @@ LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
 # Shell info
 SHELL ["/bin/bash", "-c"]
-ENTRYPOINT ["/bin/bash", "-c"]
+#ENTRYPOINT ["/bin/bash", "-c"]
 
 # Set noninteractive mode for apt (do not use ENV)
 ARG DEBIAN_FRONTEND=noninteractive
@@ -24,6 +24,7 @@ RUN apt update && \
            libssl-dev libbz2-dev libffi-dev \
            python3 python3-pip python3-dev \
            python-is-python3 \
+           libncurses-dev \
            sudo
 
 # Prepare a user with a user group with a random id
@@ -90,4 +91,6 @@ RUN ck run program:mlperf-inference-bench-object-detection-tvm-cpu --cmd_key=ins
 # Run TVM-based MLPerf inference benchmark (Offline;Accuracy)
 CMD ck run program:mlperf-inference-bench-object-detection-tvm-cpu \
           --cmd_key=Accuracy-Offline \
+          --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
+          --env.MLPERF_TVM_EXECUTOR=vm \
           --env.EXTRA_OPS="--count 100 --thread 1 --max-batchsize 1"
