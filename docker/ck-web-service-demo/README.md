@@ -1,5 +1,7 @@
 # Demo of MLPerf dashboards for ML Systems DSE (Linux and Windows)
 
+* Adaptive CK docker container: [link](https://github.com/octoml/mlops/blob/main/docker/ck-web-service-demo/Dockerfile.ubuntu-20.04)
+
 ## Install CK
 ```
 python3 -m pip install ck
