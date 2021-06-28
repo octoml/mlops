@@ -3,7 +3,8 @@
   "customize": {
     "git_src_dir": "tvm",
     "install_env": {
-      "PACKAGE_GIT_URL": "https://github.com/apache/tvm"
+      "PACKAGE_GIT_URL": "https://github.com/apache/tvm",
+      "CK_HOST_CPU_NUMBER_OF_PROCESSORS":1
     },
     "no_ver_in_suggested_path": "yes"
   },
