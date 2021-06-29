@@ -24,10 +24,10 @@ def parse_version(i):
 
     ver=''
     if len(lst)>0:
-        x=lst[0]
-
-        if x.startswith('Build label:'):
-            ver=x[12:].strip()
+        for x in lst:
+           if x.startswith('Build label:'):
+               ver=x[12:].strip()
+               break
 
     return {'return':0, 'version':ver}
 
