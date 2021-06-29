@@ -97,7 +97,7 @@ def setup(i):
 
     # Update URL
     package_url=ie['PACKAGE_URL']
-    package_url+=os.path.sep+version
+    package_url+='/'+version
     nie['PACKAGE_URL']=package_url
 
     # Update vars

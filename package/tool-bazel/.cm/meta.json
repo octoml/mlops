@@ -8,7 +8,7 @@
   "end_full_path": {
     "linux": "install/bin/bazel",
     "macos": "install/bin/bazel",
-    "win": "install\\bin\\bazel.exe"
+    "win": "bazel.exe"
   },
   "need_cpu_info": "yes",
   "only_for_target_os_tags": [
