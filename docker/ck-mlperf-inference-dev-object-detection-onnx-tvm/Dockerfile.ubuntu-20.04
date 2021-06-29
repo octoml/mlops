@@ -56,7 +56,7 @@ RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
 
 RUN ck detect soft:compiler.gcc --full_path=`which gcc`
 
-RUN ck install package --tags=tool,cmake,prebuilt --quiet
+RUN ck install package --tags=tool,cmake,prebuilt,v3.18.2
 
 RUN ck install package --tags=lib,python-package,absl
 RUN ck install package --tags=lib,python-package,numpy
@@ -79,7 +79,7 @@ RUN ck install package --tags=lib,python-package,onnx,1.9.0
 
 RUN ck install package --tags=compiler,llvm,prebuilt,v12.0.0
 
-RUn ck install package --tags=compiler,tvm,dev
+RUN ck install package --tags=compiler,tvm,dev --env.CK_HOST_CPU_NUMBER_OF_PROCESSORS=4
 
 RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-mobilenet,side.300,non-quantized,opset-8
 RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-mobilenet,side.300,non-quantized,opset-11

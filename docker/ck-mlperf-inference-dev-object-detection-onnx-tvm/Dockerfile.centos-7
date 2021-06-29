@@ -69,43 +69,42 @@ RUN ck detect soft:compiler.gcc --full_path=`which gcc`
 
 RUN python3 -m pip install protobuf --user
 
-RUN ck install package --tags=mlperf,inference,src,octoml.dev
+RUN ck install package --tags=tool,cmake,prebuilt,v3.18.2
 
 RUN ck install package --tags=lib,python-package,absl
-
 RUN ck install package --tags=lib,python-package,numpy
-
-RUN ck install package --tags=lib,python-package,mlperf,loadgen
-
+RUN ck install package --tags=lib,python-package,scipy
 RUN ck install package --tags=lib,python-package,matplotlib
-
 RUN ck install package --tags=lib,python-package,cython
-
+RUN ck install package --tags=lib,python-package,pillow
 RUN ck install package --tags=lib,python-package,opencv-python-headless
+
+# Need to change to OctoML branch soon
+RUN ck install package --tags=mlperf,inference,src,octoml.dev
+RUN ck install package --tags=lib,python-package,mlperf,loadgen
 
 RUN ck install package --tags=tool,coco,api
 
-RUN ck install package --tags=imagenet,2012,val,min,non-resized
-RUN ck install package --tags=imagenet,2012,aux,from.berkeley
+RUN ck install package --tags=dataset,coco,val,2017,full
 
 RUN ck install package --tags=lib,python-package,onnxruntime-cpu,1.7.0
 RUN ck install package --tags=lib,python-package,onnx,1.9.0
-
-RUN ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-11
-
-RUN ck install package --tags=lib,python-package,scipy
-
-RUN ck install package --tags=tool,cmake,prebuilt,v3.18.2
 
 # Prebuilt LLVM doesn't seem to work correctly via CK
 RUN ck install package --tags=compiler,llvm,src,v12.0.0
 
 RUN ck install package --tags=compiler,tvm,dev --env.CK_HOST_CPU_NUMBER_OF_PROCESSORS=4
 
+RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-mobilenet,side.300,non-quantized,opset-8
+RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-mobilenet,side.300,non-quantized,opset-11
+RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-resnet34,side.1200,non-quantized,opset-8
+
 # Install MLPerf task requirements
-RUN ck run program:mlperf-inference-bench-image-classification-tvm-cpu --cmd_key=install-python-requirements
+RUN ck run program:mlperf-inference-bench-object-detection-tvm-cpu --cmd_key=install-python-requirements
 
 # Run TVM-based MLPerf inference benchmark (Offline;Accuracy)
-CMD ck run program:mlperf-inference-bench-image-classification-tvm-cpu \
+CMD ck run program:mlperf-inference-bench-object-detection-tvm-cpu \
           --cmd_key=Accuracy-Offline \
-          --env.EXTRA_OPS="--thread 1 --max-batchsize 1"
+          --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
+          --env.MLPERF_TVM_EXECUTOR=vm \
+          --env.EXTRA_OPS="--count 100 --thread 1 --max-batchsize 1"

@@ -89,7 +89,7 @@ RUN ck install package --tags=tool,cmake,prebuilt,v3.18.2
 
 RUN ck install package --tags=compiler,llvm,prebuilt,v12.0.0
 
-RUN ck install package --tags=compiler,tvm,dev
+RUN ck install package --tags=compiler,tvm,dev --env.CK_HOST_CPU_NUMBER_OF_PROCESSORS=4
 
 # Install MLPerf task requirements
 RUN ck run program:mlperf-inference-bench-image-classification-tvm-cpu --cmd_key=install-python-requirements
