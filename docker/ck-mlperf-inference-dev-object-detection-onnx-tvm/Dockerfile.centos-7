@@ -44,7 +44,7 @@ RUN python3 --version
 
 # Switch to gcc-9 for a user
 #RUN source /opt/rh/devtoolset-9/enable
-ENV PATH=/opt/rh/devtoolset-9/root/bin:$PATH
+ENV PATH=/opt/rh/devtoolset-9/root/usr/bin:$PATH
 RUN gcc --version
 RUN g++ --version
 
