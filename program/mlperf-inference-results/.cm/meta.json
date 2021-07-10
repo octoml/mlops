@@ -15,18 +15,18 @@
     }
   },
   "run_deps": {
-    "python": {
-      "local": "yes",
-      "name": "Python interpreter",
-      "sort": 0,
-      "tags": "compiler,python"
-    },
     "mlperf-inference-results": {
       "force_target_as_host": "yes",
       "local": "yes",
       "name": "MLPerf inference results",
       "sort": 10,
       "tags": "mlperf,inference,results"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 0,
+      "tags": "compiler,python"
     }
   },
   "run_vars": {},

@@ -22,7 +22,8 @@
   "suggested_path": "tool-bazel",
   "tags": [
     "tool",
-    "bazel"
+    "bazel",
+    "prebuilt"
   ],
   "variations": {
     "v4.1.0": {
