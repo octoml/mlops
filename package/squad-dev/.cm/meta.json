@@ -9,8 +9,7 @@
     },
     "no_os_in_suggested_path": "yes",
     "no_ver_in_suggested_path": "yes",
-    "skip_file_check": "yes",
-    "version": "1.1"
+    "skip_file_check": "yes"
   },
   "end_full_path_universal": "dev-v1.1.json",
   "only_for_host_os_tags": [],
