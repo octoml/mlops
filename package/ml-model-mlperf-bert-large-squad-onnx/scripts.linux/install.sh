@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp ${ORIGINAL_PACKAGE_DIR}/${MODEL_VOCAB_TXT} ${INSTALL_DIR}
