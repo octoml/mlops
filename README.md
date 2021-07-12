@@ -20,10 +20,10 @@ This repository contains CK workflows and components for MLOps and MLPerf&trade;
 
 ## Tests
 
-We perform tests on commits for Linux and Windows using the public [AI](https://github.com/ctuning/ai) repository.
+We perform tests on commits for Linux and Windows using the public [AI](https://github.com/ctuning/ck-mlops) repository.
 
-* Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ai.svg)](https://travis-ci.org/ctuning/ai)
-* Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4ry307jh6tks9dg9?svg=true)](https://ci.appveyor.com/project/gfursin/ai)
+* Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ck-mlops.svg)](https://travis-ci.org/ctuning/ck-mlops)
+* Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4ry307jh6tks9dg9?svg=true)](https://ci.appveyor.com/project/gfursin/ck-mlops)
 
 
 ## Problems
