@@ -106,7 +106,7 @@ RUN ck run program:mlperf-inference-bench-object-detection-tvm-cpu --cmd_key=ins
 
 # Run TVM-based MLPerf inference benchmark (Offline;Accuracy)
 CMD ck run program:mlperf-inference-bench-object-detection-tvm-cpu \
-          --cmd_key=Accuracy-Offline \
+          --cmd_key=accuracy-offline \
           --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
           --env.MLPERF_TVM_EXECUTOR=vm \
           --env.EXTRA_OPS="--count 100 --thread 1 --max-batchsize 1"
