@@ -20,12 +20,16 @@
     "loadgen",
     "mlperf-loadgen",
     "mlperf-benchmark",
+    "mlperf-inference-benchmark",
     "mlperf-benchmark-loadgen",
     "lang-python",
     "classification",
     "classification_and_detection",
     "image-classification",
+    "task-image-classification",
     "onnx",
-    "onnxruntime"
+    "framework-onnx",
+    "onnxruntime",
+    "target-cpu"
   ]
 }
