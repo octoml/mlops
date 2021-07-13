@@ -32,72 +32,72 @@
       "skip_global_deps":"yes",
       "sort":-1
     },
-    "Accuracy-MultiStream": {
+    "accuracy-multistream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
         "CK_LOADGEN_SCENARIO": "MultiStream"
       }
     },
-    "Accuracy-Offline": {
+    "accuracy-offline": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
         "CK_LOADGEN_SCENARIO": "Offline"
       }
     },
-    "Accuracy-Server": {
+    "accuracy-server": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
         "CK_LOADGEN_SCENARIO": "Server"
       }
     },
-    "Accuracy-SingleStream": {
+    "accuracy-singlestream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
         "CK_LOADGEN_SCENARIO": "SingleStream"
       }
     },
-    "Performance-MultiStream": {
+    "performance-multistream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",
         "CK_LOADGEN_SCENARIO": "MultiStream"
       }
     },
-    "Performance-Offline": {
+    "performance-offline": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",
         "CK_LOADGEN_SCENARIO": "Offline"
       }
     },
-    "Performance-Server": {
+    "performance-server": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",
         "CK_LOADGEN_SCENARIO": "Server"
       }
     },
-    "Performance-SingleStream": {
+    "performance-singlestream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",
