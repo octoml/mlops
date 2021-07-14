@@ -4,11 +4,21 @@
   "process_in_tmp": "yes",
   "program": "yes",
   "run_cmds": {
-    "default": {
+    "truncate_accuracy_log": {
+      "sort":-1,
       "ignore_return_code": "yes",
       "run_time": {
         "skip_print_execution_time":"yes",
-        "run_cmd_main": "../_run$#script_ext#$",
+        "run_cmd_main": "../_run_truncate_accuracy_log$#script_ext#$",
+        "#run_cmd_out1": "tmp-output1.tmp",
+        "run_output_files": []
+      }
+    },
+    "check": {
+      "ignore_return_code": "yes",
+      "run_time": {
+        "skip_print_execution_time":"yes",
+        "run_cmd_main": "../_run_check$#script_ext#$",
         "#run_cmd_out1": "tmp-output1.tmp",
         "run_output_files": []
       }
