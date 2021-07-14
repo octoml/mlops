@@ -1,6 +1,4 @@
 {
-  "backup_data_uid": "aacb0f389013f264",
-  "data_name": "test-coral-edge-tpu-installation",
   "no_compile": "yes",
   "no_target_file": "yes",
   "process_in_tmp": "yes",

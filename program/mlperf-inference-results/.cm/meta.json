@@ -1,6 +1,4 @@
 {
-  "backup_data_uid": "bfacfe0cb44c44ba",
-  "data_name": "mlperf-inference-results",
   "no_compile": "yes",
   "no_target_file": "yes",
   "process_in_tmp": "yes",

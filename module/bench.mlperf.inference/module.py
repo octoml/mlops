@@ -1343,7 +1343,6 @@ def run(i):
     # Check if user.conf
     path_system_base=r['path']
     path_system_base_user_conf=os.path.join(path_system_base, 'user.'+version+'.conf')
-    print (path_system_base_user_conf)
     if os.path.isfile(path_system_base_user_conf):
        ck.out('* MLPerf user config: {}'.format(path_system_base_user_conf))
        env['CK_MLPERF_USER_CONF']=path_system_base_user_conf
@@ -1500,7 +1499,7 @@ def run(i):
     meta_system['desc']['submitter']=submitter
 
     r=ck.save_json_to_file({'json_file':path_system_file,
-                            'dict':meta_system,
+                            'dict':meta_system['desc'],
                             'sort_keys':'yes'})
     if r['return']>0: return r
 
