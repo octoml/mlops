@@ -9,6 +9,12 @@ if [ "x${CK_MLPERF_USER_CONF}" != "x" ] ; then
   cp -f ${CK_MLPERF_USER_CONF} user.conf
 fi
 
+
+if [ "x${CK_MLPERF_AUDIT_CONF}" != "x" ] ; then
+  cp -f ${CK_MLPERF_AUDIT_CONF} audit.config
+fi
+
+
 cd ${CK_ENV_MLPERF_INFERENCE_VISION}/classification_and_detection
 
 export DATA_DIR=${CK_ENV_DATASET_COCO}

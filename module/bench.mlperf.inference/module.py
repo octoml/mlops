@@ -15,6 +15,7 @@ ck = None  # Will be updated by CK (initialized CK kernel)
 
 import re
 import shutil
+import copy
 
 #import sys
 import os
@@ -1252,8 +1253,15 @@ def run(i):
 
               (mode) [str] - (accuracy/performance) "accuracy" by default
 
+              (compilance) [str] - if 'yes', copy audit.conf and run compliance tests 
+                                   after the original run.
+
+                                   Note that you need to run accuracy mode first (without --compliance)
+                                   and then performance (with --compliance)!
+
               (env) [dict] - environment for CK program workflow
               (env.{KEY})  - set env[KEY]=value (user-friendly interface via CMD)
+
             }
 
     Output: {
@@ -1378,10 +1386,16 @@ def run(i):
     if r['return']>0: return r
     model=r['value']
 
+    sub_model=model
     if division=='closed':
       allowed_models=cfg['closed_division_models'][version]
       if model not in allowed_models:
          return {'return':1, 'error':'closed division model must be in {}'.format(allowed_models)}
+
+      if model.endswith('-99.9'):
+         sub_model=model[:-5]
+      elif model.endswith('-99'):
+         sub_model=model[:-3]
 
     ck.out('* MLPerf inference model: {}'.format(model))
 
@@ -1504,7 +1518,8 @@ def run(i):
     if r['return']>0: return r
 
     # Adding directory structure for the given task, model, scenario, workflow
-    path_results=os.path.join(path_submission, paths['results'], sut, model, scenario, mode)
+    path_results0=os.path.join(path_submission, paths['results'], sut, model, scenario)
+    path_results=os.path.join(path_results0, mode)
     if mode=='performance': path_results=os.path.join(path_results, 'run_1')
     if not os.path.isdir(path_results):
        os.makedirs(path_results)
@@ -1556,6 +1571,8 @@ def run(i):
 
        ck.out('* Path to compliance: {}'.format(path_compliance))
 
+
+
     # Run CK program workflow
     ck.out(line)
     ck.out('Starting CK workflow...')
@@ -1569,6 +1586,10 @@ def run(i):
         'record_deps':'ck-deps.json',
         'clean':'yes',
         'out':'con'}
+
+    # Copy workflow input to be reused for compliance test if activated
+    workflow_input=copy.deepcopy(ii)
+
     rw=ck.access(ii)
     if rw['return']>0: return rw
 
@@ -1578,12 +1599,15 @@ def run(i):
     # Detect path to MLPerf inference from workflow deps
     deps=rw['deps']
 
+    path_mlperf_inference=''
     path_mlperf_inference_conf=''
     for d in deps:
         v=deps[d]
         # search for package UOA of the MLperf inference source
         if v.get('package_uoa','')=='e4b96c0d80445eca':
-           path_mlperf_inference_conf=v.get('dict',{}).get('env',{}).get('CK_ENV_MLPERF_INFERENCE_MLPERF_CONF','')
+           env=v.get('dict',{}).get('env',{})
+           path_mlperf_inference_conf=env.get('CK_ENV_MLPERF_INFERENCE_MLPERF_CONF','')
+           path_mlperf_inference=env.get('CK_ENV_MLPERF_INFERENCE','')
 
     if path_mlperf_inference_conf=='':
        return {'return':1, 'error':'Path to MLPerf inference conf was not found'}
@@ -1647,11 +1671,67 @@ def run(i):
     ck.out(' * mlperf.conf')
     shutil.copy(path_mlperf_inference_conf, os.path.join(path_measurements, 'mlperf.conf'))
 
+
+
+
+
+
     #TBD: fill in readme in code
     #TBD: fill in path_file_measurement (info from a model: input/output/quantization)
 
 
+    # Check if need to run compliance test
+    if i.get('compliance','')=='yes':
+       if path_mlperf_inference=='':
+          return {'return':1, 'error':'can\'t run compliance test because can\'t find path to MLPerf inference sources'}
 
+       path_mlperf_compliance=os.path.join(path_mlperf_inference, 'compliance', 'nvidia')
+
+       for test in sorted(os.listdir(path_mlperf_compliance)):
+           ptest=os.path.join(path_mlperf_compliance, test)
+           if test.lower().startswith('test') and os.path.isdir(ptest):
+              ck.out(line)
+              ck.out('Compliance test: '+test)
+              ck.out('')
+
+              path_to_audit_conf=os.path.join(ptest, 'audit.config')
+
+              if not os.path.isfile(path_to_audit_conf):
+                 # Check if has subdirectory for a given model
+                 path_to_audit_conf=os.path.join(ptest, sub_model, 'audit.config')
+                 if not os.path.isfile(path_to_audit_conf):
+                    return {'return':1, 'error':'can\'t find path to audit.config'}
+
+              # Check path to processing script (may not exist)
+              path_to_audit_script=''
+              p=os.path.join(ptest, 'run_verification.py')
+              if os.path.isfile(p):
+                 path_to_audit_script=p
+
+              ck.out('Path to audit.config: {}'.format(path_to_audit_conf))
+
+              # Run CK program workflow
+              ck.out('')
+              ck.out('Starting CK workflow...')
+              ck.out('')
+
+              # Copy workflow input to be reused for compliance test if activated
+              ii=copy.deepcopy(workflow_input)
+
+              ii['env']['CK_MLPERF_AUDIT_CONF']=path_to_audit_conf
+              if path_to_audit_script!='':
+                 ii['env']['CK_MLPERF_AUDIT_SCRIPT']=path_to_audit_script
+                 ii['env']['CK_MLPERF_RESULTS_DIR']=path_results0
+                 ii['env']['CK_MLPERF_COMPLIANCE_DIR']=path_mlperf_compliance
+
+              rw=ck.access(ii)
+              if rw['return']>0: return rw
+
+              # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
+              tmp_dir=rw['tmp_dir']
+
+
+              input('xyz')
 
 
     # Restore current directory
