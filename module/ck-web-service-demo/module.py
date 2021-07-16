@@ -4,7 +4,7 @@
 # See CK LICENSE.txt for licensing details
 # See CK COPYRIGHT.txt for copyright details
 #
-# Developer: Grigori Fursin, Grigori.Fursin@cTuning.org, http://fursin.net
+# Developer: Grigori Fursin, https://fursin.net
 #
 
 cfg={}  # Will be updated by CK (meta description of this module)
