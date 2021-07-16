@@ -23,7 +23,7 @@
       "PACKAGE_VERSION": "1.5",
       "PACKAGE_WGET": "YES"
     },
-    "model_notes": "Edgecortix <a href=\"file:///D:/Work1/CK/ck-repos/octoml@mlops/docs/mlperf.automation/tasks/tools/calibrate_torchvision_model.py\">quantization script</a>",
+    "model_notes": "Edgecortix <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/calibrate_torchvision_model.py\">quantization script</a>",
     "no_os_in_suggested_path": "yes",
     "no_ver_in_suggested_path": "yes",
     "skip_file_check": "yes"

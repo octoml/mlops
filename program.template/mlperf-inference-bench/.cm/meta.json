@@ -7,8 +7,7 @@
     "linux"
   ],
   "print_files_after_run": [
-    "mlperf_log_summary.txt",
-    "results.json"
+    "mlperf_log_summary.txt"
   ],
   "process_in_tmp": "yes",
   "program": "yes",
@@ -34,7 +33,8 @@
     },
     "accuracy-multistream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
@@ -43,7 +43,8 @@
     },
     "accuracy-offline": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
@@ -52,7 +53,8 @@
     },
     "accuracy-server": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
@@ -61,7 +63,8 @@
     },
     "accuracy-singlestream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "on",
@@ -70,7 +73,8 @@
     },
     "performance-multistream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",
@@ -79,7 +83,8 @@
     },
     "performance-offline": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",
@@ -88,7 +93,8 @@
     },
     "performance-server": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",
@@ -97,7 +103,8 @@
     },
     "performance-singlestream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$"
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "skip_print_execution_time": "yes"
       },
       "run_vars": {
         "CK_LOADGEN_ACCURACY": "",

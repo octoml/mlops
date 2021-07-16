@@ -41,11 +41,15 @@
     "loadgen",
     "mlperf-loadgen",
     "mlperf-benchmark",
+    "mlperf-inference-benchmark",
     "mlperf-benchmark-loadgen",
     "lang-python",
     "classification",
     "classification_and_detection",
     "image-classification",
-    "tvm"
+    "task-image-classification",
+    "framework-tvm",
+    "tvm",
+    "target-cpu"
   ]
 }

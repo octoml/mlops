@@ -1593,6 +1593,8 @@ def run(i):
     rw=ck.access(ii)
     if rw['return']>0: return rw
 
+    ck.save_json_to_file({'json_file':'/tmp/xyz1.json','dict':rw})
+
     # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
     tmp_dir=rw['tmp_dir']
 
@@ -1720,12 +1722,16 @@ def run(i):
 
               ii['env']['CK_MLPERF_AUDIT_CONF']=path_to_audit_conf
               if path_to_audit_script!='':
+                 path_compliance_test=os.path.join(path_compliance, test)
+
                  ii['env']['CK_MLPERF_AUDIT_SCRIPT']=path_to_audit_script
                  ii['env']['CK_MLPERF_RESULTS_DIR']=path_results0
-                 ii['env']['CK_MLPERF_COMPLIANCE_DIR']=path_mlperf_compliance
+                 ii['env']['CK_MLPERF_COMPLIANCE_DIR']=path_compliance_test
 
               rw=ck.access(ii)
               if rw['return']>0: return rw
+
+              ck.save_json_to_file({'json_file':'/tmp/xyz2.json','dict':rw})
 
               # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
               tmp_dir=rw['tmp_dir']
