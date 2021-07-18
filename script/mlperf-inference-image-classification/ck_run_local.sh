@@ -7,6 +7,9 @@ ck > ck-version.txt
 
 if [ "x${CK_MLPERF_USER_CONF}" != "x" ] ; then
   cp -f ${CK_MLPERF_USER_CONF} user.conf
+else
+  # reference app uses command line instead of user.conf
+  echo "# empty" > user.conf
 fi
 
 if [ "x${CK_MLPERF_AUDIT_CONF}" != "x" ] ; then

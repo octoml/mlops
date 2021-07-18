@@ -4,6 +4,19 @@
   "process_in_tmp": "yes",
   "program": "yes",
   "run_cmds": {
+    "clean_truncate_accuracy_log": {
+      "sort":-1,
+      "ignore_return_code": "yes",
+      "run_time": {
+        "run_set_env2": {
+          "CLEAN_MLPERF_BACKUP":"YES"
+        },
+        "skip_print_execution_time":"yes",
+        "run_cmd_main": "../_run_truncate_accuracy_log$#script_ext#$",
+        "#run_cmd_out1": "tmp-output1.tmp",
+        "run_output_files": []
+      }
+    },
     "truncate_accuracy_log": {
       "sort":-1,
       "ignore_return_code": "yes",
