@@ -63,7 +63,7 @@ def ck_preprocess(i):
     opts+=' --output '+output_dir
 
     # Check model name from a CK package
-    model_path=ml_model_dict['env'].get('CK_ENV_ONNX_MODEL_ONNX_FILEPATH','')
+    model_path=ml_model_dict['env'].get('ML_MODEL_FILEPATH','')
     if model_path!='':
         opts+=' --model '+model_path
 
@@ -72,8 +72,7 @@ def ck_preprocess(i):
     new_env['CK_LOADGEN_ASSEMBLED_OPTS']=opts
 
     # Find path for shared script with run_local.sh
-    r=ck.access({'action': 'find', 
-                 'module_uoa': 'script', 
+    r=ck.access({'action': 'find', 'module_uoa': 'script', 
                  'data_uoa': '53bb701c440aaa69',
                  'data_uoa#': 'mlperf-inference-object-detection'})
     if r['return']>0: return r
