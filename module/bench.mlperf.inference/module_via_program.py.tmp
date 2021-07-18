@@ -1,3 +1,4 @@
+# Outdated!
 #
 # Collective Knowledge (MLPerf inference benchmark automation)
 #
@@ -1585,17 +1586,6 @@ def run(i):
     ck.out('Starting CK workflow ...')
     ck.out('')
 
-    # Clean tmp dirs
-    r=ck.access({'action':'find',
-                 'module_uoa':cfg['module_deps']['program'],
-                 'data_uoa':workflow})
-    if r['return']>0: return r
-    p=r['path']
-
-    for tmp_dir in [os.path.join(p,'tmp'), os.path.join(p, 'tmp-test04b')]:
-        if os.path.isdir(tmp_dir):
-            shutil.rmtree(tmp_dir)
-
     # Prepare CK workflow input
     ii={'action':'benchmark',
         'module_uoa':cfg['module_deps']['program'],
@@ -1603,10 +1593,8 @@ def run(i):
         'cmd_key':cmd_key,
         'env':env,
         'record_deps':'ck-deps.json',
-        'repetitions':1,
-        'no_state_check':'yes',
         'clean':'yes',
-        'skip_stat_analysis':'yes',
+        'repetitions':1,
         'skip_print_stats':'yes',
         'out':'con'}
 
@@ -1634,17 +1622,17 @@ def run(i):
     output=rw.get('last_iteration_output',{})
 
     # Check if no fail
-    if output.get('fail','')=='yes':
-       return {'return':99, 'error':'CK workflow failed: {}'.format(output.get('fail_reason',''))}
+    if output.get('fail','')=='no':
+       return {'return':99, 'error':'CK workflow failed: {}'.format(rw['misc'].get('fail_reason',''))}
 
     if mode=='prereq':
        return rw
 
     # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
-    tmp_dir=output['state']['cur_dir']
+    tmp_dir=rw['tmp_dir']
 
     # Get resolved dependencies from the workflow
-    deps=output['dependencies']
+    deps=rw['deps']
 
     # Fill in measurement file based on model info
     dm={}
@@ -1794,7 +1782,7 @@ def run(i):
               ii=copy.deepcopy(workflow_input)
 
               # Add resolved dependencies from the previous run
-              ii['dependencies']=deps
+              ii['deps']=deps
 
               ii['env']['CK_MLPERF_AUDIT_CONF']=path_to_audit_conf
               if path_to_audit_script!='':
@@ -1816,14 +1804,12 @@ def run(i):
               rw=ck.access(ii)
               if rw['return']>0: return rw
 
-              output=rw.get('last_iteration_output',{})
-
               # Check if no fail
-              if output.get('fail','')=='yes':
-                 return {'return':99, 'error':'CK workflow failed in compliance mode {}: {}'.format(test, output.get('fail_reason',''))}
+              if rw.get('misc',{}).get('run_success','')=='no':
+                 return {'return':99, 'error':'CK workflow failed in compliance mode {}: {}'.format(test, rw['misc'].get('fail_reason',''))}
 
               # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
-              tmp_dir=output['state']['cur_dir']
+              tmp_dir=rw['tmp_dir']
 
               # If TEST04-B copy tmp to tmp-test04b to be used with TEST04-A
               if test=='TEST04-B':
