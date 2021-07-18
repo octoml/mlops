@@ -96,12 +96,13 @@ def ck_postprocess(i):
               '--dtype', dtype,
     ]
 
-    print('------')
-    print(command)
+    print ('')
+    print ('Calling script to check accuracy:')
+    print ('')
+    print(' '.join(command))
     print('')
     output = check_output(command).decode('ascii')
     print(output)
-    print('------')
 
 
     with open(ACCURACY_TXT, 'w') as accuracy_file:

@@ -102,21 +102,23 @@ def ck_postprocess(i):
         command.append( '--use-inv-map' )
 
 
-    print('------')
-    print(command)
+    print ('')
+    print ('Calling script to check accuracy:')
+    print ('')
+    print(' '.join(command))
     print('')
     output = check_output(command).decode('ascii')
     print(output)
-    print('------')
+
 
 
     with open(ACCURACY_TXT, 'w') as accuracy_file:
         accuracy_file.write(output)
-    
+
     searchObj = re.search('mAP=(.+)%', output)
 
     save_dict['mAP'] = float( searchObj.group(1) )
-    
+
   # for scenario in [ 'SingleStream', 'MultiStream', 'Server', 'Offline' ]:
   #   scenario_key = 'TestScenario.%s' % scenario
   #   scenario = save_dict['results'].get(scenario_key, None)

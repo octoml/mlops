@@ -7,7 +7,8 @@
     "linux"
   ],
   "print_files_after_run": [
-    "mlperf_log_summary.txt"
+    "mlperf_log_summary.txt",
+    "compliance.txt"
   ],
   "process_in_tmp": "yes",
   "program": "yes",

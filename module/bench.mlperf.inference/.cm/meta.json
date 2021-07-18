@@ -36,6 +36,12 @@
       "ssd-resnet34"
     ]
   },
+  "compliance_tests": [
+    "TEST01",
+    "TEST04-B",
+    "TEST04-A",
+    "TEST05"
+  ],
   "desc": "MLPerf inference benchmark automation",
   "dirs": [
     "code",
@@ -49,6 +55,7 @@
     "closed"
   ],
   "modes": [
+    "prereq",
     "accuracy",
     "performance"
   ],

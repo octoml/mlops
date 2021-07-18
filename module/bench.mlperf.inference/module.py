@@ -1463,121 +1463,131 @@ def run(i):
 
     # Mode (accuracy, performance)
     mode=i.get('mode','')
-    if mode=='': mode='accuracy'
+#    if mode=='': mode='accuracy'
 
     if mode not in cfg['modes']:
        return {'return':1, 'error':'"mode" is not in {}'.format(cfg['modes'])}
 
     # CMD Key
-    cmd_key=mode+'-'+scenario
+    if mode=='prereq':
+       cmd_key='install-python-requirements'
+    else:
+       cmd_key=mode+'-'+scenario
 
     ck.out('* MLPerf inference CK workflow CMD key: {}'.format(cmd_key))
-    ck.out('* MLPerf inference mode: {}'.format(mode))
 
-    # Prepare basic structure
-    ck.out('')
-    ck.out('Preparing submission directory structure ...')
-    paths={}
-    for p in cfg['dirs']:
-        paths[p]=os.path.join(path_submission, p)
+    if mode!='prereq':
+       ck.out('* MLPerf inference mode: {}'.format(mode))
 
-        if not os.path.isdir(paths[p]):
-           os.makedirs(paths[p])
+       # Prepare basic structure
+       ck.out('')
+       ck.out('Preparing submission directory structure ...')
+       paths={}
+       for p in cfg['dirs']:
+           paths[p]=os.path.join(path_submission, p)
 
-    # Prepare final MLPerf system name
-    sut=system+'-'+framework
+           if not os.path.isdir(paths[p]):
+              os.makedirs(paths[p])
 
-    if framework_version!='':
-       sut+='-'+framework_version
+       # Prepare final MLPerf system name
+       sut=system+'-'+framework
 
-    if framework_ext!='':
-       sut+='-'+framework_ext
+       if framework_version!='':
+          sut+='-'+framework_version
 
-    if framework_ext!='':
-       sut+='-'+framework_ext
+       if framework_ext!='':
+          sut+='-'+framework_ext
 
-    if target!='':
-       sut+='-'+target
+       if framework_ext!='':
+          sut+='-'+framework_ext
 
-    sut_file=sut+'.json'
+       if target!='':
+          sut+='-'+target
 
-    # Prepare SUT JSON and record
-    ck.out('')
-    ck.out('SUT generated filename: {}'.format(sut_file))
+       sut_file=sut+'.json'
 
-    path_system_file=os.path.join(paths['systems'], sut_file)
-    ck.out('SUT path: {}'.format(path_system_file))
+       # Prepare SUT JSON and record
+       ck.out('')
+       ck.out('SUT generated filename: {}'.format(sut_file))
 
-    meta_system=meta_system_base
-    meta_system['desc']['division']=division
-    meta_system['desc']['submitter']=submitter
+       path_system_file=os.path.join(paths['systems'], sut_file)
+       ck.out('SUT path: {}'.format(path_system_file))
 
-    r=ck.save_json_to_file({'json_file':path_system_file,
-                            'dict':meta_system['desc'],
-                            'sort_keys':'yes'})
-    if r['return']>0: return r
+       meta_system=meta_system_base
+       meta_system['desc']['division']=division
+       meta_system['desc']['submitter']=submitter
 
-    # Adding directory structure for the given task, model, scenario, workflow
-    path_results0=os.path.join(path_submission, paths['results'], sut, model, scenario)
-    path_results=os.path.join(path_results0, mode)
-    if mode=='performance': path_results=os.path.join(path_results, 'run_1')
-    if not os.path.isdir(path_results):
-       os.makedirs(path_results)
+       r=ck.save_json_to_file({'json_file':path_system_file,
+                               'dict':meta_system['desc'],
+                               'sort_keys':'yes'})
+       if r['return']>0: return r
 
-    # Prepare measurement file (probably after workflow execution based on model package
-    path_measurements=os.path.join(path_submission, paths['measurements'], sut, model, scenario)
-    if not os.path.isdir(path_measurements):
-       os.makedirs(path_measurements)
+       # Adding directory structure for the given task, model, scenario, workflow
+       path_results0=os.path.join(path_submission, paths['results'], sut, model, scenario)
+       path_results=os.path.join(path_results0, mode)
+       if mode=='performance': path_results=os.path.join(path_results, 'run_1')
+       if not os.path.isdir(path_results):
+          os.makedirs(path_results)
 
-    # Above: mlperf.conf; user.conf; calibration doc; README.md
-    # {sut}_{workflow}_{scenario}.json
-    file_measurement=sut+'_'+workflow+'_'+scenario+'.json'
-    path_file_measurement=os.path.join(path_measurements, file_measurement)
+       # Prepare measurement file (probably after workflow execution based on model package
+       path_measurements=os.path.join(path_submission, paths['measurements'], sut, model, scenario)
+       if not os.path.isdir(path_measurements):
+          os.makedirs(path_measurements)
 
-    dm={}
+       # Above: mlperf.conf; user.conf; calibration doc; README.md
+       # {sut}_{workflow}_{scenario}.json
+       file_measurement=sut+'_'+workflow+'_'+scenario+'.json'
+       path_file_measurement=os.path.join(path_measurements, file_measurement)
 
-    r=ck.save_json_to_file({'json_file':path_file_measurement, 
-                            'dict':dm,
-                            'sort_keys':'yes'})
-    if r['return']>0: return r
+       dm={}
 
-    path_file_measurement_readme=os.path.join(path_measurements, 'README.md')
-    r=ck.save_text_file({'text_file':path_file_measurement_readme, 'string':''})
-    if r['return']>0: return r
+       r=ck.save_json_to_file({'json_file':path_file_measurement, 
+                               'dict':dm,
+                               'sort_keys':'yes'})
+       if r['return']>0: return r
 
-    # Prepare code
-    path_code=os.path.join(path_submission, paths['code'], model, workflow)
-    if not os.path.isdir(path_code):
-       os.makedirs(path_code)
+       path_file_measurement_readme=os.path.join(path_measurements, 'README.md')
+       r=ck.save_text_file({'text_file':path_file_measurement_readme, 'string':''})
+       if r['return']>0: return r
 
-    path_file_code_readme=os.path.join(path_code, 'README.md')
-    r=ck.save_text_file({'text_file':path_file_code_readme, 'string':''})
-    if r['return']>0: return r
+       # Prepare code
+       path_code=os.path.join(path_submission, paths['code'], model, workflow)
+       if not os.path.isdir(path_code):
+          os.makedirs(path_code)
 
-    ck.out('')
-    ck.out('* Path to results: {}'.format(path_results))
-    ck.out('* Path to measurements: {}'.format(path_measurements))
-    ck.out('* Path to measurement JSON file: {}'.format(path_file_measurement))
-    ck.out('* Path to measurement Readme file: {}'.format(path_file_measurement_readme))
-    ck.out('* Path to code: {}'.format(path_code))
-    ck.out('* Path to code Readme file: {}'.format(path_file_code_readme))
+       # TBD: assemble readme automatically from CK components!
 
-    path_compliance=''
-    if division=='closed':
-       # Prepare compliance
-       path_compliance=os.path.join(path_submission, paths['compliance'], sut, model, scenario)
-       if not os.path.isdir(path_compliance):
-          os.makedirs(path_compliance)
+       path_file_code_readme=os.path.join(path_code, 'README.md')
+       r=ck.save_text_file({'text_file':path_file_code_readme, 'string':''})
+       if r['return']>0: return r
 
-       ck.out('* Path to compliance: {}'.format(path_compliance))
+       # Assemble info (print it before and after runs)
 
+       info='* Path to results: {}\n'.format(path_results)
+       info+='* Path to measurements: {}\n'.format(path_measurements)
+       info+='* Path to measurement JSON file: {}\n'.format(path_file_measurement)
+       info+='* Path to measurement Readme file: {}\n'.format(path_file_measurement_readme)
+       info+='* Path to code: {}\n'.format(path_code)
+       info+='* Path to code Readme file: {}\n'.format(path_file_code_readme)
 
+       path_compliance=''
+       if division=='closed':
+          # Prepare compliance
+          path_compliance=os.path.join(path_submission, paths['compliance'], sut, model, scenario)
+          if not os.path.isdir(path_compliance):
+             os.makedirs(path_compliance)
+
+          info+='* Path to compliance: {}\n'.format(path_compliance)
+
+       ck.out('')
+       ck.out(info)
 
     # Run CK program workflow
     ck.out(line)
     ck.out('Starting CK workflow...')
     ck.out('')
 
+    # TBD: add deps
     ii={'action':'run',
         'module_uoa':cfg['module_deps']['program'],
         'data_uoa':workflow,
@@ -1590,10 +1600,21 @@ def run(i):
     # Copy workflow input to be reused for compliance test if activated
     workflow_input=copy.deepcopy(ii)
 
+    # Record workflow input
+    if mode!='prereq':
+       path_file_measurement_ck_workflow_input=os.path.join(path_measurements, 'ck-workflow-input.json')
+       r=ck.save_json_to_file({'json_file':path_file_measurement_ck_workflow_input, 'dict':ii})
+       if r['return']>0: return r
+
     rw=ck.access(ii)
     if rw['return']>0: return rw
 
-    ck.save_json_to_file({'json_file':'/tmp/xyz1.json','dict':rw})
+    # Check if no fail
+    if rw.get('misc',{}).get('run_success','')=='no':
+       return {'return':99, 'error':'CK workflow failed: {}'.format(rw['misc'].get('fail_reason',''))}
+
+    if mode=='prereq':
+       return rw
 
     # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
     tmp_dir=rw['tmp_dir']
@@ -1689,12 +1710,18 @@ def run(i):
 
        path_mlperf_compliance=os.path.join(path_mlperf_inference, 'compliance', 'nvidia')
 
-       for test in sorted(os.listdir(path_mlperf_compliance)):
+       # Need to run TEST04b and then TEST04a!
+
+       for test in cfg['compliance_tests']: #sorted(os.listdir(path_mlperf_compliance)):
            ptest=os.path.join(path_mlperf_compliance, test)
            if test.lower().startswith('test') and os.path.isdir(ptest):
               ck.out(line)
               ck.out('Compliance test: '+test)
               ck.out('')
+
+              if 'TEST04' in test:
+                 if 'rnnt' in model or 'bert' in model or 'dlrm' in model:
+                    ck.out('  Not applicable to {}! Skipped!'.format(model))
 
               path_to_audit_conf=os.path.join(ptest, 'audit.config')
 
@@ -1722,23 +1749,49 @@ def run(i):
 
               ii['env']['CK_MLPERF_AUDIT_CONF']=path_to_audit_conf
               if path_to_audit_script!='':
-                 path_compliance_test=os.path.join(path_compliance, test)
-
                  ii['env']['CK_MLPERF_AUDIT_SCRIPT']=path_to_audit_script
-                 ii['env']['CK_MLPERF_RESULTS_DIR']=path_results0
-                 ii['env']['CK_MLPERF_COMPLIANCE_DIR']=path_compliance_test
+                 ii['env']['CK_MLPERF_COMPLIANCE_DIR']=path_compliance
+
+                 if test=='TEST04-A':
+                    compliance_extra='-a . -b ../tmp-test04b'
+                 else:
+                    compliance_extra='-r {} -c .'.format(path_results0)
+
+
+                 ii['env']['CK_MLPERF_COMPLIANCE_EXTRA']=compliance_extra
+
+              path_file_measurement_ck_workflow_input_test=os.path.join(path_measurements, 'ck-workflow-input-'+test+'.json')
+              r=ck.save_json_to_file({'json_file':path_file_measurement_ck_workflow_input_test, 'dict':ii})
+              if r['return']>0: return r
 
               rw=ck.access(ii)
               if rw['return']>0: return rw
 
-              ck.save_json_to_file({'json_file':'/tmp/xyz2.json','dict':rw})
+              # Check if no fail
+              if rw.get('misc',{}).get('run_success','')=='no':
+                 return {'return':99, 'error':'CK workflow failed in compliance mode {}: {}'.format(test, rw['misc'].get('fail_reason',''))}
 
               # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
               tmp_dir=rw['tmp_dir']
 
+              # If TEST04-B copy tmp to tmp-test04b to be used with TEST04-A
+              if test=='TEST04-B':
+                 tmp_dir_test04b=os.path.join(tmp_dir, '../tmp-test04b')
 
-              input('xyz')
+                 ck.out('')
+                 ck.out('TEST04-B: copying {} to {} ...'.format(tmp_dir, tmp_dir_test04b))
 
+                 if os.path.isdir(tmp_dir_test04b):
+                    shutil.rmtree(tmp_dir_test04b)
+
+                 # Copy files there
+                 shutil.copytree(tmp_dir, tmp_dir_test04b)
+
+    ck.out(line)
+    ck.out('CK workflow for MLPerf inference executed successfully.')
+    ck.out('You can find MLPerf inference files at:')
+    ck.out('')
+    ck.out(info)
 
     # Restore current directory
     os.chdir(cur_dir)
