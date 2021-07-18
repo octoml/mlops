@@ -1539,13 +1539,6 @@ def run(i):
        file_measurement=sut+'_'+workflow+'_'+scenario+'.json'
        path_file_measurement=os.path.join(path_measurements, file_measurement)
 
-       dm={}
-
-       r=ck.save_json_to_file({'json_file':path_file_measurement, 
-                               'dict':dm,
-                               'sort_keys':'yes'})
-       if r['return']>0: return r
-
        path_file_measurement_readme=os.path.join(path_measurements, 'README.md')
        r=ck.save_text_file({'text_file':path_file_measurement_readme, 'string':''})
        if r['return']>0: return r
@@ -1584,10 +1577,10 @@ def run(i):
 
     # Run CK program workflow
     ck.out(line)
-    ck.out('Starting CK workflow...')
+    ck.out('Starting CK workflow ...')
     ck.out('')
 
-    # TBD: add deps
+    # Prepare CK workflow input
     ii={'action':'run',
         'module_uoa':cfg['module_deps']['program'],
         'data_uoa':workflow,
@@ -1606,6 +1599,8 @@ def run(i):
        r=ck.save_json_to_file({'json_file':path_file_measurement_ck_workflow_input, 'dict':ii})
        if r['return']>0: return r
 
+    #############################################################
+    # Run CK workflow
     rw=ck.access(ii)
     if rw['return']>0: return rw
 
@@ -1619,8 +1614,30 @@ def run(i):
     # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
     tmp_dir=rw['tmp_dir']
 
-    # Detect path to MLPerf inference from workflow deps
+    # Get resolved dependencies from the workflow
     deps=rw['deps']
+
+    # Fill in measurement file based on model info
+    dm={}
+
+    if 'model' in deps:
+       env=deps['model']['cus']['install_env']
+
+       dm['retraining']=env.get('MODEL_RETRAINING','')
+       dm['input_data_types']=env.get('MODEL_INPUT_DATA_TYPES','')
+       dm['weight_data_types']=env.get('MODEL_WEIGHT_DATA_TYPES','')
+       dm['weight_transformations']=env.get('MODEL_WEIGHT_TRANSFORMATIONS','')
+
+       x=env.get('PACKAGE_URL','')
+       if x!='':
+          x1=env.get('PACKAGE_NAME','')
+          if x1!='': x+='/'+x1
+       dm['starting_weights_filename']=x
+
+    r=ck.save_json_to_file({'json_file':path_file_measurement, 'dict':dm, 'sort_keys':'yes'})
+    if r['return']>0: return r
+
+    # Detect path to MLPerf inference from workflow deps
 
     path_mlperf_inference=''
     path_mlperf_inference_conf=''
