@@ -1611,7 +1611,7 @@ def run(i):
         'out':'con'}
 
     if len(deps)>0:
-       ii['deps']=deps
+       ii['dependencies']=deps
 
     for k in i:
         if k.startswith('dep_add_tags.'):
@@ -1687,7 +1687,7 @@ def run(i):
     # Save raw output
     pout=os.path.join(tmp_dir, 'ck-workflow-output.json')
 
-    r=ck.save_json_to_file({'json_file':pout, 'dict':r, 'sort_keys':'yes'})
+    r=ck.save_json_to_file({'json_file':pout, 'dict':rw, 'sort_keys':'yes'})
     if r['return']>0: return r
 
     # Process a few raw files from CK
