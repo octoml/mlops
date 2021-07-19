@@ -47,9 +47,9 @@
     "classification",
     "classification_and_detection",
     "image-classification",
-    "task-image-classification",
-    "framework-tvm",
     "tvm",
-    "target-cpu"
+    "task.image-classification",
+    "framework.tvm",
+    "target.cpu"
   ]
 }

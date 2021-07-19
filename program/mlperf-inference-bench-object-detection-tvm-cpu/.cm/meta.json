@@ -40,11 +40,15 @@
     "loadgen",
     "mlperf-loadgen",
     "mlperf-benchmark",
+    "mlperf-inference-benchmark",
     "mlperf-benchmark-loadgen",
     "lang-python",
     "classification",
     "classification_and_detection",
     "object-detection",
-    "tvm"
+    "tvm",
+    "task.object-detection",
+    "framework.tvm",
+    "target.cpu"
   ]
 }

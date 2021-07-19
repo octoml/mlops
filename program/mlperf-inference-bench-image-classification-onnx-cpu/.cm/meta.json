@@ -26,10 +26,10 @@
     "classification",
     "classification_and_detection",
     "image-classification",
-    "task-image-classification",
     "onnx",
-    "framework-onnx",
     "onnxruntime",
-    "target-cpu"
+    "task.image-classification",
+    "framework.onnx",
+    "target.cpu"
   ]
 }

@@ -26,6 +26,7 @@
     "loadgen",
     "mlperf-loadgen",
     "mlperf-benchmark",
+    "mlperf-inference-benchmark",
     "mlperf-benchmark-loadgen",
     "lang-python",
     "classification",
@@ -34,6 +35,9 @@
     "torch",
     "pytorch",
     "torch-onnx",
-    "pytorch-onnx"
+    "pytorch-onnx",
+    "task.image-classification",
+    "framework.pytorch",
+    "target.cpu"
   ]
 }

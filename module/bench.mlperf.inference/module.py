@@ -1265,6 +1265,12 @@ def run(i):
               (deps) [dict] - dependencies
 
               (dep_add_tags.{KEY}) [str] - add tags to a given dependency separated by commas
+
+
+              (experiment_uoa) [str] - record to CK experiment entry if !=''
+              (experiment_tags) [str] - set of experiment tags if !=''
+              (experiment_repo_uoa) [str] - CK repo to record experiments (local by default)
+
             }
 
     Output: {
@@ -1286,6 +1292,16 @@ def run(i):
            env[q[4:]]=i[q]
 
     deps=i.get('deps',{})
+
+    # Check vars to record experiments
+    exp_record=False
+
+    exp_uoa=i.get('experiment_uoa','')
+    exp_tags=i.get('experiment_tags','')
+    exp_repo_uoa=i.get('experiment_repo_uoa','')
+
+    if exp_uoa!='' or exp_tags!='':
+       exp_record=True
 
     # Attempt to find/install package with MLPerf inference results
     tags='mlperf,inference,results'
@@ -1437,7 +1453,7 @@ def run(i):
     tags=''
     if workflow=='':
        # Add tags to search
-       tags='mlperf-inference-benchmark,task-'+task+',framework-'+framework+',target-'+target
+       tags='mlperf-inference-benchmark,task.'+task+',framework.'+framework+',target.'+target
        ii['tags']=tags
 
     r=ck.access(ii)
@@ -1617,6 +1633,15 @@ def run(i):
         if k.startswith('dep_add_tags.'):
            ii[k]=i[k]
 
+    if exp_record and mode!='prereq':
+       ii['record']='yes'
+       ii['record_uoa']=exp_uoa
+       ii['record_repo']=exp_repo_uoa if exp_repo_uoa!='' else 'local'
+       x=exp_tags
+       if x!='': x+=','
+       x+='run.main'
+       ii['tags']=x
+
     # Copy workflow input to be reused for compliance test if activated
     workflow_input=copy.deepcopy(ii)
 
@@ -1741,12 +1766,7 @@ def run(i):
     shutil.copy(path_mlperf_inference_conf, os.path.join(path_measurements, 'mlperf.conf'))
 
 
-
-
-
-
     #TBD: fill in readme in code
-    #TBD: fill in path_file_measurement (info from a model: input/output/quantization)
 
 
     # Check if need to run compliance test
@@ -1792,6 +1812,13 @@ def run(i):
 
               # Copy workflow input to be reused for compliance test if activated
               ii=copy.deepcopy(workflow_input)
+
+              # If record
+              if exp_record:
+                 x=exp_tags
+                 if x!='': x+=','
+                 x+='run.'+test
+                 ii['tags']=x
 
               # Add resolved dependencies from the previous run
               ii['dependencies']=deps
