@@ -1267,6 +1267,14 @@ def run(i):
               (dep_add_tags.{KEY}) [str] - add tags to a given dependency separated by commas
 
 
+              (loadgen.{KEY}) [str] - parameters passed as command line to LoadGen
+                 (loadgen.count)
+                 (loadgen.time)
+                 (loadgen.max-batchsize)
+                 (loadgen.threads)
+                 (loadgen.qps)
+                 (loadgen.max-latency)
+
               (experiment_uoa) [str] - record to CK experiment entry if !=''
               (experiment_tags) [str] - set of experiment tags if !=''
               (experiment_repo_uoa) [str] - CK repo to record experiments (local by default)
@@ -1641,6 +1649,15 @@ def run(i):
        if x!='': x+=','
        x+='run.main'
        ii['tags']=x
+
+    # Assemble extra parameters for LoadGen into --env.EXTRA_OPS
+    loadgen_params=env.get('EXTRA_OPS','')
+    for k in i:
+        if k.startswith('loadgen.'):
+           if loadgen_params!='':
+              loadgen_params+=' '
+           loadgen_params+='--'+k[8:]+' '+i[k]
+    env['EXTRA_OPS']=loadgen_params
 
     # Copy workflow input to be reused for compliance test if activated
     workflow_input=copy.deepcopy(ii)
