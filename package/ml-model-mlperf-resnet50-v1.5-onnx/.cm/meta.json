@@ -70,7 +70,7 @@
         "MODEL_ONNX_OPSET": "8"
       },
       "extra_customize": {
-        "package_extra_name": " (MLPerf ResNet50 fp32 non-quantized onnx, opset-8)"
+        "package_extra_name": " (MLPerf ResNet50, onnx, fp32, non-quantized, opset-8)"
       },
       "extra_tags": [
         "resnet50-v1.5",
@@ -86,7 +86,7 @@
         "MODEL_ONNX_OPSET": "11"
       },
       "extra_customize": {
-        "package_extra_name": " (MLPerf ResNet50 fp32 non-quantized onnx, opset-11)"
+        "package_extra_name": " (MLPerf ResNet50, onnx, fp32, non-quantized, opset-11)"
       },
       "extra_tags": [
         "resnet50-v1.5",
