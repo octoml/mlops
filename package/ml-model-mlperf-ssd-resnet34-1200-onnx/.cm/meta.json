@@ -84,6 +84,7 @@
         "PACKAGE_NAME": "resnet34-ssd1200.onnx",
         "ML_MODEL_DATA_LAYOUT": "NCHW",
         "MLPERF_MODEL_NAME": "ssd-resnet34",
+        "MLPERF_PROFILE_EXT": "",
         "MODEL_ONNX_OPSET": "8"
       },
       "extra_customize": {
@@ -102,6 +103,8 @@
         "PACKAGE_URL": "https://zenodo.org/record/4735664/files",
         "PACKAGE_NAME": "ssd_resnet34_mAP_20.2.onnx",
         "MLPERF_MODEL_NAME": "ssd-resnet34-tf",
+        "MLPERF_PROFILE": "ssd-resnet34",
+        "MLPERF_PROFILE_EXT": "-tf",
         "MLPERF_TVM_OUTPUT_ORDER": "0,2,1",
         "ML_MODEL_DATA_LAYOUT": "NCHW",
         "MODEL_ONNX_OPSET": "11"

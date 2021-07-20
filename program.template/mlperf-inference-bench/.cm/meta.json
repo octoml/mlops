@@ -34,7 +34,7 @@
     },
     "accuracy-multistream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {
@@ -44,7 +44,7 @@
     },
     "accuracy-offline": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {
@@ -54,7 +54,7 @@
     },
     "accuracy-server": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {
@@ -64,7 +64,7 @@
     },
     "accuracy-singlestream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {
@@ -74,7 +74,7 @@
     },
     "performance-multistream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {
@@ -84,7 +84,7 @@
     },
     "performance-offline": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {
@@ -94,7 +94,7 @@
     },
     "performance-server": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {
@@ -104,7 +104,7 @@
     },
     "performance-singlestream": {
       "run_time": {
-        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_local$#script_ext#$",
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
         "skip_print_execution_time": "yes"
       },
       "run_vars": {

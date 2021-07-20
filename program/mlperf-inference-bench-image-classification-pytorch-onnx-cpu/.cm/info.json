@@ -11,5 +11,5 @@
       "10"
     ]
   },
-  "data_name": "mlperf-inference-bench-image-classification-pytorch-cpu"
+  "data_name": "mlperf-inference-bench-image-classification-pytorch-onnx-cpu"
 }

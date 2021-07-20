@@ -5,6 +5,7 @@
       "ML_MODEL_DATA_LAYOUT": "NCHW",
       "ML_MODEL_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
       "MLPERF_MODEL_NAME": "resnet50",
+      "MLPERF_PROFILE_EXT": "",
       "MODEL_IMAGE_HEIGHT": "224",
       "MODEL_IMAGE_WIDTH": "224",
       "MODEL_INPUT_LAYER_NAME": "input_tensor:0",

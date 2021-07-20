@@ -3,6 +3,13 @@
   "_base_entry#": "program.template:mlperf-inference-bench-object-detection",
 
   "run_deps": {
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Object Detection model",
+      "sort": 100,
+      "tags": "model,onnx,object-detection"
+    },
     "lib-python-onnx-support": {
       "local": "yes",
       "name": "Python ONNX runtime",
@@ -11,9 +18,9 @@
     }
   },
   "run_vars": {
-    "CK_MLPERF_BACKEND": "onnxruntime",
-    "CK_MLPERF_DEVICE": "cpu",
-    "CK_LOADGEN_OPTS": ""
+    "MLPERF_BACKEND": "onnxruntime",
+    "MLPERF_DEVICE": "cpu",
+    "CUDA_VISIBLE_DEVICES": ""
   },
   "tags": [
     "mlperf",

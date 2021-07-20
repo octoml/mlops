@@ -1,3 +1,5 @@
+# DEPRECATED!
+
 #! /bin/bash
 
 COMMON_SCRIPTS=`ck find script:mlperf-inference`

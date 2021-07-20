@@ -33,13 +33,6 @@
       "sort": 55,
       "tags": "lib,python-package,matplotlib"
     },
-    "model": {
-      "force_target_as_host": "yes",
-      "local": "yes",
-      "name": "Object Detection model",
-      "sort": 100,
-      "tags": "model,onnx,object-detection"
-    },
     "tool-coco": {
       "force_target_as_host": "yes",
       "local": "yes",

@@ -19,5 +19,7 @@ fi
 if [ "${CK_ENV_OCTOMIZER_WHEEL}" != "" ] ; then
   export MODEL_DIR=${CK_ENV_OCTOMIZER_WHEEL}
 else
-  export MODEL_DIR=${CK_ENV_ONNX_MODEL_ROOT}
+  export MODEL_DIR=${ML_MODEL_ROOT}
 fi
+
+export DATA_DIR=${CK_ENV_DATASET_ROOT}

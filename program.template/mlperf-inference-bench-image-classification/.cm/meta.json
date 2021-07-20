@@ -36,13 +36,6 @@
       "sort": 50,
       "tags": "lib,python-package,cv2"
     },
-    "model": {
-      "force_target_as_host": "yes",
-      "local": "yes",
-      "name": "Model for image classification (mlperf, onnx)",
-      "sort": 40,
-      "tags": "model,image-classification,mlperf,onnx"
-    },
     "tool-coco": {
       "force_target_as_host": "yes",
       "local": "yes",

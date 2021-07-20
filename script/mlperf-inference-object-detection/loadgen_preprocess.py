@@ -33,6 +33,15 @@ def ck_preprocess(i):
        es=hosd['env_set'] # set or export
 
     ###############################################################################
+    # Specific for COCO
+
+    # TBD - must be more flexible and does not depend on COCO
+    #   can be other data sets ...
+
+    path_to_dataset=deps['dataset']['dict']['env']['CK_ENV_DATASET_COCO']
+    new_env['DATA_DIR']=path_to_dataset
+
+    ###############################################################################
     # Prepare options for loadgen based on env vars
 
     # Call common script

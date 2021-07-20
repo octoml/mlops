@@ -2,6 +2,13 @@
   "_base_entry": "program.template:be040afa642b8e28",
   "_base_entry#": "program.template:mlperf-inference-bench-object-detection",
   "run_deps": {
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Object Detection model",
+      "sort": 100,
+      "tags": "model,onnx,object-detection"
+    },
     "lib-python-onnx": {
       "local": "yes",
       "name": "Python ONNX (to load model)",
@@ -29,8 +36,9 @@
   },
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
-    "CK_MLPERF_BACKEND": "tvm",
-    "CK_MLPERF_DEVICE": "cpu",
+    "MLPERF_BACKEND": "tvm",
+    "MLPERF_DEVICE": "cpu",
+    "CUDA_VISIBLE_DEVICES": "",
     "MLPERF_TVM_EXECUTOR":"graph",
     "MLPERF_TVM_TARGET": "llvm",
     "MLPERF_TVM_OPT_LEVEL": 3

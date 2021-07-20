@@ -35,6 +35,10 @@ def ck_preprocess(i):
     ###############################################################################
     # Specific for ImageNet val package - check if val_map is in CK environment,
     # and if not, take it from ImageNet aux package
+
+    # TBD - must be more flexible and does not depend on ImageNet 
+    #   can be other data sets ...
+
     path_to_val=deps['dataset-aux']['dict']['env']['CK_CAFFE_IMAGENET_VAL_TXT']
     if not os.path.isfile(path_to_val):
         return {'return':1, 'error':'val.txt was not found in ImageNet aux'}
@@ -45,6 +49,8 @@ def ck_preprocess(i):
     if not os.path.isfile(path_to_imagenet_val):
         import shutil
         shutil.copyfile(path_to_val, path_to_imagenet_val)
+
+    new_env['DATA_DIR']=path_to_imagenet
 
     ###############################################################################
     # Prepare options for loadgen based on env vars

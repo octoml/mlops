@@ -5,6 +5,7 @@
       "ML_MODEL_DATA_LAYOUT": "NCHW",
       "ML_MODEL_GIVEN_CHANNEL_MEANS": "?",
       "MLPERF_MODEL_NAME": "resnet50",
+      "MLPERF_PROFILE_EXT": "",
       "MODEL_ACCURACY": "75.790",
       "MODEL_DATASET": "imagenet2012-val",
       "MODEL_FRAMEWORK": "pytorch",
