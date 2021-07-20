@@ -6,9 +6,9 @@
     "model": {
       "force_target_as_host": "yes",
       "local": "yes",
-      "name": "Object Detection model",
+      "name": "Object Detection model (mlperf, onnx)",
       "sort": 100,
-      "tags": "model,onnx,object-detection"
+      "tags": "model,onnx,object-detection,mlperf,onnx"
     },
     "lib-python-onnx-support": {
       "local": "yes",

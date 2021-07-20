@@ -11,5 +11,5 @@
       "2"
     ]
   },
-  "data_name": "mlperf-inference-bench-object-detection-tvm-cpu"
+  "data_name": "mlperf-inference-bench-object-detection-tvm-onnx-cpu"
 }

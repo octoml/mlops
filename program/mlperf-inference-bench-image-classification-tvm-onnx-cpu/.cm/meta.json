@@ -6,9 +6,9 @@
     "model": {
       "force_target_as_host": "yes",
       "local": "yes",
-      "name": "Model for image classification (mlperf, any)",
+      "name": "Model for image classification (mlperf, onnx)",
       "sort": 40,
-      "tags": "model,image-classification,mlperf"
+      "tags": "model,image-classification,mlperf,onnx"
     },
     "lib-python-onnx": {
       "local": "yes",
@@ -37,7 +37,7 @@
   },
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
-    "MLPERF_BACKEND": "tvm",
+    "MLPERF_BACKEND": "tvm-onnx",
     "MLPERF_PROFILE_BACKEND": "onnxruntime",
     "MLPERF_DEVICE": "cpu",
     "CUDA_VISIBLE_DEVICES": "",
@@ -57,8 +57,9 @@
     "classification_and_detection",
     "image-classification",
     "tvm",
+    "tvm-onnx",
     "task.image-classification",
-    "framework.tvm",
+    "framework.tvm-onnx",
     "target.cpu"
   ]
 }

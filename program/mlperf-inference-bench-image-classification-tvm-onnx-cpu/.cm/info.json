@@ -11,5 +11,5 @@
       "0"
     ]
   },
-  "data_name": "mlperf-inference-bench-image-classification-tvm-cpu"
+  "data_name": "mlperf-inference-bench-image-classification-tvm-onnx-cpu"
 }
