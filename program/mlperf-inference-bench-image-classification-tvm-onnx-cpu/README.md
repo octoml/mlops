@@ -2,20 +2,16 @@
 
 * Automation: [CK](https://github.com/ctuning/ck)
 * Task: image classification
-* Dataset: ImageNet
 * Framework: [TVM](https://github.com/apache/tvm)
+* Dataset: ImageNet
 * Models: ONNX format
 * Device: CPU
 
 # Preparation
 
-## Common setup
-
-* [Installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/tasks/tvm/README.md)
-
-## Dataset
-
-* [Installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md)
+* [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
+* [Framework installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tvm.md)
+* [Dataset preparation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md)
 
 ## Models
 

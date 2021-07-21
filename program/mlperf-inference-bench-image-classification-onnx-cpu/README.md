@@ -3,8 +3,8 @@
 * Automation: [CK](https://github.com/ctuning/ck)
 * Task: image classification
 * Dataset: ImageNet
-* Framework: [TVM](https://github.com/apache/tvm)
-* Models: PyTorch format
+* Framework: [ONNX runtime](https://github.com/microsoft/onnxruntime)
+* Models: ONNX format
 * Device: CPU
 
 # Preparation
@@ -12,23 +12,24 @@
 # Preparation
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
-* [Framework installation (TVM)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tvm.md)
-* [Framework installation (PyTorch)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)
+* [Framework installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-onnx.md)
 * [Dataset preparation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md)
+
+## Dataset
+
+* [Installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md)
 
 ## Models
 
 ```bash
-ck install package --tags=model,image-classification,mlperf,pytorch
+ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-8
+ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-11
 ```
-
-For now, we support only [resnet50_INT8bit_quantized.pt](https://github.com/octoml/mlops/blob/main/package/ml-model-mlperf-resnet50-v1.5-pytorch/.cm/meta.json) model.
-
 
 ## Python prerequisites
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=install-python-requirements
 ```
 
@@ -38,13 +39,13 @@ ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=accuracy-offline
 ```
 
 Customize it:
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=accuracy-offline \
         --env.MLPERF_TVM_EXECUTOR=graph \
         --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
@@ -55,14 +56,14 @@ ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=accuracy-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=accuracy-singlestream
 ```
 
@@ -74,20 +75,20 @@ ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=performance-offline
 ```
 
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=performance-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=performance-singlestream
 ```
