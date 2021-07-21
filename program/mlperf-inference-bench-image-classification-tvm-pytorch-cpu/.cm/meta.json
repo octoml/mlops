@@ -50,9 +50,9 @@
     "classification_and_detection",
     "image-classification",
     "tvm",
-    "tvm-onnx",
+    "tvm-pytorch",
     "task.image-classification",
-    "framework.tvm-onnx",
+    "framework.tvm-pytorch",
     "target.cpu"
   ]
 }
