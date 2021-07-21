@@ -4,64 +4,9 @@
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
 
 
-## Install CK
+## Prepare
 
-```bash
-$ python3 -m pip install ck -U
-
-```
-or
-```bash
-$ python3 -m pip install ck -U --user
-```
-
-```bash
-
-$ ck
-
-CK version: 2.5.7
-
-Python executable used by CK: /usr/bin/python3
-
-Python version used by CK: 3.6.9 (default, Jan 26 2021, 15:33:00)
-   [GCC 8.4.0]
-
-Path to the CK kernel:    /home/gfursin/.local/lib/python3.6/site-packages/ck/kernel.py
-Path to the default repo: /home/gfursin/.local/lib/python3.6/site-packages/ck/repo
-Path to the local repo:   /mnt/CK/local
-Path to CK repositories:  /mnt/CK
-
-Documentation:        https://github.com/ctuning/ck/wiki
-CK Google group:      https://bit.ly/ck-google-group
-CK Slack channel:     https://cKnowledge.org/join-slack
-Stable CK components: https://cKnowledge.io
-```
-
-Follow this [guide](https://github.com/ctuning/ck#installation) for more details.
-
-
-
-
-
-
-## Install CK automation for the Python virtual environment
-
-Create virtual environment for MLPerf
-```bash
-ck pull repo:octoml@venv
-
-ck create venv:mlperf --template=generic
-
-ck activate venv:mlperf
-```
-
-
-
-## Pull CK repo with MLOps automation recipes from OctoML
-
-```bash
-ck pull repo:octoml@mlops
-```
+* [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
 
 ## Pull already processed MLPerf inference results
 
@@ -145,27 +90,27 @@ export CK_MLPERF_INFERENCE_SUBMITTER=OctoML
 
 ### Set the name of the base system
 ```bash
-ck set kernel --var.mlperf_inference_system=rpi4-ubuntu20.04
+ck set kernel --var.mlperf_inference_system=my-machine-ubuntu20.04
 ```
  or
 ```bash
-export CK_MLPERF_INFERENCE_SYSTEM=rpi4-ubuntu20.04
+export CK_MLPERF_INFERENCE_SYSTEM=my-machine-ubuntu20.04
 ```
 
 ### Add CK entry for the base system
 
 List available systems from past MLPerf inference submissions:
 ```bash
-ck ls bench.mlperf.system:*rpi4* | sort
+ck ls bench.mlperf.system:* | sort
 ```
 
 ```bash
-ck add bench.mlperf.system:rpi4-ubuntu20.04 (--base={name from above list})
+ck add bench.mlperf.system:my-machine-ubuntu20.04 (--base={name from above list})
 ```
 
 For example:
 ```bash
-ck add bench.mlperf.system:rpi4-ubuntu20.04 --base=rpi4-tflite-v2.2.0-ruy
+ck add bench.mlperf.system:my-machine-ubuntu20.04 --base=1-node-8S-CPX-TensorFlow-INT8
 ```
 
 CK will fill in some keys but you still need to update it further.
@@ -173,14 +118,14 @@ CK will fill in some keys but you still need to update it further.
 Note that above command will create a CK entry with this system
 in the "local" repo:
 ```bash
-ck find bench.mlperf.system:rpi4-ubuntu20.04
+ck find bench.mlperf.system:my-machine-ubuntu20.04
 ```
 
 if you want to prepare system description in the public "ck-mlperf-inference" repo
 or in your own private submission repo, use the following command:
 
 ```bash
-ck add {target CK repo name}:bench.mlperf.system:rpi4-ubuntu20.04
+ck add {target CK repo name}:bench.mlperf.system:my-machine-ubuntu20.04
 ```
 
 You can add "user.conf" to the above CK entry to be automatically picked up by CK MLPerf workflows.
@@ -188,16 +133,17 @@ You need to add the MLPerf version to this filename: "user.{MLPerf version}.conf
 i.e. "user.1.1.conf".
 
 
+## Prepare and test CK workflows for MLPerf image classification
+
+* [TVM with ONNX Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-onnx-cpu)
+* [TVM with PyTorch Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-pytorch-cpu)
+* [ONNX with ONNX models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-onnx-cpu)
 
 
-
-
-
-
-## Run MLPerf inference benchmark
+## Run CK-based MLPerf submission system
 
 ```bash
-ck run bench.mlperf.inference --division=closed --framework=onnx --model=resnet50 --scenario=singlestream
+ck run bench.mlperf.inference --division=closed --framework=onnx --model=resnet50 --scenario=offline
 ```
 
 
@@ -207,7 +153,7 @@ ck run bench.mlperf.inference --division=closed --framework=onnx --model=resnet5
 
 # Maintainers
 
-* [cTuning foundation](https://cTuning.org)
 * [OctoML.ai](https://OctoML.ai)
+* [cTuning foundation](https://cTuning.org)
 
 *Contact: grigori@octoml.ai*
