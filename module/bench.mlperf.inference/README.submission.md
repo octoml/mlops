@@ -243,11 +243,19 @@ ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-m
 ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=singlestream --mode=performance --env.EXTRA_OPS="--time 600"
 ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=singlestream --mode=performance --env.EXTRA_OPS="--time 600" --compliance
 
-ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=tvm --model=resnet50 --scenario=offline --mode=accuracy
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=tvm-onnx --model=resnet50 --scenario=offline --mode=accuracy
 
 ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=accuracy --env.EXTRA_OPS="--count 5000" --experiment_uoa=xyz --experiment_tags=abc
 ```
 
+
+### Substitute model
+
+You can try to substitute a standard model with the external one 
+(provided that inputs and outputs are the same) using the following environment variable:
+```bash
+export ML_MODEL_FILEPATH_EXTERNAL={path to some model}
+```
 
 
 ## Finalize submission
