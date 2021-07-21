@@ -4,7 +4,7 @@
 * Task: image classification
 * Dataset: ImageNet
 * Framework: [TVM](https://github.com/apache/tvm)
-* Models: ONNX format
+* Models: PyTorch format
 * Device: CPU
 
 # Preparation
