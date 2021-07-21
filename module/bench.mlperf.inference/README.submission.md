@@ -8,15 +8,14 @@
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
 
-## Pull already processed MLPerf inference results
+Pull extra CK repository with processed components from past MLPerf submission:
 
 ```bash
 ck pull repo:ck-mlperf-inference
 ```
 
 
-
-## Install CK package with MLPerf inference results
+## Install CK package to record MLPerf inference results
 
 ### New (private) repository for submission
 
@@ -55,6 +54,44 @@ in the root):
 ```bash
 ck detect soft --tags=mlperf,inference,results --full_path={{PATH TO README.md IN YOUR DIR WITH MLPERF inference results}} --force_version=1.1
 ```
+
+
+## Configure your system
+
+CK can run "system" scripts for a given platform to set up frequency, pin cores, etc.
+By default, we use a dummy (empty) script configured as follows:
+
+```bash
+ck detect platform.os --platform_init_uoa=generic-linux-dummy
+```
+
+You can find and use scripts for existing platforms as follows:
+```bash
+ck ls platform.init | sort
+ck detect platform.os --platform_init_uoa={name from the above list}
+```
+
+You can create a new one and customize scripts by copying 
+and customizing the most related CK components as follows:
+```bash
+ck cp platform.init:{name from above list} local::{new platform name}
+```
+
+You can locate this entry and update scripts as follows:
+```bash
+cd `ck find platform.init:{new platform name}`
+```
+
+It is possible to create a new entry in some public or private CK repo 
+instead of the local one as follows:
+
+```bash
+ck ls repo | sort
+ck cp platform.init:{name from above list} {some repo from the above list}::{new platform name}
+```
+
+
+
 
 
 ## Configure your submission
@@ -135,19 +172,100 @@ i.e. "user.1.1.conf".
 
 ## Prepare and test CK workflows for MLPerf image classification
 
-* [TVM with ONNX Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-onnx-cpu)
-* [TVM with PyTorch Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-pytorch-cpu)
-* [ONNX with ONNX models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-onnx-cpu)
+* [Image classification with TVM and ONNX Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-onnx-cpu)
+* [Image classification with TVM and PyTorch Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-pytorch-cpu)
+* [Image classification with ONNX and ONNX models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-onnx-cpu)
+
+
 
 
 ## Run CK-based MLPerf submission system
 
+CK helps to provide [abstractions at different levels](https://arxiv.org/pdf/2011.01149.pdf) 
+to plug in and extend sub-components independently. 
+We've developed the ["module:bench.mlperf.inference" workflow](https://github.com/octoml/mlops/blob/main/module/bench.mlperf.inference/module.py#L1230) 
+to automatically prepare and test the MLPerf inference submission using above workflows:
+
+### Install Python prerequisites
+
 ```bash
-ck run bench.mlperf.inference --division=closed --framework=onnx --model=resnet50 --scenario=offline
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=prereq
+```
+
+### List available flags
+
+```bash
+ck run bench.mlperf.inference --help
+```
+
+### Test accuracy of a standard model
+
+```bash
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=accuracy --env.EXTRA_OPS="--count 500"
+```
+
+**Note:** This workflow will automatically create the MLPerf directory structure with all the necessary artifacts
+and will start populating it with the results! You can locate the place with results as follows:
+```bash
+ck locate env --tags=mlcommons,results
+ls `ck locate env --tags=mlcommons,results`/inference-results
+
+README.md  closed
+```
+
+You may still need to check and update files there before the submission.
+At the end of running all the necessary steps and tests, you should be able 
+to produce a PR from this repository to the official submission repository.
+
+
+### Customize above run
+```bash
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=performance --loadgen.max-batchsize=1 --loadgen.threads=1 --loadgen.count=5000
+```
+
+### Run the compliance tests (TEST01, TEST04, TEST05)
+
+```bash
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=performance --compliance
+```
+
+### Examples of other commands
+
+```bash
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=performance --loadgen.max-batchsize=1 --loadgen.threads=1 --loadgen.count=5000 --compliance
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=performance --env.EXTRA_OPS="--count 5000" --compliance
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --dep_add_tags.model=v1.5-opset-11 --scenario=offline --mode=performance --env.EXTRA_OPS="--count 5000" --compliance
+
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=performance --compliance
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=performance --env.EXTRA_OPS="--count 5000 --time 60 --qps 200 --max-latency 0.1"
+
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=accuracy
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=singlestream --mode=performance --env.EXTRA_OPS="--time 600"
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=singlestream --mode=performance --env.EXTRA_OPS="--time 600" --compliance
+
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=tvm --model=resnet50 --scenario=offline --mode=accuracy
+
+ck run bench.mlperf.inference --division=closed --submitter=OctoML --system=my-machine-ubuntu20.04 --framework=onnx --model=resnet50 --scenario=offline --mode=accuracy --env.EXTRA_OPS="--count 5000" --experiment_uoa=xyz --experiment_tags=abc
 ```
 
 
 
+## Finalize submission
+
+### Truncate accuracy logs
+```bash
+ck run program:mlperf-inference-submission --cmd_key=truncate_accuracy_log --env.CK_MLPERF_SUBMITTER=OctoML
+```
+
+### Clean backup and truncate accuracy log
+```bash
+ck run program:mlperf-inference-submission --cmd_key=clean_truncate_accuracy_log --env.CK_MLPERF_SUBMITTER=OctoML
+```
+
+### Run submission checker
+```bash
+ck run program:mlperf-inference-submission --cmd_key=check
+```
 
 
 
