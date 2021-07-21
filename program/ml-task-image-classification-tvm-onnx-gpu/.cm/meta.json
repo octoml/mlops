@@ -1,6 +1,6 @@
 {
   "_base_entry": "59bfa009fd047d09",
-  "_base_entry#": " mlperf-inference-bench-image-classification-tvm-onnx-cpu",
+  "_base_entry#": "mlperf-inference-bench-image-classification-tvm-onnx-cpu",
 
   "base_uoa":"59bfa009fd047d09",
 
