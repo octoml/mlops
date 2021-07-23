@@ -100,10 +100,10 @@ RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-mobilenet,s
 RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-resnet34,side.1200,non-quantized,opset-8
 
 # Install MLPerf task requirements
-RUN ck run program:mlperf-inference-bench-object-detection-tvm-cpu --cmd_key=install-python-requirements
+RUN ck run program:mlperf-inference-bench-object-detection-tvm-onnx-cpu --cmd_key=install-python-requirements
 
 # Run TVM-based MLPerf inference benchmark (Offline;Accuracy)
-CMD ck run program:mlperf-inference-bench-object-detection-tvm-cpu \
+CMD ck run program:mlperf-inference-bench-object-detection-tvm-onnx-cpu \
           --cmd_key=accuracy-offline \
           --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
           --env.MLPERF_TVM_EXECUTOR=vm \
