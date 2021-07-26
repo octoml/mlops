@@ -5,6 +5,7 @@
 * Dataset: ImageNet
 * Framework: [ONNX runtime](https://github.com/microsoft/onnxruntime)
 * Models: ONNX format
+* OS: Ubuntu 20.04
 * Device: CPU
 
 # Preparation

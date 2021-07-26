@@ -53,6 +53,11 @@ def ck_preprocess(i):
     else:
        opts='--backend '+mlperf_backend+' '+opts
 
+    # Check if MLPERF_DATASET
+    mlperf_dataset=env.get('MLPERF_DATASET','')
+    if mlperf_dataset!='':
+        opts+=' --dataset '+mlperf_dataset
+
     # Check accuracy
     accuracy=env.get('CK_LOADGEN_ACCURACY','').lower()=='on'
     if accuracy:

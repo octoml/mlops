@@ -5,6 +5,7 @@
 * Framework: [TVM](https://github.com/apache/tvm)
 * Dataset: ImageNet
 * Models: ONNX format
+* OS: Ubuntu 20.04
 * Device: CPU
 
 # Preparation

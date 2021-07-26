@@ -15,6 +15,12 @@
       "sort": 80,
       "tags": "lib,python-package,torch"
     },
+    "lib-python-torch-vision": {
+      "local": "yes",
+      "name": "PyTorchVision",
+      "sort": 90,
+      "tags": "lib,python-package,torchvision"
+    },
     "compiler-tvm": {
       "local": "yes",
       "name": "TVM compiler",
@@ -34,6 +40,7 @@
     "MLPERF_BACKEND": "tvm-pytorch",
     "MLPERF_DEVICE": "cpu",
     "MLPERF_PROFILE_BACKEND": "onnxruntime",
+    "MLPERF_DATASET":"imagenet_pytorch",
     "MLPERF_TVM_EXECUTOR": "graph",
     "MLPERF_TVM_OPT_LEVEL": 3,
     "MLPERF_TVM_TARGET": "llvm"

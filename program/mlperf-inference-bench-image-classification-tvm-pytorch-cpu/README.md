@@ -5,6 +5,7 @@
 * Dataset: ImageNet
 * Framework: [TVM](https://github.com/apache/tvm)
 * Models: PyTorch format
+* OS: Ubuntu 20.04
 * Device: CPU
 
 # Preparation
