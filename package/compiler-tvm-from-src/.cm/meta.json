@@ -44,7 +44,7 @@
       "tags": "compiler,lang-c-cuda"
     }
   },
-  "end_full_path_universal": "tvm/build/libtvm.so",
+  "end_full_path_universal": "tvm$#sep#$build$#sep#$libtvm$#file_ext_dll#$",
   "only_for_host_os_tags": [
     "linux"
   ],
