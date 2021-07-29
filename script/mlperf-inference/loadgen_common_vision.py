@@ -27,11 +27,12 @@ def ck_preprocess(i):
 
     # Get model name from a CK package in MLPerf loadgen format
     ml_model_env = deps['model']['dict']['env']
+    ml_model_install_env = deps['model']['dict']['customize']['install_env']
 
     # Update MLPERF_PROFILE
     # Needed to support cases such as ssd-resnet50-onnxruntime-tf
 
-    mlperf_model_name=ml_model_env['MLPERF_MODEL_NAME']
+    mlperf_model_name=ml_model_install_env['MLPERF_MODEL_NAME']
 
     mlperf_profile=ml_model_env.get('MLPERF_PROFILE','')
     if mlperf_profile=='': mlperf_profile=mlperf_model_name
