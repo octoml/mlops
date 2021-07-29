@@ -40,31 +40,29 @@ ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=accuracy-offline
 ```
 
 Customize it:
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=accuracy-offline \
-        --env.MLPERF_TVM_EXECUTOR=graph \
-        --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
-        --env.EXTRA_OPS="--count=100 --thread 1 --max-batchsize 1"
+        --env.EXTRA_OPS="--count=100 --thread 16 --max-batchsize 4"
 
 ```
 
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=accuracy-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=accuracy-singlestream
 ```
 
@@ -76,20 +74,20 @@ ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=performance-offline
 ```
 
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=performance-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=performance-singlestream
 ```
