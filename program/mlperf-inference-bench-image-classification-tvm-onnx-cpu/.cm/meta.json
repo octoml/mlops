@@ -37,7 +37,7 @@
   },
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
-    "MLPERF_BACKEND": "tvm",
+    "MLPERF_BACKEND": "tvm-onnx",
     "MLPERF_PROFILE_BACKEND": "onnxruntime",
     "MLPERF_DEVICE": "cpu",
     "CUDA_VISIBLE_DEVICES": "",
