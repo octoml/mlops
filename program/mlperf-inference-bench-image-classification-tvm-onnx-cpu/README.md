@@ -44,7 +44,7 @@ ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=accuracy-offline \
         --env.MLPERF_TVM_EXECUTOR=graph \
         --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
-        --env.EXTRA_OPS="--count=100 --thread 1 --max-batchsize 1"
+        --env.EXTRA_OPS="--count=100 --threads 1 --max-batchsize 1"
 
 ```
 

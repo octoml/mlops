@@ -48,7 +48,7 @@ Customize it:
 ```bash
 ck run program:mlperf-inference-bench-image-classification-onnx-cpu \
         --cmd_key=accuracy-offline \
-        --env.EXTRA_OPS="--count=100 --thread 16 --max-batchsize 4"
+        --env.EXTRA_OPS="--count=100 --threads 16 --max-batchsize 4"
 
 ```
 
