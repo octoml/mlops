@@ -50,6 +50,7 @@
   ],
   "process_script": "install",
   "soft_uoa": "757f02edb31a4008",
+  "soft_uoa#": "compiler.tvm",
   "suggested_path": "compiler-tvm",
   "tags": [
     "compiler",
