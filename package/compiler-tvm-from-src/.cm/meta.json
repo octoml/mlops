@@ -4,6 +4,8 @@
     "git_src_dir": "tvm",
     "install_env": {
       "PACKAGE_GIT_URL": "https://github.com/apache/tvm",
+      "USE_DNNL_CODEGEN": "OFF",
+      "USE_OPENMP": "",
       "CK_HOST_CPU_NUMBER_OF_PROCESSORS":1
     },
     "no_ver_in_suggested_path": "yes"
@@ -42,6 +44,20 @@
       "name": "CUDA toolset",
       "sort": 0,
       "tags": "compiler,lang-c-cuda"
+    },
+    "lib-dnnl": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "DNNL library",
+      "sort": 30,
+      "tags": "lib,dnnl",
+      "enable_if_env": [
+        {
+          "USE_DNNL_CODEGEN": [
+            "ON"
+          ]
+        }
+      ]
     }
   },
   "end_full_path_universal": "tvm$#sep#$build$#sep#$libtvm$#file_ext_dll#$",
@@ -73,6 +89,18 @@
         "use_git_revision": "yes"
       },
       "on_by_default": "yes"
+    },
+    "dev-dnnl-int8": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/apeskov/tvm",
+        "PACKAGE_GIT_CHECKOUT": "ap/dnnl-int8"
+      },
+      "extra_customize": {
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
+      },
+      "on_by_default": "no"
     },
     "dev-cuda": {
       "extra_env": {
