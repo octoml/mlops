@@ -11,7 +11,8 @@
 # Preparation
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
-* [Framework installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tvm.md)
+* [Framework installation (ONNX - to load native models)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-onnx.md)
+* [Framework installation (TVM)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tvm.md)
 * [Dataset preparation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md)
 
 ## Models

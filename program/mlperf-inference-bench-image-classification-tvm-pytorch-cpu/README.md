@@ -13,8 +13,8 @@
 # Preparation
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
+* [Framework installation (PyTorch - to load native models)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)
 * [Framework installation (TVM)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tvm.md)
-* [Framework installation (PyTorch)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)
 * [Dataset preparation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md)
 
 ## Models
