@@ -44,8 +44,9 @@ Customize it:
 ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
         --cmd_key=accuracy-offline \
         --env.MLPERF_TVM_EXECUTOR=graph \
-        --env.MLPERF_TVM_TARGET="llvm -mcpu=znver2" \
-        --env.EXTRA_OPS="--count=100 --threads 1 --max-batchsize 1"
+        --env.MLPERF_TVM_TARGET="llvm" \
+        --env.OMP_NUM_THREADS=4 \
+        --env.EXTRA_OPS="--count=100 --threads 4 --max-batchsize 1"
 
 ```
 
@@ -79,7 +80,9 @@ ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
 
 ```bash
 ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
-        --cmd_key=performance-server
+     --cmd_key=performance-server \
+     --env.OMP_NUM_THREADS=8 \
+     --env.EXTRA_OPS="--threads 8 --max-batchsize 1 --time 100 --qps 400" 
 ```
 
 ## SingleStream
