@@ -13,8 +13,6 @@
 
 # Preparation
 
-# Preparation
-
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
 * [Framework installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-onnx.md)
 * [Dataset preparation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md)
