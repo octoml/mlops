@@ -5,8 +5,11 @@
 * Dataset: ImageNet
 * Framework: [TVM](https://github.com/apache/tvm)
 * Models: PyTorch format
-* OS: Ubuntu 20.04
-* Device: CPU
+* Platform/OS: 
+  * [x8664; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
+  * [Raspberry Pi 4; Arm64; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/rpi4-ubuntu.md)
+  * [Nvidia Jetson Nano; Arm64; Ubuntu 18.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/nvidia-jetson-nano.md)
+* Target device: CPU
 
 # Preparation
 

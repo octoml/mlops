@@ -5,8 +5,11 @@
 * Framework: [TVM](https://github.com/apache/tvm)
 * Dataset: ImageNet
 * Models: ONNX format
-* OS: Ubuntu 20.04
-* Device: CPU
+* Platform/OS: 
+  * [x8664; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
+  * [Raspberry Pi 4; Arm64; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/rpi4-ubuntu.md)
+  * [Nvidia Jetson Nano; Arm64; Ubuntu 18.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/nvidia-jetson-nano.md)
+* Target device: CPU
 
 # Preparation
 
@@ -18,8 +21,12 @@
 ## Models
 
 ```bash
-ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-8
 ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-11
+```
+
+You can also install a slightly older (original) model with Opset-8 (models and other components can coexist in CK):
+```bash
+ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-opset-8
 ```
 
 ## Python prerequisites
