@@ -57,6 +57,7 @@ ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
 Notes:
 * You can delete compiled model using flag ```--env.MLPERF_DELETE_COMPILED_MODEL=YES```
 * You can force to use DNNL with a flag ```--env.MLPERF_TVM_USE_DNNL=YES```
+* You can use your own compatible model by adding --model flag to EXTRA_OPS: ```--env.EXTRA_OPS="--model {FULL PATH}"```
 
 
 ## Server

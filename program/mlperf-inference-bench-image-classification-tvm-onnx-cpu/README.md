@@ -57,6 +57,10 @@ ck run program:mlperf-inference-bench-image-classification-tvm-onnx-cpu \
 
 ```
 
+* You can delete compiled model using flag ```--env.MLPERF_DELETE_COMPILED_MODEL=YES```
+* You can use your own compatible model by adding --model flag to EXTRA_OPS: ```--env.EXTRA_OPS="--model {FULL PATH}"```
+
+
 ## Server
 
 ```bash
