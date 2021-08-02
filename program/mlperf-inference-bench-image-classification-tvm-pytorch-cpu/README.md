@@ -53,9 +53,10 @@ ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
         --env.OMP_NUM_THREADS=4 \
         --env.EXTRA_OPS="--count 100 --threads 4 --max-batchsize 1"
 
-```
 
-*Note that you can delete compiled model using flag ```--env.MLPERF_DELETE_COMPILED_MODEL=YES```*
+Notes:
+* You can delete compiled model using flag ```--env.MLPERF_DELETE_COMPILED_MODEL=YES```
+* You can force to use DNNL with a flag ```--env.MLPERF_TVM_USE_DNNL=YES```
 
 
 ## Server
