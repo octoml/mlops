@@ -15,6 +15,8 @@
       "ML_MODEL_NORMALIZE_UPPER": "1.0",
       "ML_MODEL_SKIPS_ORIGINAL_DATASET_CLASSES": "12,26,29,30,45,66,68,69,71,83",
       "ML_MODEL_USE_INV_MAP" : "YES",
+      "ML_MODEL_INPUT_LAYERS": "image",
+      "ML_MODEL_OUTPUT_LAYERS": "bboxes,labels,scores",
       "MODEL_DATASET_TYPE": "coco",
       "MODEL_INPUT_LAYER_NAME": "image",
       "MODEL_INPUT_LAYERS": "image",

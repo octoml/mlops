@@ -2,6 +2,8 @@
 
 echo "*********************************************************"
 
+export CK_PROGRAM_TMP_DIR=$PWD
+
 ${CK_ENV_COMPILER_PYTHON_FILE} -m pip freeze > ck-pip-freeze.txt
 ck > ck-version.txt
 

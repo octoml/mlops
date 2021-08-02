@@ -4,6 +4,8 @@
     "extra_dir": "",
     "install_env": {
       "ML_MODEL_DATA_LAYOUT": "NHWC",
+      "ML_MODEL_INPUT_LAYERS": "input_tensor:0",
+      "ML_MODEL_OUTPUT_LAYERS": "detection_boxes:0,detection_classes:0,detection_scores:0",
       "MLPERF_MODEL_NAME": "ssd-mobilenet",
       "MODEL_CLASSES_LABELS": "flatlabels.txt",
       "MODEL_DATASET_TYPE": "coco",

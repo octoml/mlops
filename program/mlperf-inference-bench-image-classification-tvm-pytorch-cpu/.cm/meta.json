@@ -37,7 +37,7 @@
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
     "CUDA_VISIBLE_DEVICES": "",
-    "MLPERF_BACKEND": "tvm-pytorch",
+    "MLPERF_BACKEND": "tvm",
     "MLPERF_DEVICE": "cpu",
     "MLPERF_PROFILE_BACKEND": "onnxruntime",
     "MLPERF_DATASET":"imagenet_pytorch",
