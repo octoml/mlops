@@ -117,6 +117,16 @@
       ],
       "on_by_default": "no"
     },
+    "r-d0791d3db971a111826d96201bd1e4c9c0d531da": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main",
+        "PACKAGE_GIT_SHA": "d0791d3db971a111826d96201bd1e4c9c0d531da"
+      },
+      "extra_customize": {
+        "version": "d0791d3db971a111826d96201bd1e4c9c0d531da"
+      },
+      "on_by_default": "no"
+    },
     "masahi-onnx-combined-nms-dev": {
       "extra_env": {
         "PACKAGE_GIT_URL": "https://github.com/masahi/tvm",
@@ -135,7 +145,7 @@
         "PACKAGE_GIT_SHA": "c999a840cb5579c493f5b5e7f20bc619260dad08"
       },
       "extra_customize": {
-        "version": "r-masahi-onnx-combined-nms-c999a840cb5579c493f5b5e7f20bc619260dad08"
+        "version": "masahi-onnx-combined-nms-c999a840cb5579c493f5b5e7f20bc619260dad08"
       },
       "on_by_default": "no"
     },
@@ -145,7 +155,7 @@
         "PACKAGE_GIT_SHA": "a1b4f0e"
       },
       "extra_customize": {
-        "version": "r-a1b4f0e8f2bfcc583f98f0f9272adcc0c12f70a5"
+        "version": "a1b4f0e8f2bfcc583f98f0f9272adcc0c12f70a5"
       },
       "on_by_default": "no"
     },
