@@ -143,7 +143,8 @@
     "mlperf_log_summary.txt",
     "mlperf_log_trace.json",
     "results.json",
-    "user.conf"
+    "user.conf",
+    "audit.conf"
   ],
   "skip_print_timers": "yes"
 }
