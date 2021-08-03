@@ -1251,9 +1251,13 @@ def run(i):
 
               (scenario) [str] - usage scenario
 
-              (mode) [str] - (accuracy/performance) "accuracy" by default
+              (mode) [str] - (accuracy/performance/prereq) "accuracy" by default
 
-              (compilance) [str] - if 'yes', copy audit.conf and run compliance tests 
+              (clean) [str] - if 'yes', clean tmp directories
+
+              (quiet) [str] - if 'yes', select default values in a program workflow
+
+              (compliance) [str] - if 'yes', copy audit.conf and run compliance tests 
                                    after the original run.
 
                                    Note that you need to run accuracy mode first (without --compliance)
@@ -1300,6 +1304,8 @@ def run(i):
            env[q[4:]]=i[q]
 
     deps=i.get('deps',{})
+
+    quiet=i.get('quiet','')
 
     # Check vars to record experiments
     exp_record=False
@@ -1616,9 +1622,10 @@ def run(i):
     if r['return']>0: return r
     p=r['path']
 
-    for tmp_dir in [os.path.join(p,'tmp'), os.path.join(p, 'tmp-test04b')]:
-        if os.path.isdir(tmp_dir):
-            shutil.rmtree(tmp_dir)
+    if i.get('clean','')=='yes' or mode=='prereq':
+       for tmp_dir in [os.path.join(p,'tmp'), os.path.join(p, 'tmp-test04b')]:
+           if os.path.isdir(tmp_dir):
+               shutil.rmtree(tmp_dir)
 
     # Prepare CK workflow input
     ii={'action':'benchmark',
@@ -1629,7 +1636,8 @@ def run(i):
         'record_deps':'ck-deps.json',
         'repetitions':1,
         'no_state_check':'yes',
-        'clean':'yes',
+        'clean':'no',
+        'quiet':quiet,
         'skip_stat_analysis':'yes',
         'skip_print_stats':'yes',
         'out':'con'}
