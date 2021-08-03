@@ -137,6 +137,7 @@
   },
   "run_output_files": [
     "accuracy.txt",
+    "compliance.txt",
     "tmp-ck-timer.json",
     "mlperf_log_accuracy.json",
     "mlperf_log_detail.txt",
