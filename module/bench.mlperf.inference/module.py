@@ -1248,6 +1248,7 @@ def run(i):
               (task) [str] -
 
               (workflow) [str] - force CK program workflow to run benchmark
+              (workflow_cmd) [str] - force CK program workflow CMD to run benchmark
 
               (scenario) [str] - usage scenario
 
@@ -1504,10 +1505,12 @@ def run(i):
        return {'return':1, 'error':'"mode" is not in {}'.format(cfg['modes'])}
 
     # CMD Key
-    if mode=='prereq':
-       cmd_key='install-python-requirements'
-    else:
-       cmd_key=mode+'-'+scenario
+    cmd_key=i.get('workflow_cmd','').strip()
+    if cmd_key=='':
+       if mode=='prereq':
+          cmd_key='install-python-requirements'
+       else:
+          cmd_key=mode+'-'+scenario
 
     ck.out('* MLPerf inference CK workflow CMD key: {}'.format(cmd_key))
 
@@ -1639,6 +1642,7 @@ def run(i):
         'clean':'no',
         'quiet':quiet,
         'skip_stat_analysis':'yes',
+        'skip_print_timers':'yes',
         'skip_print_stats':'yes',
         'out':'con'}
 
