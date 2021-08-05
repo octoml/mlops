@@ -21,13 +21,19 @@
       "name": "PyTorch",
       "sort": 80,
       "tags": "lib,python-package,torch"
+    },
+    "lib-python-torch-vision": {
+      "local": "yes",
+      "name": "PyTorchVision",
+      "sort": 90,
+      "tags": "lib,python-package,torchvision"
     }
   },
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
     "MLPERF_BACKEND": "pytorch",
     "MLPERF_PROFILE_BACKEND": "onnxruntime",
-    "MLPERF_DATASET": "imagenet_pytorch",
+    "MLPERF_DATASET": "imagenet",
     "MLPERF_DEVICE": "cpu",
     "CUDA_VISIBLE_DEVICES": ""
   },
