@@ -14,7 +14,7 @@
 # Preparation
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
-* [Framework installation (CPU)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-onnx.md)
+* [Framework installation (GPU)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-onnx.md)
 
 ## Dataset
 

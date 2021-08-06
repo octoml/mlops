@@ -1,26 +1,19 @@
 {
-  "_base_entry": "program.template:644dadbc03849925",
-  "_base_entry#": "program.template:mlperf-inference-bench-image-classification",
+  "_base_entry": "program:42c99a88247575ea",
+  "_base_entry#": "program:mlperf-inference-bench-image-classification-onnx-cpu",
   "run_deps": {
     "lib-python-onnx-support": {
       "local": "yes",
-      "name": "Python ONNX runtime (CPU)",
+      "name": "Python ONNX runtime (GPU)",
       "sort": 80,
-      "tags": "lib,python-package,onnxruntime-cpu"
-    },
-    "model": {
-      "force_target_as_host": "yes",
-      "local": "yes",
-      "name": "Model for image classification (mlperf, onnx)",
-      "sort": 40,
-      "tags": "model,image-classification,mlperf,onnx"
+      "tags": "lib,python-package,onnxruntime-gpu"
     }
   },
   "run_vars": {
     "CK_LOADGEN_OPTS": "",
-    "CUDA_VISIBLE_DEVICES": "",
+    "CUDA_VISIBLE_DEVICES": "0",
     "MLPERF_BACKEND": "onnxruntime",
-    "MLPERF_DEVICE": "cpu"
+    "MLPERF_DEVICE": "gpu"
   },
   "tags": [
     "mlperf",
@@ -37,6 +30,6 @@
     "onnxruntime",
     "task.image-classification",
     "framework.onnx",
-    "target.cpu"
+    "target.gpu"
   ]
 }
