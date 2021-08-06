@@ -12,7 +12,7 @@
 # Preparation
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
-* [Framework installation (CPU)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)
+* [Framework installation (GPU)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)
   - MLPerf v1.1 worked with PyTorch 1.5.0 and TorchVision 0.6.0
 
 ## Dataset
@@ -34,7 +34,7 @@ ck install package --tags=model,image-classification,mlperf,onnx,resnet50,v1.5-o
 ## Python prerequisites
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=install-python-requirements
 ```
 
@@ -44,13 +44,13 @@ ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=accuracy-offline
 ```
 
 Customize it:
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=accuracy-offline \
         --env.EXTRA_OPS="--count=100 --threads 4 --max-batchsize 2"
 
@@ -59,14 +59,14 @@ ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=accuracy-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=accuracy-singlestream
 ```
 
@@ -78,20 +78,20 @@ ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=performance-offline
 ```
 
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=performance-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-cpu \
+ck run program:mlperf-inference-bench-image-classification-pytorch-onnx-gpu \
         --cmd_key=performance-singlestream
 ```
