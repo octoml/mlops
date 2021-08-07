@@ -29,7 +29,12 @@ You can install it via CK to be used with CK automation as follows:
 
 
 ```bash
-ck install package --tags=mlperf,inference,results,r1.1 --env.PACKAGE_URL={{MLPERF_RESULTS_URL}}
+ck install package --tags=mlperf,inference,results,v1.0 --env.PACKAGE_URL={{MLPERF_RESULTS_URL}}
+```
+
+If you have an access to the official (private) v1.1 submission repository, you can install it as follows:
+```bash
+ck install package --tags=mlperf,inference,results,v1.1-submission-private
 ```
 
 Alternatively, you can set up a local empty repository for MLPerf results as follows:

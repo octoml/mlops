@@ -1536,9 +1536,6 @@ def run(i):
        if framework_ext!='':
           sut+='-'+framework_ext
 
-       if framework_ext!='':
-          sut+='-'+framework_ext
-
        if target!='':
           sut+='-'+target
 
