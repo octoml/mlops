@@ -1,5 +1,5 @@
 #
-# MLPerf inference; image classification; postprocessing
+# MLPerf inference; language; postprocessing
 #
 # Copyright (c) 2019 cTuning foundation.
 # Copyright (c) 2021 OctoML, Inc.
@@ -11,6 +11,7 @@
 import os
 import json
 import re
+import sys
 from subprocess import check_output
 
 MLPERF_LOG_ACCURACY_JSON = 'mlperf_log_accuracy.json'
@@ -78,6 +79,9 @@ def ck_postprocess(i):
   if accuracy_mode:
     inference_bert_dir = os.path.join(inference_src_env['CK_ENV_MLPERF_INFERENCE'],
                                       'language', 'bert')
+
+    sys.path.insert(0, os.path.join(inference_bert_dir, "DeepLearningExamples", "TensorFlow", "LanguageModeling", "BERT"))
+
     accuracy_script = os.path.join(inference_bert_dir, 'evaluate-v1.1.py')
 
     dataset_file = os.path.join(inference_bert_dir, 'build/data/dev-v1.1.json')
@@ -100,7 +104,6 @@ def ck_postprocess(i):
     output = check_output(command).decode('ascii')
     print(output)
     print('------')
-
 
     with open(ACCURACY_TXT, 'w') as accuracy_file:
       accuracy_file.write(output)

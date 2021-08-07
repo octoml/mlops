@@ -26,11 +26,6 @@ def ck_preprocess(i):
     tosd=i['target_os_dict']
     remote=tosd.get('remote','')
 
-    if remote=='yes':
-       es=tosd['env_set']
-    else:
-       es=hosd['env_set'] # set or export
-
     # # Get model name from a CK package in MLPerf loadgen format
     # ml_model_dict = deps['model']['dict']
     # ml_model_name = ml_model_dict['customize']['install_env']['MLPERF_MODEL_NAME']
@@ -43,36 +38,26 @@ def ck_preprocess(i):
     # Check extra opts
     opts=env.get('CK_LOADGEN_OPTS','')
 
-    # Check accuracy
-    accuracy=env.get('CK_LOADGEN_ACCURACY','').lower()=='on'
-    if accuracy:
-        opts='--accuracy '+opts
-
     # Check max examples
     max_examples=env.get('CK_LOADGEN_MAX_EXAMPLES','')
     if max_examples:
-        opts+='--max_examples='+max_examples
+        opts+=' --max_examples='+max_examples
 
     # Check output directory
-    output=os.getcwd()
-    output_dir=output
-    new_env['CK_MLPERF_OUTPUT_DIR']=output_dir
+    new_env['CK_MLPERF_OUTPUT_DIR']=os.getcwd()
 
-    # Set extra options for LOADGEN
-    opts=opts.strip()
-    new_env['CK_LOADGEN_ASSEMBLED_OPTS']=opts
+    ###############################################################################
+    # Prepare options for loadgen based on env vars
 
-    # Find path for shared script with run_local.sh
-    r=ck.access({'action': 'find', 
-                 'module_uoa': 'script', 
-                 'data_uoa': '80cd847d1831aed2',
-                 'data_uoa#': 'mlperf-inference-language'})
+    i['script_data_uoa']='80cd847d1831aed2' # script:mlperf-inference-language
+    i['loadgen_opts']=opts
+
+    r=ck.access({'action':'run', 'module_uoa':'script', 'data_uoa':'mlperf-inference', 
+                 'code':'loadgen_common', 'func':'ck_preprocess', 
+                 'dict':i})
     if r['return']>0: return r
-    p=r['path']
-    if r['return']>0: return r
-    p=r['path']
 
-    new_env['CK_PATH_TO_COMMON_SCRIPT']=p
+    new_env.update(r['new_env'])
 
     return {'return':0, 'bat':bat, 'new_env':new_env}
 

@@ -1,5 +1,5 @@
 #
-# MLPerf inference; image classification; preprocessing
+# MLPerf inference; vision preprocessing
 #
 # Copyright (c) 2019 cTuning foundation.
 # Copyright (c) 2021 OctoML, Inc.
@@ -45,37 +45,17 @@ def ck_preprocess(i):
     # Check extra opts
     opts=env.get('CK_LOADGEN_OPTS','')
 
-    # Check if MLPERF_BACKEND is not the same if MLPERF_PROFILE_BACKEND
-    mlperf_backend=env['MLPERF_BACKEND']
-    mlperf_profile_backend=env.get('MLPERF_PROFILE_BACKEND','')
-
-    if mlperf_profile_backend=='':
-       new_env['MLPERF_PROFILE_BACKEND']=mlperf_backend
-    else:
-       opts='--backend '+mlperf_backend+' '+opts
-
     # Check if MLPERF_DATASET
     mlperf_dataset=env.get('MLPERF_DATASET','')
     if mlperf_dataset!='':
         opts+=' --dataset '+mlperf_dataset
-
-    # Check accuracy
-    accuracy=env.get('CK_LOADGEN_ACCURACY','').lower()=='on'
-    if accuracy:
-        opts='--accuracy '+opts
 
     data_format=ml_model_env.get('ML_MODEL_DATA_LAYOUT','')
     if data_format!='':
         opts='--data-format '+data_format+' '+opts
 
     # Check output directory
-    output=os.getcwd()
-    output_dir=output
-#    output_dir=os.path.join(output, 'mlperf-output')
-#    if not os.path.isdir(output_dir):
-#        os.makedirs(output_dir)
-
-    opts+=' --output '+output_dir
+    opts+=' --output '+os.getcwd()
 
     # Check if force external model (testing and open division) or use standard name
     model_path=env.get('ML_MODEL_FILEPATH_EXTERNAL','')
@@ -86,25 +66,15 @@ def ck_preprocess(i):
     if model_path!='':
         opts+=' --model '+model_path
 
-    # Set extra options for LOADGEN
-    opts=opts.strip()
-    new_env['CK_LOADGEN_ASSEMBLED_OPTS']=opts
+    # Call common script and finalize opts and env
+    i['loadgen_opts']=opts
 
-    script_data_uoa=i['script_data_uoa']
-
-    # Find path for shared scripts for a given task
-    r=ck.access({'action': 'find', 'module_uoa': 'script', 'data_uoa': script_data_uoa})
+    r=ck.access({'action':'run', 'module_uoa':'script', 'data_uoa':'mlperf-inference', 
+                 'code':'loadgen_common', 'func':'ck_preprocess', 
+                 'dict':i})
     if r['return']>0: return r
-    p=r['path']
 
-    new_env['CK_PATH_TO_COMMON_SCRIPT']=p
-
-    # Find path for shared scripts for MLPerf
-    r=ck.access({'action': 'find', 'module_uoa': 'script', 'data_uoa': 'mlperf-inference'})
-    if r['return']>0: return r
-    p=r['path']
-
-    new_env['CK_PATH_TO_MLPERF_SCRIPT']=p
+    new_env.update(r['new_env'])
 
     return {'return':0, 'new_env':new_env}
 
