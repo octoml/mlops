@@ -18,6 +18,7 @@ export LOG_DIR=$BUILD_DIR/logs
 
 mkdir -p $BUILD_DIR
 mkdir -p $DATA_DIR
+mkdir -p $BERT_DIR
 mkdir -p $RESULT_DIR
 mkdir -p $LOG_DIR
 
@@ -25,7 +26,7 @@ rm -f $LOG_DIR/*
 rm -f $RESULT_DIR/*
 
 ln -sf $CK_ENV_DATASET_SQUAD_DEV/dev-v1.1.json $DATA_DIR/dev-v1.1.json
-ln -sf $ML_MODEL_ROOT $BERT_DIR
+ln -sf ${ML_MODEL_FILEPATH} $BERT_DIR/${ML_MODEL_FILENAME}
 
 echo ""
 echo "CK CMD: $CK_ENV_COMPILER_PYTHON_FILE run.py " \

@@ -10,12 +10,12 @@
     }
   },
   "run_vars": {
+    "CK_LOADGEN_MAX_EXAMPLES": "",
     "CK_LOADGEN_OPTS": "",
-    "CK_LOADGEN_MAX_EXAMPLES":"",
-    "CK_MLPERF_PROFILE":"",
-    "CUDA_VISIBLE_DEVICES": "",
+    "CK_MLPERF_PROFILE": "",
+    "CUDA_VISIBLE_DEVICES": "0",
     "MLPERF_BACKEND": "onnxruntime",
-    "MLPERF_DEVICE": "cpu"
+    "MLPERF_DEVICE": "gpu"
   },
   "tags": [
     "mlperf",

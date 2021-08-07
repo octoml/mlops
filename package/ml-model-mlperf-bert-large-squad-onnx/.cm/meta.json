@@ -63,6 +63,25 @@
         "non-quantized"
       ],
       "on_by_default": "yes"
+    },
+    "int8": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf BERT-Large SQuAD int8 quantized onnx)"
+      },
+      "extra_env": {
+        "MODEL_PRECISION": "int8",
+        "MLPERF_MODEL_QUANTIZED": "YES",
+        "PACKAGE_NAME": "bert_large_v1_1_fake_quant.onnx",
+        "PACKAGE_URL": "https://zenodo.org/record/3750364/files",
+        "MODEL_INPUT_IDS_NAME": "input_ids",
+        "MODEL_INPUT_SEGMENTS_NAME": "segment_ids",
+        "MODEL_INPUT_MASK_NAME": "input_mask"
+      },
+      "extra_tags": [
+        "int8",
+        "quantized"
+      ],
+      "on_by_default": "no"
     }
   }
 }

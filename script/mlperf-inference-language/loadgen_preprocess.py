@@ -27,10 +27,8 @@ def ck_preprocess(i):
     remote=tosd.get('remote','')
 
     # # Get model name from a CK package in MLPerf loadgen format
-    # ml_model_dict = deps['model']['dict']
-    # ml_model_name = ml_model_dict['customize']['install_env']['MLPERF_MODEL_NAME']
-
-    # new_env['CK_MLPERF_MODEL']=ml_model_name
+    ml_model_dict = deps['model']['dict']
+    ml_model_env_dict = deps['model']['dict']['env']
 
     # path_to_squad=deps['dataset']['dict']['env']['CK_ENV_DATASET_SQUAD_DEV']
     # path_to_squad_dev=os.path.join(path_to_squad, 'dev-v1.1.json')
@@ -42,6 +40,12 @@ def ck_preprocess(i):
     max_examples=env.get('CK_LOADGEN_MAX_EXAMPLES','')
     if max_examples:
         opts+=' --max_examples='+max_examples
+
+    if ml_model_env_dict.get('MLPERF_MODEL_QUANTIZED','').lower()=='yes':
+        opts+=' --quantized'
+
+    if env.get('CK_MLPERF_PROFILE','').lower()=='yes':
+        opts+=' --profile'
 
     # Check output directory
     new_env['CK_MLPERF_OUTPUT_DIR']=os.getcwd()
