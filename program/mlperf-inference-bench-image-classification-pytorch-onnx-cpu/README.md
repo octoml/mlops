@@ -5,11 +5,12 @@
 * Dataset: ImageNet
 * Framework: [PyTorch](https://pytorch.org)
 * Models: ONNX format
-* Platform/OS: 
-  * [x8664; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
 * Target device: CPU
 
 # Preparation
+
+* System prerequisites
+  - [x8664; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
 * [Framework installation (CPU)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)

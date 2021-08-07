@@ -5,11 +5,9 @@
 * Dataset: ImageNet
 * Framework: [ONNX runtime](https://github.com/tensorflow/tensorflow)
 * Models: TensorFlow format
-* Platform/OS: 
-  * [x8664; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
 * Target device: CPU
 
-# Tested configuration
+# Tested configurations
 
 ## 20210806
 
@@ -20,6 +18,9 @@ Grigori tested the following configuration:
 * TF 2.5.0
 
 # Preparation
+
+* System prerequisites
+  - [x8664; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
 * [Framework installation (CPU)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tf.md)
