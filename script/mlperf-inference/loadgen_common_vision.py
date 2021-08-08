@@ -63,6 +63,10 @@ def ck_preprocess(i):
        # Check model name from a CK package
        model_path=ml_model_env.get('ML_MODEL_FILEPATH','')
 
+       if model_path.endswith('mobilenet-model.py'):
+          if env.get('MLPERF_MODEL_FORMAT','')=='tflite':
+             model_path=ml_model_env['CK_ENV_TENSORFLOW_MODEL_TFLITE_FILEPATH']
+
     if model_path!='':
         opts+=' --model '+model_path
 

@@ -35,6 +35,7 @@
     "MLPERF_DATASET": "imagenet",
     "MLPERF_DEVICE": "cpu",
     "MLPERF_PROFILE_BACKEND": "onnxruntime",
+    "MLPERF_MODEL_FORMAT": "tflite",
     "MLPERF_TVM_EXECUTOR": "graph",
     "MLPERF_TVM_OPT_LEVEL": 3,
     "MLPERF_TVM_TARGET": "llvm"
