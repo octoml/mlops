@@ -32,7 +32,7 @@
     "CK_LOADGEN_OPTS": "",
     "CUDA_VISIBLE_DEVICES": "",
     "MLPERF_BACKEND": "tvm",
-    "MLPERF_DATASET": "imagenet",
+    "MLPERF_DATASET": "",
     "MLPERF_DEVICE": "cpu",
     "MLPERF_PROFILE_BACKEND": "onnxruntime",
     "MLPERF_MODEL_FORMAT": "tflite",
