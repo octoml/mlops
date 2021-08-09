@@ -4,7 +4,7 @@
 * Task: image classification
 * Dataset: ImageNet
 * Framework: [TVM](https://github.com/apache/tvm)
-* Models: PyTorch format
+* Models: TFLite format
 * Target device: CPU
 
 # Preparation
@@ -15,7 +15,7 @@
   - [Nvidia Jetson Nano; Arm64; Ubuntu 18.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/nvidia-jetson-nano.md)
 
 * [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
-* [Framework installation (PyTorch - to load native models)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)
+* [Framework installation (TFLite - to load native models)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tflite.md)
 * [Framework installation (TVM)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-tvm.md)
 
 ## Dataset
@@ -24,17 +24,19 @@
 
 ## Models
 
-```bash
-ck install package --tags=model,image-classification,mlperf,pytorch
-```
+For now only non-quantized FP32 models with input 224x224 are supported via TVM backend in MLPerf.
 
-For now, we support only [resnet50_INT8bit_quantized.pt](https://github.com/octoml/mlops/blob/main/package/ml-model-mlperf-resnet50-v1.5-pytorch/.cm/meta.json) model.
+* EfficientNet (quantized/non-quantized): [TensorFlow and TFLite](https://github.com/ctuning/ck-mlops/tree/main/package/model-tflite-mlperf-efficientnet-lite/.cm/meta.json)
+* MobileNet-v3 (quantized/non-quantized): [TensorFlow and TFLite](https://github.com/ctuning/ck-mlops/tree/main/package/model-tf-and-tflite-mlperf-mobilenet-v3/.cm/meta.json)
+* MobileNet-v2 (quantized): [TensorFlow and TFLite](https://github.com/ctuning/ck-mlops/tree/main/package/model-tf-and-tflite-mlperf-mobilenet-v2-quant/.cm/meta.json)
+* MobileNet-v2 (non-quantized): [TensorFlow and TFLite](https://github.com/ctuning/ck-mlops/tree/main/package/model-tf-and-tflite-mlperf-mobilenet-v2/.cm/meta.json)
+* MobileNet-v1 (quantized/non-quantized): [TensorFlow and TFLite](https://github.com/ctuning/ck-mlops/tree/main/package/model-tf-and-tflite-mlperf-mobilenet-v1-20180802/.cm/meta.json)
 
 
 ## Python prerequisites
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
         --cmd_key=install-python-requirements
 ```
 
@@ -44,13 +46,13 @@ ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
         --cmd_key=accuracy-offline
 ```
 
 Customize it:
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
         --cmd_key=accuracy-offline \
         --env.MLPERF_TVM_EXECUTOR=graph \
         --env.MLPERF_TVM_TARGET="llvm" \
@@ -67,7 +69,7 @@ Notes:
 ## Server
 
 ```bash
-time ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+time ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
      --cmd_key=accuracy-server \
      --env.OMP_NUM_THREADS=8 \
      --env.EXTRA_OPS="--threads 8 --max-batchsize 1 --time 100 --qps 500" 
@@ -76,7 +78,7 @@ time ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
         --cmd_key=accuracy-singlestream
 ```
 
@@ -88,14 +90,14 @@ ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
         --cmd_key=performance-offline
 ```
 
 ## Server
 
 ```bash
-time ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+time ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
      --cmd_key=performance-server \
      --env.OMP_NUM_THREADS=8 \
      --env.EXTRA_OPS="--threads 8 --max-batchsize 1 --time 100 --qps 500" 
@@ -104,6 +106,6 @@ time ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-image-classification-tvm-pytorch-cpu \
+ck run program:mlperf-inference-bench-image-classification-tvm-tflite-cpu \
         --cmd_key=performance-singlestream
 ```
