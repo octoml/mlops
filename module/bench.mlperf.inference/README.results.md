@@ -34,7 +34,7 @@ ck install package --tags=mlperf,inference,results,v0.5
 ck import bench.mlperf.inference --target_repo=ck-mlperf-inference
 ```
 
-## Display results locally
+## Display all results locally
 
 ```bash
 ck display dashboard --template=result --cfg=mlperf.inference.all
