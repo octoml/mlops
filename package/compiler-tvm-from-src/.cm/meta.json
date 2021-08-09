@@ -102,6 +102,18 @@
       },
       "on_by_default": "no"
     },
+    "dev-dnnl-int8-v2": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/apeskov/tvm",
+        "PACKAGE_GIT_CHECKOUT": "ap/dnnl-int8-v2"
+      },
+      "extra_customize": {
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
+      },
+      "on_by_default": "no"
+    },
     "dev-cuda": {
       "extra_env": {
         "PACKAGE_GIT_CHECKOUT": "main",
