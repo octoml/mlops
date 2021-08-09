@@ -58,7 +58,7 @@ You may want to clean your results before running this command again:
 ck rm ck-mlperf-inference-1.1-dse:result:* -f
 ```
 
-## Display results locally
+## Display all results locally
 
 ```bash
 ck display dashboard --template=result --cfg=mlperf.inference.all

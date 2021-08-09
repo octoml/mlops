@@ -202,7 +202,8 @@ def ximport(i):
                         # List scenarios
                         for scenario in os.listdir(p_model):
                             lscenario=scenario.lower()
-                            if lscenario not in cfg['scenarios']:
+
+                            if ver in cfg['scenarios'] and lscenario not in cfg['scenarios'][ver]:
                                continue
 
                             p_scenario=os.path.join(p_model, scenario)
@@ -578,6 +579,7 @@ def ximport(i):
                                      tt+=[x1[0],x2[0],x3[0]]
                                      xdim=x1[0]
                                   elif lscenario=="offline":
+                                     result['dim_x_maximize']=True # QPS
                                      x1=('characteristics.samples_per_second', 'samples/second')
                                      x2=('characteristics.samples_per_second.normalized_per_processor', 'samples/second/processor (experimental)')
                                      x3=('characteristics.samples_per_second.normalized_per_core', 'samples/second/core (experimental)')
@@ -622,7 +624,7 @@ def ximport(i):
 
                                   # If CK v1.x used, prepare for Pareto to remove suboptimal points from raw DSE
                                   pareto=False
-                                  if (task=='image-classification' or task=='object-detection') and lscenario=="singlestream":
+                                  if (task=='image-classification' or task=='object-detection') and (lscenario=="singlestream" or lscenario=='offline'):
                                      pareto=True
 
                                   if pareto:
@@ -1045,25 +1047,28 @@ def get_performance(i):
     elif scenario!=scenario_dir:
        problem=True
        sproblem='scenario in meta ({}) doesn\'t match directory ({})'.format(scenario, scenario_dir)
-
+       
     # Report problem but continue processing based on the scenario in meta
     # Most of submissions dividiti, Krai and Edgecortix have issues:
     #  (offline scenario has a meta from singlestream)
-    if scenario=='offline':
+    if scenario_dir=='offline':
        v=raw_meta.get('Samples per second', None)
        if v==None:
-          problem=True
-          sproblem='characteristic is not found'
+          # Likely problematic submission from Krai - treat as singlestream:
+          v=raw_meta.get('QPS w/o loadgen overhead', None)
+          if v==None:
+             problem=True
+             sproblem='characteristic is not found'
 
        meta['characteristics.samples_per_second']=v
-    elif scenario=='server':
+    elif scenario_dir=='server':
        v=raw_meta.get('Scheduled samples per second', None)
        if v==None:
           problem=True
           sproblem='characteristic is not found'
 
        meta['characteristics.scheduled_queries_per_second']=v
-    elif scenario=='singlestream':
+    elif scenario_dir=='singlestream':
        v=raw_meta.get('90th percentile latency (ns)', None)
        if v==None:
           problem=True
@@ -1074,7 +1079,7 @@ def get_performance(i):
        meta['characteristics.90th_percentile_latency_us']=v/1e3
        meta['characteristics.90th_percentile_latency_ms']=v/1e6
        meta['characteristics.90th_percentile_latency_s']=v/1e9
-    elif scenario=='multistream':
+    elif scenario_dir=='multistream':
        v=raw_meta.get('Samples per query', None)
        if v==None:
           problem=True
@@ -1145,6 +1150,10 @@ def get_systems(i):
 def xfilter(i):
     """
     Input:  {
+               (repo_uoa) - use this repo with results
+               (data_uoa) - result UOA
+               (tags)     - tags to search
+
             }
 
     Output: {
@@ -1155,11 +1164,13 @@ def xfilter(i):
 
     """
 
+    ruoa=i.get('repo_uoa','')
     duoa=i.get('data_uoa','mlperf-inference-*-pareto')
     tags=i.get('tags','pareto')
 
     r=ck.access({'action':'search',
                  'module_uoa':cfg['module_deps']['result'],
+                 'repo_uoa':ruoa,
                  'data_uoa':duoa,
                  'tags':tags})
     if r['return']>0: return r
@@ -1200,12 +1211,15 @@ def xfilter(i):
 
                       dim_x_default=results[0]['dim_x_default']
                       dim_y_default=results[0]['dim_y_default']
-                      dim_y_maximize=results[0]['dim_y_maximize']
+                      dim_x_maximize=results[0].get('dim_x_maximize', False)
+                      dim_y_maximize=results[0].get('dim_y_maximize', False)
 
                       frontier_keys=[dim_x_default,dim_y_default]
                       reverse_keys=[]
+                      if dim_x_maximize:
+                         reverse_keys.append(dim_x_default)
                       if dim_y_maximize:
-                         reverse_keys=[dim_y_default]
+                         reverse_keys.append(dim_y_default)
 
                       lresults=len(results)
                       ck.out('    Raw results: {}'.format(lresults))
