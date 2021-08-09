@@ -86,9 +86,11 @@ ck display dashboard --template=result --cfg=mlperf.inference.all --extra_url="c
 ## Process results on a Pareto frontier
 
 ```bash
-ck filter bench.mlperf.inference:mlperf-inference-all-image-classification-edge-singlestream-pareto 
-ck filter bench.mlperf.inference:mlperf-inference-all-*-pareto 
+ck filter ck-mlperf-inference-1.1-dse:bench.mlperf.inference:mlperf-inference-all-image-classification-edge-singlestream-pareto 
+ck filter ck-mlperf-inference-1.1-dse:bench.mlperf.inference:mlperf-inference-all-*-pareto 
 ```
+
+You can remove "ck-mlperf-inference-1.1-dse:" from above commands to process results in all repositories.
 
 
 # Maintainers
