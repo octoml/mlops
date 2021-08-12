@@ -62,6 +62,15 @@ def ck_preprocess(i):
 
     new_env['CK_PATH_TO_MLPERF_SCRIPT']=p
 
+    # Generate user.conf from CMD if needed for reproducibility
+    x=env.get('LOADGEN_GENERATE_USER_CONF','')
+    if x!='':
+       lines=x.strip().split(';')
+       s='\n'.join(lines)
+
+       r=ck.save_text_file({'text_file':'user-generated.conf', 'string':s})
+       if r['return']>0: return r
+
     return {'return':0, 'new_env':new_env}
 
 # Do not add anything here!
