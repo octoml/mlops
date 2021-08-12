@@ -374,7 +374,7 @@ def ximport(i):
                                      result['characteristics.samples_per_query.normalized_per_core']=v/normalize_cores
 
 
-                               # Check dataset, modle and accuracy
+                               # Check dataset, model and accuracy
                                system_type=result.get('system_type','datacenter') # old format (v0.5) - datacenter
                                task=result.get('task','').replace(' ','-').lower()
                                xtask=task.replace('-',' ')
@@ -1259,10 +1259,13 @@ def run(i):
 
               (model) [str] - strict name if closed division and any name if open division
 
-              (task) [str] -
+              (task) [str] - if non-standard model, define task such as image-classification (see cfg['tasks'])
 
               (workflow) [str] - force CK program workflow to run benchmark
               (workflow_cmd) [str] - force CK program workflow CMD to run benchmark
+
+              (system) [str] - system base 
+              (skip_system_ext) [str] - if 'yes', do not add framework,version and target to above system to create sut
 
               (scenario) [str] - usage scenario
 
@@ -1544,14 +1547,15 @@ def run(i):
        # Prepare final MLPerf system name
        sut=system+'-'+framework
 
-       if framework_version!='':
-          sut+='-'+framework_version
+       if i.get('skip_system_ext','')!='yes':
+          if framework_version!='':
+             sut+='-'+framework_version
 
-       if framework_ext!='':
-          sut+='-'+framework_ext
+          if framework_ext!='':
+             sut+='-'+framework_ext
 
-       if target!='':
-          sut+='-'+target
+          if target!='':
+             sut+='-'+target
 
        sut_file=sut+'.json'
 
