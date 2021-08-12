@@ -8,11 +8,15 @@
     },
     "run": {
       "desc": "run MLPerf inference benchmark"
+    },
+    "zip": {
+      "desc": "zip results"
     }
   },
   "actions_redirect": {
     "filter": "xfilter",
-    "import": "ximport"
+    "import": "ximport",
+    "zip": "xzip"
   },
   "closed_division_models": {
     "1.0": [

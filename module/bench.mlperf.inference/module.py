@@ -1949,3 +1949,87 @@ def check_mlperf_param(i, key, default=''):
        return {'return':1, 'error':key+' is not defined (--'+key+', '+env+', ck.cfg["mlperf_'+key+'"])'}
 
     return {'return':0, 'value':value}
+
+##############################################################################
+# zip results
+
+def xzip(i):
+    """
+    Input:  {
+              (data_uoa) - explicit env UOA
+              (tags) - search env with MLPerf results by tags
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    import zipfile
+
+    duoa=i.get('data_uoa','')
+
+    tags='mlcommons,results'
+
+    extra_tags=i.get('tags','')
+    if extra_tags!='':
+       tags+=','+extra_tags
+
+    ii={'action':'search',
+        'module_uoa':cfg['module_deps']['env'],
+        'data_uoa':duoa,
+        'tags':tags}
+
+    r=ck.access(ii)
+    if r['return']>0: return r
+
+    l=r['lst']
+
+    if len(l)==0:
+       return {'return':1, 'error':'no entries found'}
+    elif len(l)>1:
+       return {'return':1, 'error':'more than 1 env entry found with results - please prune your search'}
+
+    path=l[0]['path']
+
+    path1=os.path.join(path, 'inference-results')
+
+    if not os.path.isdir(path1):
+       return {'return':1, 'error':'Path with results not found: '+path1}
+
+    r=ck.list_all_files({'path':path1, 'all':'yes', 'ignore_names':'.git'})
+    if r['return']>0: return r
+
+    flx=r['list']
+
+    output='mlperf-results.zip'
+    cur_dir=os.getcwd()
+
+    foutput=os.path.join(cur_dir, output)
+
+    os.chdir(path1)
+
+    try:
+       f=open(foutput, 'wb')
+       z=zipfile.ZipFile(f, 'w', zipfile.ZIP_DEFLATED)
+
+       for fn in flx:
+           z.write(fn, fn, zipfile.ZIP_DEFLATED)
+
+       # ck-install.json
+       z.close()
+       f.close()
+
+    except Exception as e:
+       return {'return':1, 'error':'failed to zip MLPerf results ('+format(e)+')'}
+
+    os.chdir(cur_dir)
+
+    ck.out('')
+    ck.out('Prepared zip file with MLPerf results: '+output)
+
+
+    return {'return':0}
