@@ -280,6 +280,11 @@ ck run program:mlperf-inference-submission --cmd_key=clean_truncate_accuracy_log
 ck run program:mlperf-inference-submission --cmd_key=check
 ```
 
+### Zip results
+
+```bash
+ck zip bench.mlperf.inference
+```
 
 
 # Maintainers
