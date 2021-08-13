@@ -6,11 +6,12 @@
 This repository contains CK workflows and components for MLOps and MLPerf&trade; benchmark.
 
 ## News
-* **20210519** - make sure that your CK version is >= 2.1.0 to support inheritance
+* **20210812** - make sure that your CK version is >= 2.5.8
 
 ## Documentation
 
-* [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
+* [CK-powered MLPerf&trade; benchmark automation and DSE] (https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
+* [CK-powered MLPerf&trade; submission automation](https://github.com/octoml/mlops/tree/main/module/bench.mlperf.inference)
 
 ## Motivation
 
