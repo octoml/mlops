@@ -1545,9 +1545,11 @@ def run(i):
               os.makedirs(paths[p])
 
        # Prepare final MLPerf system name
-       sut=system+'-'+framework
+       sut=system
 
        if i.get('skip_system_ext','')!='yes':
+          sut+='-'+framework
+
           if framework_version!='':
              sut+='-'+framework_version
 
