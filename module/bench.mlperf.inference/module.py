@@ -1047,14 +1047,11 @@ def get_performance(i):
     elif scenario!=scenario_dir:
        problem=True
        sproblem='scenario in meta ({}) doesn\'t match directory ({})'.format(scenario, scenario_dir)
-       
-    # Report problem but continue processing based on the scenario in meta
-    # Most of submissions dividiti, Krai and Edgecortix have issues:
-    #  (offline scenario has a meta from singlestream)
+
     if scenario_dir=='offline':
        v=raw_meta.get('Samples per second', None)
        if v==None:
-          # Likely problematic submission from Krai - treat as singlestream:
+          # Sometimes offline should be treated as singlestream (for slow platforms):
           v=raw_meta.get('QPS w/o loadgen overhead', None)
           if v==None:
              problem=True
@@ -1268,6 +1265,7 @@ def run(i):
               (skip_system_ext) [str] - if 'yes', do not add framework,version and target to above system to create sut
 
               (scenario) [str] - usage scenario
+              (duplicate_to_offline) [str] - if 'yes', duplicate results to offline (singlestream -> offline when too slow)
 
               (mode) [str] - (accuracy/performance/prereq) "accuracy" by default
 
@@ -1288,6 +1286,7 @@ def run(i):
 
               (dep_add_tags.{KEY}) [str] - add tags to a given dependency separated by commas
 
+              (record_extra) [str] - if 'yes', record workflow input and deps
 
               (loadgen.{KEY}) [str] - parameters passed as command line to LoadGen
                  (loadgen.count)
@@ -1324,6 +1323,10 @@ def run(i):
     deps=i.get('deps',{})
 
     quiet=i.get('quiet','')
+
+    record_extra=(i.get('record_extra','')=='yes')
+
+    duplicate=(i.get('duplicate_to_offline','')=='yes')
 
     # Check vars to record experiments
     exp_record=False
@@ -1594,8 +1597,16 @@ def run(i):
        file_measurement=sut+'_'+workflow+'_'+scenario+'.json'
        path_file_measurement=os.path.join(path_measurements, file_measurement)
 
+       # TBD: assemble readme for measurements
+       readme_measurements_template_file=os.path.join(work['path'], 'README.template.measurements.md')
+       readme_measurements=''
+       if os.path.isfile(readme_measurements_template_file):
+          r=ck.load_text_file({'text_file':readme_measurements_template_file})
+          if r['return']>0: return r
+          readme_measurements=r['string']
+
        path_file_measurement_readme=os.path.join(path_measurements, 'README.md')
-       r=ck.save_text_file({'text_file':path_file_measurement_readme, 'string':''})
+       r=ck.save_text_file({'text_file':path_file_measurement_readme, 'string':readme_measurements})
        if r['return']>0: return r
 
        # Prepare code
@@ -1604,9 +1615,15 @@ def run(i):
           os.makedirs(path_code)
 
        # TBD: assemble readme automatically from CK components!
+       readme_code_template_file=os.path.join(work['path'], 'README.template.code.md')
+       readme_code=''
+       if os.path.isfile(readme_code_template_file):
+          r=ck.load_text_file({'text_file':readme_code_template_file})
+          if r['return']>0: return r
+          readme_code=r['string']
 
        path_file_code_readme=os.path.join(path_code, 'README.md')
-       r=ck.save_text_file({'text_file':path_file_code_readme, 'string':''})
+       r=ck.save_text_file({'text_file':path_file_code_readme, 'string':readme_code})
        if r['return']>0: return r
 
        # Assemble info (print it before and after runs)
@@ -1653,7 +1670,6 @@ def run(i):
         'data_uoa':workflow,
         'cmd_key':cmd_key,
         'env':env,
-        'record_deps':'ck-deps.json',
         'repetitions':1,
         'no_state_check':'yes',
         'clean':'no',
@@ -1662,6 +1678,9 @@ def run(i):
         'skip_print_timers':'yes',
         'skip_print_stats':'yes',
         'out':'con'}
+
+    if record_extra:
+       ii['record_deps']='ck-deps.json'
 
     if len(deps)>0:
        ii['dependencies']=deps
@@ -1692,7 +1711,7 @@ def run(i):
     workflow_input=copy.deepcopy(ii)
 
     # Record workflow input
-    if mode!='prereq':
+    if record_extra and mode!='prereq':
        path_file_measurement_ck_workflow_input=os.path.join(path_measurements, 'ck-workflow-input.json')
        r=ck.save_json_to_file({'json_file':path_file_measurement_ck_workflow_input, 'dict':ii})
        if r['return']>0: return r
@@ -1811,9 +1830,7 @@ def run(i):
     ck.out(' * mlperf.conf')
     shutil.copy(path_mlperf_inference_conf, os.path.join(path_measurements, 'mlperf.conf'))
 
-
     #TBD: fill in readme in code
-
 
     # Check if need to run compliance test
     if i.get('compliance','')=='yes':
@@ -1910,6 +1927,24 @@ def run(i):
 
                  # Copy files there
                  shutil.copytree(tmp_dir, tmp_dir_test04b)
+
+    # Check if duplicate to offline
+    if duplicate and scenario=='singlestream':
+       ck.out(line)
+       ck.out('Duplicating results from {} to offline:'.format(scenario))
+       ck.out('')
+
+       for path in [path_results0, path_measurements, path_compliance]:
+           if os.path.isdir(path):
+              path0=os.path.dirname(path)
+              path_offline=os.path.join(path0, 'offline')
+
+              ck.out(' {} -> {}'.format(path, path_offline))
+
+              if os.path.isdir(path_offline):
+                 shutil.rmtree(path_offline)
+
+              shutil.copytree(path, path_offline)
 
     ck.out(line)
     ck.out('CK workflow for MLPerf inference executed successfully.')
