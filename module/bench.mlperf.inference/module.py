@@ -469,12 +469,21 @@ def ximport(i):
                                # Recording results-
 
                                if task!='' and system_type!='':
+
+
+                                  # TBD: need to support multiple scenarios separated by comma
+                                  # for now take the first
+                                  xsystem_type=system_type
+                                  find_comma=system_type.find(',')
+                                  if find_comma>0:
+                                     xsystem_type=xsystem_type[:find_comma]
+
                                   if target_data!='':
                                      duoa=target_data
                                   else:
-                                     duoa='mlperf-inference-all-'+task+'-'+system_type+'-'+lscenario
+                                     duoa='mlperf-inference-all-'+task+'-'+xsystem_type+'-'+lscenario
 
-                                  tags='bench,mlperf,inference,mlperf-inference,all,'+task+','+system_type+','+lscenario
+                                  tags='bench,mlperf,inference,mlperf-inference,all,'+task+','+xsystem_type+','+lscenario
 
                                   # Create associated graph config
                                   fconfig='config-'+duoa+'-raw.json'
@@ -865,17 +874,18 @@ def get_power(i):
            if timestamp>power_begin and timestamp<power_end:
               power_list.append(float(l.split(",")[3]))
 
-    avg_power = sum(power_list) / len(power_list)
-    if scenario_dir in ["offline", "server"]:
-        meta['characteristics.power']=avg_power
-    elif scenario_dir in ['multistream']:
-        power_duration = (power_end - power_begin).total_seconds()
-        num_samples = mlperf_log["generated_query_count"] * mlperf_log["generated_samples_per_query"]
-        meta['characteristics.power'] = avg_power * power_duration / num_samples
-    elif scenario_dir in ["singlestream"]:
-        power_duration = (power_end - power_begin).total_seconds()
-        num_samples = mlperf_log["result_qps_with_loadgen_overhead"] * power_duration
-        meta['characteristics.power'] = avg_power * power_duration / num_samples
+    if len(power_list)>0:
+       avg_power = sum(power_list) / len(power_list)
+       if scenario_dir in ["offline", "server"]:
+           meta['characteristics.power']=avg_power
+       elif scenario_dir in ['multistream']:
+           power_duration = (power_end - power_begin).total_seconds()
+           num_samples = mlperf_log["generated_query_count"] * mlperf_log["generated_samples_per_query"]
+           meta['characteristics.power'] = avg_power * power_duration / num_samples
+       elif scenario_dir in ["singlestream"]:
+           power_duration = (power_end - power_begin).total_seconds()
+           num_samples = mlperf_log["result_qps_with_loadgen_overhead"] * power_duration
+           meta['characteristics.power'] = avg_power * power_duration / num_samples
 
     return {'return':0, 'raw_meta':raw_meta, 'meta':meta}
 
