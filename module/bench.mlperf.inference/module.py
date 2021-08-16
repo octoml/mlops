@@ -790,7 +790,7 @@ def get_measurement(i):
 
     json_files=[]
     for f in os.listdir(path):
-        if f.endswith('.json') and f!='config.json':
+        if f.endswith('.json') and (f!='config.json' and not f.startswith('ck-')):
            json_files.append(os.path.join(path,f))
 
     if len(json_files)==0 or len(json_files)>1:
