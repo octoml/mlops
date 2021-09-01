@@ -3,7 +3,7 @@
 * Automation: [CK](https://github.com/ctuning/ck)
 * Task: image classification
 * Dataset: ImageNet
-* Framework: [TVM](https://github.com/apache/tvm)
+* Framework: [TVM with DNNL support](https://github.com/apache/tvm) 
 * Models: PyTorch format
 * Target device: CPU
 
