@@ -1,7 +1,0 @@
-{
-  "model":"resnet50",
-  "tags": [
-    "mlperf",
-    "resnet50"
-  ]
-}
