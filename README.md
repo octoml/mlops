@@ -1,1 +1,1 @@
-# CM repository for MLOps
+# CM-compatible repository for MLOps
